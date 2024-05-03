@@ -1,0 +1,39 @@
+body {
+    background-color: rgb(85, 85, 87);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    font-weight: bold;
+    color: rgb(226, 129, 129);
+}
+
+nav{
+    text-align: center;
+    font-weight: bold;
+    color: white;
+}
+
+nav p{
+    font-style: italic;
+}
+
+form {
+    color: white;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+button{
+    text-align: center;
+    font-weight: bold;
+    color: black;
+}
+
+button:hover{
+    background-color: black;
+    color: white;
+}
