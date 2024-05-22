@@ -30,3 +30,19 @@ function cambiarDos(){
     parrafoTres.innerHTML='Párrafo Tres cambiado';
     parrafoTres.style.color='green';
 }
+
+// Tercera parte del programa (Hora con minutos y segundos)
+
+function hora(){
+    setInterval(mostrarHora, 1000);
+}
+
+function mostrarHora(){
+    let mostrarHora = new Date();
+    let horas = String(mostrarHora.getHours()).padStart(2, '0'); // Con padStart hacemos que cuando los segundos sean menores de 10, en lugar de 1, 2, 3... salgan 01, 02, 03...
+    let minutos = String(mostrarHora.getMinutes()).padStart(2, '0'); // Además, padStart(2, 0) significa que son dos cifras y que a falta de una se coloca un cero a la izquierda.
+    let segundos = String(mostrarHora.getSeconds()).padStart(2, '0');
+    let reloj = horas + ':' + minutos + ':' + segundos;
+    let mostrarReloj = document.querySelector('#item4');
+    mostrarReloj.textContent = reloj;
+}

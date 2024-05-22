@@ -19,3 +19,21 @@ h2 {
 .contenedor {
     text-align: center;
 }
+
+#item4 {
+    color: greenyellow;
+    font-size: 40px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+button {
+    border-radius: 20px;
+    padding: 10px;
+    background-color: gold;
+    color: black;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: white;
+}
