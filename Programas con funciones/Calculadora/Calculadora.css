@@ -1,0 +1,153 @@
+body {
+    background-color: black;
+    color: white;
+    font-weight: bold;
+}
+
+h1 {
+    text-align: center;
+}
+
+input{
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 10px;
+    width: 100%;
+}
+
+/* A partir de aquí construyo el diseño de la calculadora */
+
+.contenedor {
+    display: grid;
+    text-align: center;
+    grid-gap: 4px;
+    grid-template-areas: 
+        "num1 num1 num1 num1"
+        "num2 num2 num2 num2"
+        "resul resul resul resul"
+        "suma resta multi div"
+        "pot raiz abso alea"
+        "redu redu res res";
+    justify-content: center;
+}
+
+.grid-item {
+    background-color: darkgreen;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 10px;
+}
+
+.grid-item:hover {
+    background-color: white;
+    color: red;
+}
+
+.grid-item:active {
+    background-color: rgb(156, 150, 233);
+    color: blue;
+}
+
+.num1 {
+    grid-area: num1;
+    background-color: cadetblue;
+}
+
+.num2 {
+    grid-area: num2;
+    background-color: cadetblue;
+}
+
+.resul {
+    grid-area: resul;
+    background-color: white;
+    color: black;
+}
+
+.suma {
+    grid-area: suma;
+}
+
+.resta {
+    grid-area: resta;
+}
+
+.multi {
+    grid-area: multi;
+}
+
+.div {
+    grid-area: div;
+}
+
+.red {
+    grid-area: redu;
+}
+
+.aleatorio {
+    grid-area: alea;
+}
+
+.potencia {
+    grid-area: pot;
+}
+
+.absoluto {
+    grid-area: abso;
+}
+
+.raizcua {
+    grid-area: raiz;
+}
+
+.reiniciar {
+    grid-area: res;
+}
+
+/*
+.nueve {
+    grid-area: nueve;
+}
+
+.ocho {
+    grid-area: ocho;
+}
+
+.siete {
+    grid-area: siete;
+}
+
+.seis {
+    grid-area: seis;
+}
+
+.cinco {
+    grid-area: cinco;
+}
+
+.cuatro {
+    grid-area: cuatro;
+}
+
+.tres {
+    grid-area: tres;
+}
+
+.dos {
+    grid-area: dos;
+}
+
+.uno {
+    grid-area: uno;
+}
+
+.cero {
+    grid-area: cero;
+}
+
+.coma {
+    grid-area: coma;
+}
+
+*/

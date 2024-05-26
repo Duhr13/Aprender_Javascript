@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+    <title>Mi Calculadora</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="calculadora.css">
+    <script src="calculadora.js"></script>
+</head>
+
+<body>
+
+    <h1>Calculadora versión 1.0</h1>
+
+    <div class="contenedor">
+        <div class="grid-item num1"><input type="text" id="numero1" placeholder="Introduce un número"></div>
+        <div class="grid-item num2"><input type="text" id="numero2" placeholder="Introduce un número"></div>
+        <div class="grid-item resul"><input type="text" id="resultado" placeholder="0" disabled></div>
+                <!-- <div class="grid-item nueve">9</div>
+                <div class="grid-item ocho">8</div>
+                <div class="grid-item siete">7</div>
+                <div class="grid-item seis">6</div>
+                <div class="grid-item cinco">5</div>
+                <div class="grid-item cuatro">4</div>
+                <div class="grid-item tres">3</div>
+                <div class="grid-item dos">2</div>
+                <div class="grid-item uno">1</div>
+                <div class="grid-item cero">0</div>
+                <div class="grid-item coma">,</div> -->
+        <div class="grid-item suma" onclick="sumar(numero1, numero2)">+</div>
+        <div class="grid-item resta" onclick="restar(numero1, numero2)">-</div>
+        <div class="grid-item multi" onclick="multiplicar(numero1, numero2)">x</div>
+        <div class="grid-item div" onclick="dividir(numero1, numero2)">/</div>
+        <div class="grid-item potencia" onclick="potencia()">Potencia</div>
+        <div class="grid-item raiz" onclick="raiz()">Raiz</div>
+        <div class="grid-item absoluto" onclick="absoluto()">Absoluto</div>
+        <div class="grid-item aleatorio" onclick="aleatorio()">Aleatorio</div>
+        <div class="grid-item red" onclick="redondear()">Redondear</div>
+        <div class="grid-item reiniciar" onclick="location.reload()">Restablecer</div>
+
+    </div>
+
+</body>
+
+</html>
