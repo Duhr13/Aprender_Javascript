@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(85, 85, 87);
+    background-color: black;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -9,15 +9,54 @@ h1 {
     color: rgb(226, 129, 129);
 }
 
-nav{
-    text-align: center;
-    font-weight: bold;
-    color: white;
+/*
+    A partir de aquí todo lo relacionado con el grid de la navegación
+*/
+
+.containernav {
+    color: black;
+    display: grid;
+    grid-gap: 4px;
+    grid-template-areas: "itemnav1 itemnav2 itemnav3 itemnav4 itemnav5";
 }
 
-nav p{
-    font-style: italic;
+.item-nav {
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 20px;
+    margin: 5px;
+    background-color: aquamarine;
+
 }
+
+.item1 {
+    grid-area: itemnav1;
+}
+
+.item2 {
+    grid-area: itemnav2;
+}
+
+.item3 {
+    grid-area: itemnav3;
+}
+
+.item4 {
+    grid-area: itemnav4;
+}
+
+.item5 {
+    grid-area: itemnav5;
+}
+
+/*
+    Aquí finaliza el grid de la navegación
+*/
+
+/*
+    Aquí comenzaría el grid del main
+*/
 
 form {
     color: white;
