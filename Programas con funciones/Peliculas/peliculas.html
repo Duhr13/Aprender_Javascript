@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html lang="es">
+    <head>
+
+        <title>Recomendación de películas</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="peliculas.css">
+        <script src="peliculas.js"></script>
+
+    </head>
+
+    <body>
+
+        <h1>Recomendador de películas</h1>
+
+        <p>A continuación le pediremos que nos indique su edad y que seleccione el género de la película.</p>
+
+        <label for="edad">Edad:</label>
+        <input type="text" id="edad" placeholder="Introduzca su edad" value="0">
+        <br>
+        <br>
+        <button onclick="pelicula('ficcion')">Ciencia Ficción</button>
+        <button onclick="pelicula('comedia')">Comedia</button>
+        <button onclick="pelicula('fantasia')">Fantasía</button>
+
+        <p id="parrafo1">La película que te recomendamos es:</p>
+
+        <h3 id="pelirecomendada">...</h3>
+
+    </body>
+
+</html>

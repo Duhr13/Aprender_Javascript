@@ -1,0 +1,34 @@
+body {
+    background-color: cadetblue;
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+h1 {
+    text-align: center;
+}
+
+input {
+    font-size: 25px;
+}
+
+button {
+    font-size: 25px;
+    background-color: red;
+    color: white;
+}
+
+button:hover {
+    background-color: blue;
+}
+
+button:active {
+    background-color: greenyellow;
+    color: black;
+}
+
+#parrafo1 {
+    font-style: italic;
+    color: black;
+}
