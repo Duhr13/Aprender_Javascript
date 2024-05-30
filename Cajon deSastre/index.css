@@ -13,41 +13,75 @@ h1 {
     A partir de aquí todo lo relacionado con el grid de la navegación
 */
 
-.containernav {
-    color: black;
-    display: grid;
-    grid-gap: 4px;
-    grid-template-areas: "itemnav1 itemnav2 itemnav3 itemnav4 itemnav5";
+#menu ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
 }
 
-.item-nav {
-    text-align: center;
+#menu ul li {
+    background-color: rgb(235, 36, 22);
+    border: solid;
+    border-color:white;
+    border-radius: 25px;
+}
+
+#menu ul a {
+    display: block;
+    color: rgb(240, 224, 224);
+    text-decoration: none;
     font-weight: bold;
     font-size: 20px;
-    padding: 20px;
-    margin: 5px;
-    background-color: aquamarine;
-
+    padding: 25px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: solid;
+    border-color:white;
+    border-radius: 25px;
 }
 
-.item1 {
-    grid-area: itemnav1;
+#menu ul a:hover {
+    color: rgb(235, 36, 22);
 }
 
-.item2 {
-    grid-area: itemnav2;
+#menu ul a:active{
+    color: black;
+    background-color: rgb(13, 235, 13);
 }
 
-.item3 {
-    grid-area: itemnav3;
+#menu ul li {
+    position: relative;
+    float: left;
+    margin: 0px;
+    padding: 0px;
 }
 
-.item4 {
-    grid-area: itemnav4;
+#menu ul li:hover {
+    background-color: white;
 }
 
-.item5 {
-    grid-area: itemnav5;
+/* Menú desplegable */
+
+#menu ul ul{
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    color: black;
+    padding: 0;
+}
+
+#menu ul ul li {
+    float: none;
+}
+
+#menu ul ul a {
+    line-height: 120%;
+    padding: 25px 25px;
+}
+
+#menu ul li:hover > ul {
+    display: block;
 }
 
 /*
@@ -55,24 +89,105 @@ h1 {
 */
 
 /*
-    Aquí comenzaría el grid del main
+    Aquí comenzaría el grid del index main
 */
 
-form {
+.contenedorIndex {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    height: 600px;
     color: white;
     font-weight: bold;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    text-align: center;
+}
+
+#formulario {
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    margin: 25px;
+    padding: 10px;
+    background-color: cadetblue;
+    border: solid 5px;
+    border-radius: 15px;
+}
+
+input {
+    padding: 15px;
+    margin: 10px;
+    border-radius: 15px;
+}
+
+input:hover, :focus {
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    font-weight: bold;
 }
 
 button{
     text-align: center;
     font-weight: bold;
     color: black;
+    padding: 20px;
+    margin: 20px;
+    border: solid;
+    border-radius: 15px;
 }
 
 button:hover{
-    background-color: black;
-    color: white;
+    background-color: rgb(194, 111, 111);
+    color: black;
+}
+
+button:active{
+    background-color: aquamarine;
+    color: green;
+}
+
+#parrafoindex {
+    display: grid;
+    justify-content: center;
+    background-color: lightskyblue;
+    color: blue;
+    padding: 15px;
+    border: solid;
+    border-color:darkslateblue;
+    border-radius: 15px;
+}
+
+#parrafoindex:hover {
+    background-color: pink;
+    color: purple;
+}
+
+#parrafoindex:active {
+    background-color: aquamarine;
+    color: green;
+}
+
+.pie {
+    display: grid;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    justify-content: center;
+}
+
+#contacto {
+    padding: 25px;
+    background-color: cornflowerblue;
+    border-color: red;
+    border-radius: 15px;
+    border: solid;
+}
+
+#contacto:hover {
+    background-color: pink;
+    color: purple;
+}
+
+#contacto:active {
+    background-color: aquamarine;
+    color: green;
 }
