@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html lang="es">
+    <head>
+        <title>Jugando con notas escolares</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="informe_notas_uni.css">
+        <script src="informe_notas_uni.js"></script>
+    </head>
+
+    <body onload="generarNotas()">
+        <h1>Mis notas</h1>
+
+        <h2>Lista de notas en exámenes</h2>
+
+        <ul id="listanotas">
+        
+        </ul>
+
+        <h2>Cálculo de nota media</h2>
+
+        <button onclick="notaMedia()">Calcular nota media</button>
+        <br>
+        <br>
+        <div id="notamedia"></div>
+        
+        <h2>Nota más alta y nota más baja</h2>
+
+        <button onclick="notaAltaBaja()">Mostrar notas</button>
+        <br>
+        <br>
+        <div id="notaAlta"> Aquí se mostrará la nota más alta</div><br>
+        <div id="notaBaja"> Aquí se mostrará la nota más baja</div>
+
+    </body>
+</html>
