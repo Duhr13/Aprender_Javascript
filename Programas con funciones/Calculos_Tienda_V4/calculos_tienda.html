@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+    <head>
+
+        <title>Calculos de una tienda</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="calculos_tienda.css">
+        <script src="calculos_tienda.js"></script>
+
+    </head>
+
+    <body onload = "crearTienda('contenedorTiendas', 0, 8)">
+
+        <!-- Cuarta versión de la aplicación -->
+
+        <h1>Calculos de una tienda</h1>
+
+        <p>A continuación introduce las cifras de ganancias de todas las tiendas</p>
+
+        <div id="contenedorTiendas">
+
+        </div>
+
+        <button onclick="calcular()">Calcular el Total</button>
+
+        <p id="mensajeCalculo"></p>
+
+        <p id="valorMaximo"></p>
+
+        <p id="valorMinimo"></p>
+
+    </body>
+
+</html>

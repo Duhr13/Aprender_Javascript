@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+    <head>
+
+        <title>Calculos de una tienda</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="calculos_tienda.css">
+        <script src="calculos_tienda.js"></script>
+
+    </head>
+
+    <body>
+
+        <!-- Segunda versión de la aplicación -->
+
+        <h1>Calculos de una tienda</h1>
+
+        <p>A continuación introduce las cifras de ganancias de seis tiendas</p>
+
+        <label for="tienda1">Tienda número 1</label>
+        <input type="number" id="tienda1" min="0" value="0"><br>
+        <label for="tienda2">Tienda número 2</label>
+        <input type="number" id="tienda2" min="0" value="0"><br>
+        <label for="tienda3">Tienda número 3</label>
+        <input type="number" id="tienda3" min="0" value="0"><br>
+        <label for="tienda4">Tienda número 4</label>
+        <input type="number" id="tienda4" min="0" value="0"><br>
+        <label for="tienda5">Tienda número 5</label>
+        <input type="number" id="tienda5" min="0" value="0"><br>
+        <label for="tienda6">Tienda número 6</label>
+        <input type="number" id="tienda6" min="0" value="0"><br>
+
+        <button onclick="calcular()">Calcular el Total</button>
+
+        <p id="mensajeCalculo"></p>
+
+        <p id="valorMaximo"></p>
+
+        <p id="valorMinimo"></p>
+
+    </body>
+
+</html>
