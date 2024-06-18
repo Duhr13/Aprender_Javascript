@@ -1,0 +1,51 @@
+/* Versión final de la aplicación. En ella voy a tratar de reconstruirla de cero para ver mis puntos débiles.
+    También trataré de mejorarla y no hacerla como una simple copia del curso */
+
+h1 {
+    text-align: center;
+    font-weight: bold;
+    color:rgb(22, 145, 145);
+}
+
+body {
+    background-color: rgb(189, 189, 247);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: white;
+    font-size: 16px;
+}
+
+#botongenerador { /* Todo el estilo del botón generador de tiendas */
+    padding: 10px;
+    margin: 10px;
+    background-color: aqua;
+    color: black;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+#botongenerador:hover { /* Todo el estilo del botón generador de tiendas cuando pasamos el cursor por encima */
+    background-color: rgb(255, 255, 255);
+    color: blue;
+    cursor: pointer;
+}
+
+#botoncalcular { /* Todo el estilo del botón generador de tiendas */
+    padding: 10px;
+    margin: 10px;
+    background-color: aqua;
+    color: black;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+#botoncalcular:hover { /* Todo el estilo del botón generador de tiendas cuando pasamos el cursor por encima */
+    background-color: rgb(255, 255, 255);
+    color: blue;
+    cursor: pointer;
+}
+
+#botongenerador:active {
+    background-color: chartreuse;
+}

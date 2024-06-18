@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+    <title>Versión Final de la aplicación de Cálculos Tienda</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="calculos_tienda_final.css">
+    <script src="calculos_tienda_final.js"></script>
+
+</head>
+
+<body>
+
+    <!-- Versión final de la aplicación. En ella voy a tratar de reconstruirla de cero para ver mis puntos débiles.
+    También trataré de mejorarla y no hacerla como una simple copia del curso  -->
+
+    <h1>Cálculos de Tiendas</h1>
+
+    <p>A continuación deberás seleccionar el número de tiendas que tiene la empresa:</p>
+
+    <label for="numerotiendas">Número de tiendas: </label>
+    <input type="number" id="numerotiendas" value="0" min="0"><br>
+    <button id="botongenerador" onclick="numTiendas()">Generar el número de tiendas</button>
+
+    <div id="contenedorID">  <!-- Aquí construiremos los párrafos de las tiendas -->
+
+    </div>
+
+    <button id="botoncalcular" onclick="calcular()">Calcular Suma, Mayor y Menor</button>
+
+    <p>El resultado de la suma de los beneficios de las tiendas es de: <span id="suma">-</span></p>
+
+    <p>El mayor beneficio individual conseguido por una tienda es de: <span id="mayor">-</span></p>
+
+    <p>El menor beneficio individual conseguido por una tienda es de: <span id="menor">-</span></p>
+
+
+</body>
+
+</html>
