@@ -55,14 +55,19 @@ function calcular() {
     let idTiendas = document.getElementById("contenedorID");
 
     for (index of idTiendas.children) { // idTiendas.children se ubica en el párrafo (hijo del div)
-        let valorVenta = numTiendas(index.children[1]); // index.children[1] se ubica en el segundo hijo del párrafo. index.children[0] sería la etiqueta label.
-        valores[contadorTiendas] = valorVenta;
+        let valorVenta = index.children[1]; // index.children[1] se ubica en el segundo hijo del párrafo. index.children[0] sería la etiqueta label.
+        valores[contadorTiendas] = Number(valorVenta.value); // Necesito transformar el string en número para que el array de datos sea numérico y se ejecuten bien las funciones
         contadorTiendas++;
     }
 
-    console.log(valores);
+    let spansuma = document.getElementById("suma");
+    spansuma.textContent = suma(valores);
 
+    let spanmax = document.getElementById("mayor");
+    spanmax.textContent = maximo(valores);
 
+    let spanmin = document.getElementById("menor");
+    spanmin.textContent = minimo(valores);
 }
 
 function suma(valores) {
@@ -70,13 +75,13 @@ function suma(valores) {
     let suma = 0;
 
     for (let indice of valores) {
-        suma += indice;
+        suma = suma + indice;
     }
     return suma;
 }
 
 function maximo(valores) {
-    let valormax = 0;
+    let valormax = 0; // inicializamos la variable con el número más pequeño posible, que es 0
     for (let index of valores) {
         if (index > valormax) {
             valormax = index;
@@ -86,7 +91,7 @@ function maximo(valores) {
 }
 
 function minimo(valores) {
-    let valormin = maximo(valores);
+    let valormin = maximo(valores); // inicializamos la variable con el número más alto. Aprovechamos la función anterior como punto de partida
     for (let indexmin of valores) {
         if (indexmin < valormin) {
             valormin = indexmin;

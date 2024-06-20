@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+    <title>Empleados de una empresa</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="empleados.css">
+    <script src="empleados.js"></script>
+
+</head>
+
+<body>
+
+<main class="contenedor">
+
+    <div id="contenedor1">
+        <h2>Insertar Empleados</h2>
+
+        <p><label for="numempleado">Número de empleado</label><br>
+        <input type="text" id="numempleado"></p>
+        
+        <p><label for="nameempleado">Nombre de empleado</label><br>
+        <input type="text" id="nameempleado"></p>
+        
+        <p><label for="cargoempleado">Cargo del empleado</label><br>
+        <input type="text" id="cargoempleado"></p>
+        
+        <p><button id="crearempleado" onclick="generarempleado()">Generar empleado</button></p>
+
+        <p><button id="mostrarempleados" onclick="mostrarempleado()">Mostrar empleado</button></p>
+
+    </div>
+
+    <div id="contenedor2">
+        <h2>Empleados</h2>
+
+        <div id="empleados">
+            
+        </div>
+    </div>
+
+
+</main>
+
+</body>
+
+
+</html>

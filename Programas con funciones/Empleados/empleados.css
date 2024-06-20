@@ -1,0 +1,62 @@
+body {
+    background-color: rgb(201, 194, 138);
+    font-weight: bold;
+    color: black;
+    font-size: 16px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif; 
+}
+
+.contenedor {
+    display: grid;
+    /*width: 100%;*/
+    grid-template-areas: "area1 area2";
+    margin: 1px;
+}
+
+#contenedor1 {
+    grid-area: area1;
+    background-color:rgb(88, 148, 128);
+    width: 900px;
+    height: 800px;
+    padding: 1px;
+    border: solid;
+    border-radius: 10px;
+    padding: 6px;
+}
+
+#contenedor2 {
+    grid-area: area2;
+    background-color: rgb(80, 128, 128);
+    width: 900px;
+    height: 800px;
+    padding: 1px;
+    border: solid;
+    border-radius: 10px;
+    padding: 6px;
+}
+
+h2 {
+    text-align: center;
+    text-decoration: underline;
+}
+
+label {
+    color: white;
+}
+
+input {
+    border: solid;
+    border-color:black;
+    padding: 6px;
+    margin: 6px 6px 6px 15px;
+    width: 300px;
+}
+
+#crearempleado, #mostrarempleados {
+    padding: 10px;
+    width: 200px;
+    margin: 6px 6px 6px 15px;
+    background-color: blue;
+    color: white;
+    border-radius: 10px;
+}
