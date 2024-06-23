@@ -68,6 +68,19 @@ function calcular() {
 
     let spanmin = document.getElementById("menor");
     spanmin.textContent = minimo(valores);
+
+    for (let item of idTiendas.children) {
+        let miValorVenta = Number(item.children[1].value);
+
+        item.children[1].className = "menuInputNeutro";
+    
+        if (miValorVenta === maximo(valores)) {
+            item.children[1].className = "menuInputMayor";
+        }
+        if (miValorVenta === minimo(valores)) {
+            item.children[1].className = "menuInputMenor";
+        }
+    }
 }
 
 function suma(valores) {

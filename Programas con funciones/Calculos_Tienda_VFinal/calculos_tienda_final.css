@@ -49,3 +49,15 @@ body {
 #botongenerador:active {
     background-color: chartreuse;
 }
+
+.menuInputNeutro {
+    background-color: white;
+}
+
+.menuInputMayor {
+    background-color: chartreuse;
+}
+
+.menuInputMenor {
+    background-color: red;
+}
