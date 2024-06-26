@@ -6,7 +6,7 @@ function Empleado(numero, nombre, cargo) {
     this.cargo = cargo;
 }
 
-function generarempleado() {
+function generarEmpleado() {
     let numero = document.getElementById("numempleado").value;
     let nombre = document.getElementById("nameempleado").value;
     let cargo = document.getElementById("cargoempleado").value;
@@ -20,8 +20,6 @@ function generarempleado() {
     alert("Empleado introducido correctamente");
 
     limpiarformulario();
-
-    return listado;
 }
 
 function limpiarformulario() {
@@ -30,23 +28,24 @@ function limpiarformulario() {
     document.getElementById("cargoempleado").value = '';
 }
 
-function mostrarempleado() {
+function mostrarEmpleado() {
     let contenedor = document.getElementById("empleados");
 
     let parrafo = document.createElement("p");
     let listados = document.createElement("ul");
     let lista = document.createElement("li");
 
-    let contador = 0;
+    let listaempleados = '';
 
     for (let empleado of listado) {
-        lista.append(empleado.value);
-        listados.appendChild(lista)
-        parrafo.appendChild(listados);
-        contenedor.appendChild(parrafo);
-        contador++;
-    }
+        for (let prop in empleado) {
+            listaempleados = prop.toUpperCase() + ': ' + empleado[prop];
+            lista.innerText = listaempleados;
+            listados.appendChild(lista);
+            parrafo.appendChild(listados);
+            contenedor.appendChild(parrafo);
+        }
+    }    
 
-    console.log(contador);
-    
+    // Esta función no está resuelta realmente. Tengo que ir dándole una vuelta.
 }
