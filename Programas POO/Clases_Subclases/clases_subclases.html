@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+    <head>
+        <title>Jugando con clases y subclases</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="clases_subclases.css">
+        <script src="clases_subclases.js"></script>
+    </head>
+
+    <body>
+        <h1>Animales veterinario</h1>
+
+        <div id="areatotal">
+
+            <div id="area1">
+
+                <p>
+                    <label for="tipoanimal">Tipo de animal</label><br>
+                    <select name="tipoanimal" id="tipoanimal">
+                        <option value="perro" selected>Perro</option>
+                        <option value="gato">Gato</option>
+                        <option value="conejo">Conejo</option>
+                    </select>
+                </p>
+
+                <p>
+                    <label for="nombre">Nombre</label><br>
+                    <input type="text" id="nombre" name="nombre" placeholder="Nombre del animal">
+                </p>
+
+                <p>
+                    <label for="edad">Edad</label><br>
+                    <input type="number" value="0" min="0" name="edad" id="edad">
+                </p>
+
+                <p>
+                    <label for="peso">Peso en gramos</label><br>
+                    <input type="number" value="0" min="0" name="peso" id="peso">
+                </p>
+
+                <p>
+                    <label for="raza">Raza (Exclusivo para perros)</label><br>
+                    <input type="text" name="raza" id="raza" placeholder="Raza del animal">
+                </p>
+
+                <p>
+                    <label for="raza">Color (Exclusivo para gatos)</label><br>
+                    <input type="text" name="color" id="color" placeholder="Color del animal">
+                </p>
+
+                <p>
+                    <label for="tamanio">Tamaño (Exclusivo para conejos)</label><br>
+                    <select name="tamanio" id="tamanio">
+                        <option value="grande">Grande</option>
+                        <option value="mediano">Mediano</option>
+                        <option value="pequeño" selected>Pequeño</option>
+                    </select>
+                </p>
+
+                <p>
+                    <button id="miboton1" onclick="guardarInformacion()">Guardar animales</button>
+                </p>
+
+            </div>
+
+            <div id="area2">
+                <ul id="lista">
+                    
+                </ul>
+
+                <p>
+                    <button id="miboton2" onclick="mostrarInformacion()">Mostrar animales</button>
+                </p>
+
+            </div>
+
+        </div>
+
+    </body>
+
+</html>

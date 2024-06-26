@@ -1,0 +1,70 @@
+body {
+    background-color: rgb(168, 158, 204);
+    font-weight: bold;
+    color:rgb(171, 125, 214);
+    font-size: 16px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    text-decoration: underline;
+    color:blueviolet;
+}
+
+label {
+    margin: 0px 0px 0px 10px;
+    font-size: 20px;
+}
+
+input, select {
+    font-size: 15px;
+    padding: 15px;
+    margin: 0px 0px 0px 20px;
+    width: 200px;
+    font-weight: bold;
+    border: solid;
+    border-radius: 10px;
+}
+
+button {
+    padding: 15px;
+    background-color: blue;
+    color:aliceblue;
+    font-weight: bold;
+    margin: 0px 0px 0px 20px;
+    width: 200px;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: white;
+    color: blue;
+}
+
+button:active {
+    background-color: chartreuse;
+    color: black;
+}
+
+#areatotal {
+    display: grid;
+    grid-template-areas: "area1 area2";
+}
+
+#area1 {
+    grid-area: area1;
+    background-color: rgb(59, 8, 80);
+    margin: 5px;
+}
+
+#area2 {
+    grid-area: area2;
+    background-color: rgb(59, 8, 80);
+    margin: 5px;
+    padding: 10px;
+}
+
+
+
