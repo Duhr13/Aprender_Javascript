@@ -66,11 +66,20 @@ function guardarInformacion() {
         listadoanimales[contadorID] = new Conejo(nombre, edad, peso, tamanio);
     }
     contadorID++;
+
+    limpiarformulario();
+}
+
+function limpiarformulario() {
+    document.getElementById("nombre").value = '';
+    document.getElementById("edad").value = 0;
+    document.getElementById("peso").value = 0;
+    document.getElementById("raza").value = '';
+    document.getElementById("color").value = '';
 }
 
 function mostrarInformacion() {
 
-    let lista = document.createElement("li");
     let listado = new Array;
     let listadofinal = document.getElementById("lista");
 
@@ -79,22 +88,22 @@ function mostrarInformacion() {
     // Uso un for in porque con for of no puedo invocar .constructor.name
     for (index in listadoanimales) {    
         console.log(index);    
-            //console.log(listadoanimales[index].constructor.name);
-            //lista.innerText = `${listadoanimales[index].nombre} - ${listadoanimales[index].edad} - ${listadoanimales[index].peso} - ${listadoanimales[index].raza} - ${listadoanimales[index].color} - ${listadoanimales[index].tamanio}`;
-            //listado.appendChild(lista);
         if (listadoanimales[index].constructor.name === 'Perro'){
             //No puedo usar index.nombre porque no es un for of, y al verme obligado a usar un for in la única forma de llamar a las propiedades del objeto es llamarlo en forma de array
-            lista.innerText = `${listadoanimales[index].nombre} - ${listadoanimales[index].edad} - ${listadoanimales[index].peso} - ${listadoanimales[index].raza}`;
+            let lista = document.createElement("li");
+            lista.innerText = `Tipo de animal: ${listadoanimales[index].constructor.name} - Nombre: ${listadoanimales[index].nombre} - Edad: ${listadoanimales[index].edad} - Peso: ${listadoanimales[index].peso} - Raza: ${listadoanimales[index].raza}`;
+            listadofinal.appendChild(lista);
         }
         else if(listadoanimales[index].constructor.name === 'Gato') {
-            lista.innerText = `${listadoanimales[index].nombre} - ${listadoanimales[index].edad} - ${listadoanimales[index].peso} - ${listadoanimales[index].color}`;
+            let lista = document.createElement("li");
+            lista.innerText = `Tipo de animal: ${listadoanimales[index].constructor.name} - Nombre: ${listadoanimales[index].nombre} - Edad: ${listadoanimales[index].edad} - Peso: ${listadoanimales[index].peso} - Color: ${listadoanimales[index].color}`;
+            listadofinal.appendChild(lista);
         }
         else if(listadoanimales[index].constructor.name === 'Conejo') {
-            lista.innerText = `${listadoanimales[index].nombre} - ${listadoanimales[index].edad} - ${listadoanimales[index].peso} - ${listadoanimales[index].tamanio}`;
+            let lista = document.createElement("li");
+            lista.innerText = `Tipo de animal: ${listadoanimales[index].constructor.name} - Nombre: ${listadoanimales[index].nombre} - Edad: ${listadoanimales[index].edad} - Peso: ${listadoanimales[index].peso} - Tamaño: ${listadoanimales[index].tamanio}`;
+            listadofinal.appendChild(lista);
         }
         listado.push(lista);
-    }
-    for (indice of listado) {
-        listadofinal.appendChild(indice);
     }
 }
