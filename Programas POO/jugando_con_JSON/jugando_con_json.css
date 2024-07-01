@@ -1,0 +1,38 @@
+body {
+    background-color: cornflowerblue;
+    color: black;
+    font-weight: bold;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+}
+
+h1 {
+    text-align: center;
+    text-decoration: underline;
+    color:blue;
+}
+
+#nombre, #banco, #sucursal, #titular, #moneda1, #moneda2, #saldo1, #saldo2, #fecha, #nrocuenta {
+    color:rgb(250, 180, 4);
+    text-shadow: black;
+}
+
+button {
+    margin-left: 15px;
+    padding: 15px;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 25px;
+}
+
+button:hover {
+    background-color: white;
+    color: red;
+}
+
+button:active{
+    background-color: chartreuse;
+    color: black;
+}

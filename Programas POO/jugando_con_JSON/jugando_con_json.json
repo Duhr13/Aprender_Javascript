@@ -1,0 +1,8 @@
+{
+    "banco": "Banco de San Martín de Valdeiglesias",
+    "sucursal": "Corredera Alta, 6",
+    "titular": "Calili",
+    "nrocuenta": "123456789",
+    "saldo": [{"moneda": "€", "saldo": 7500.50}, {"moneda": "Pesetas", "saldo": 1250000}],
+    "abierto": "03/08/1998"
+}
