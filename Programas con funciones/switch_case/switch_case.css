@@ -1,0 +1,22 @@
+body {
+    background-color: cadetblue;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    text-decoration: underline;
+}
+
+select {
+    font-size: 18px;
+    padding: 5px;
+}
+
+input {
+    font-size: 18px;
+    padding: 5px;
+}

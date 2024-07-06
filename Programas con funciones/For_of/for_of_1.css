@@ -1,0 +1,35 @@
+body {
+    background-color: cadetblue;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    text-decoration: underline;
+}
+
+input {
+    font-size: 18px;
+    padding: 5px;
+}
+
+button {
+    font-size: 18px;
+    margin-left: 10px;
+    padding: 5px;
+    font-weight: bold;
+    width: 150px;
+}
+
+button:hover{
+    background-color: blue;
+    color:cyan;
+}
+
+button:active {
+    background-color: chartreuse;
+    color: black;
+}

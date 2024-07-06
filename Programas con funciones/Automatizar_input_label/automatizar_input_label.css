@@ -1,0 +1,45 @@
+body {
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    text-decoration: underline;
+    /* text-shadow: 10px 10px 10px red; */
+}
+
+input {
+    font-size: 15px;
+    padding: 10px;
+    font-weight: bold;
+}
+
+label {
+    display:block;
+    font-size: 15px;
+    padding: 10px;
+    font-weight: bold;
+    color:rgb(158, 98, 189);
+}
+
+#generar {
+    font-size: 15px;
+    padding: 10px;
+    font-weight: bold;
+    background-color: rgb(89, 89, 243);
+    color: white;
+}
+
+#generar:hover {
+    background-color: white;
+    color: rgb(89, 89, 243);
+}
+
+#generar:active {
+    background-color: chartreuse;
+    color: black;
+}
