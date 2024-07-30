@@ -1,0 +1,24 @@
+body {
+    background-color: azure;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#miInput {
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+#miInput:hover {
+    background-color: blue;
+    color: white;
+}
+
+h1 {
+    text-align: center;
+    text-decoration: underline;
+    color:blue;
+}

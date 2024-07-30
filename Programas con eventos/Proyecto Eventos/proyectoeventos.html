@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+    <title>Proyecto con eventos, JSON y generación de contenido</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="proyectoeventos.css">
+</head>
+
+<body>
+
+    <header>
+
+        <h1>Proyecto con Eventos, JSON y generación de párrafos y listas</h1>
+
+        <p>Además, le añado un poco de accesibilidad a la web, añadiendo header y main al contenido.</p>
+
+    </header>
+
+    <main>
+        <label for="opciones">Seleccione el tipo de formato a buscar:</label>
+        <select id="opciones">
+
+            <option value="peliculas.json">Películas</option>
+            <option value="series.json">Series</option>
+
+        </select>
+            <br>
+        <hr>
+            <br>
+        <label for="busqueda">Nombre del título a buscar</label>
+        <input type="text" id="busqueda" placeholder="Título a buscar">
+        <input type="button" id="miBoton" value="Buscar">
+            <br>
+            <br>
+        <hr>
+            <br>
+            <br>
+        <ul id="contenido">
+
+        </ul>
+
+    </main>
+
+</body>
+
+<script src="proyectoeventos.js"></script>
+
+</html>

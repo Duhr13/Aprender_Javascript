@@ -1,0 +1,46 @@
+body{
+    background-color: rgb(250, 240, 245);
+    color: black;
+    font-weight: bold;
+    font-size: 14px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h1 {
+    color:rgb(40, 53, 241);
+    text-align: center;
+}
+
+#opciones, #busqueda {
+    background-color: rgb(255, 255, 255);
+    color: blue;
+    font-weight: bold;
+    padding: 10px;
+    font-size: 14px;
+    margin-left: 15px;
+    width: 300px;
+    border-radius: 10px;
+    border: solid;
+}
+
+#miBoton {
+    background-color: aqua;
+    color: black;
+    font-weight: bold;
+    padding: 10px;
+    font-size: 14px;
+    width: 200px;
+    border-radius: 10px;
+    border: solid;
+}
+
+#miBoton:hover{
+    background-color: blue;
+    color: white;
+}
+
+#miBoton:active{
+    background-color: chartreuse;
+    color: black;
+}
+
