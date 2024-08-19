@@ -38,9 +38,9 @@ function verificarInput(evento) {
 function buscar() {
     contenido.innerHTML = '';
     fetch(archivo)
-    .then(respuesta => respuesta.json)
-    .then(function(salida){
-        for(intem of salida.data){
+    .then(respuesta => respuesta.json())
+    .then(function(datos){
+        for(let item of datos.data){
             if(item.nombre.startsWith(busqueda.value.toUpperCase())) {
                 let p = document.createElement('p');
                 p.id = item.nombre;
