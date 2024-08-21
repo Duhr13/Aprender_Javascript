@@ -1,5 +1,5 @@
 h1 {
-    color:blue;
+    color:rgb(7, 239, 247);
     font-weight: bold;
     font-size: 20px;
     text-align: center;
@@ -8,7 +8,7 @@ h1 {
 }
 
 body {
-    background-color: darkcyan;
+    background-color: rgb(51, 74, 74);
     color: white;
     font-size: 15px;
     font-weight: bold;
