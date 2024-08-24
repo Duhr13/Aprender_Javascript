@@ -15,10 +15,16 @@ function cargarContenido(){
 
     // Función que cargue los elementos
 
+    cargarElementos();
+
     // Función que cargue los textos
+
+    cargarTextos();
 }
 
 async function cargarCotizaciones(callback) {
+
+    await delay(3000); // Función para retrasar las tres promesas principales y que nos permita disfrutar del gif cargando
 
     let promesa1 = await fetch('https://api.coindesk.com/v1/bpi/currentprice.json'); // Esta promesa se hace con callback
     callback(await promesa1.json());
@@ -29,6 +35,8 @@ async function cargarCotizaciones(callback) {
 
     let datos3 = await crearPedido('https://open.er-api.com/v6/latest/ARS'); // Esta es la tercera promesa, en lugar de fetch, se va a usar XMLHttpRequest
     document.getElementById('UsdArs').append(datos3.rates.USD);
+
+    document.getElementById('imgEspera').style.visibility = 'hidden'; // Cuando carguen las tres promesas, el logo.gif vuelve a ocultarse
 
 }
 
@@ -48,5 +56,24 @@ async function crearPedido(url){
             }
         }
         xhr.send();
+    })
+}
+
+function cargarElementos() {
+    document.getElementById('imgLogo').setAttribute('src', 'logo.jpg'); // No hay logo de momento
+    document.getElementById('titulo').textContent = 'Cotizaciones Online';
+    document.getElementById('imgEspera').setAttribute('src', 'loading.gif');
+    document.getElementById('imgEspera').style.visibility = 'visible'; // Volveremos a ocultarlo después de las tres promesas arriba
+}
+
+function cargarTextos() {
+    document.getElementById('UsdEur').append('EUR a USD: ');
+    document.getElementById('UsdArs').append('ARG a USD: ');
+    document.getElementById('BitcoinUsd').append('BitCoin a USD: ');
+}
+
+function delay(ms){
+    return new Promise(function(res){
+        setTimeout(res, ms);
     })
 }
