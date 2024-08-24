@@ -14,3 +14,10 @@ body {
     font-weight: bold;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
+.espera img {
+    height: 30 px;
+    width: 30 px;
+    border-radius: 50%;
+    visibility: hidden;
+}
