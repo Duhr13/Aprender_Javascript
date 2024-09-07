@@ -5,7 +5,57 @@
 function cargarContenido(){
     // Función que cargue las cotizaciones
 
+    cargarCotizaciones(mostrarCotizacion);
+
     // Función que cargue los elementos
 
+    cargarElementos();
+
     // Función que cargue los textos
+
+    cargarTextos();
+}
+
+async function cargarCotizaciones(callback) {
+
+    await delay(3000); // Función para retrasar las tres promesas principales y que nos permita disfrutar del gif cargando
+
+    let promesa1 = await fetch('https://api.coindesk.com/v1/bpi/currentprice.json'); // Esta promesa se hace con callback
+    callback(await promesa1.json());
+
+    let promesa2 = await fetch('https://open.er-api.com/v6/latest/USD'); // Esta promesa se hace de forma distinta, directa sin callbacks
+    callback(await promesa2.json());
+    
+    let promesa3 = await fetch('https://open.er-api.com/v6/latest/ARS'); // Esta es la tercera promesa, en lugar de fetch, se va a usar XMLHttpRequest
+    callback(await promesa3.json());
+
+    document.getElementById('imgEspera').style.visibility = 'hidden'; // Cuando carguen las tres promesas, el logo.gif vuelve a ocultarse
+
+    // NO FUNCIONA
+}
+
+function mostrarCotizacion(datos) {
+    document.getElementById('BitcoinUsd').append(datos.bpi.USD.rate); // El dato buscado en el .json está en 'rate'
+    document.getElementById('UsdEur').append(datos.rates.EUR); // A diferencia del callback de promesa1, el dato está en 'rates'
+    document.getElementById('UsdArs').append(datos.rates.USD);
+
+}
+
+function cargarElementos() {
+    document.getElementById('imgLogo').setAttribute('src', 'logo.jpg'); // No hay logo de momento
+    document.getElementById('titulo').textContent = 'Cotizaciones Online';
+    document.getElementById('imgEspera').setAttribute('src', 'loading.gif');
+    document.getElementById('imgEspera').style.visibility = 'visible'; // Volveremos a ocultarlo después de las tres promesas arriba
+}
+
+function cargarTextos() {
+    document.getElementById('UsdEur').append('EUR a USD: ');
+    document.getElementById('UsdArs').append('ARG a USD: ');
+    document.getElementById('BitcoinUsd').append('BitCoin a USD: ');
+}
+
+function delay(ms){
+    return new Promise(function(res){
+        setTimeout(res, ms);
+    })
 }
