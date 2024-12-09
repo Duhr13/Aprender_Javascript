@@ -1,7 +1,7 @@
 body {
-    background-color: rgb(22, 88, 90);
+    background-color: rgb(0, 0, 0);
     color: white;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: verdana;
 }
 
 h1 {
@@ -13,6 +13,21 @@ h1 {
 footer {
     font-size: 10px;
     color:cyan;
+}
+
+main {
+    display: grid;
+    place-items: center;
+    width: 100%;
+}
+
+table {
+    border: 2px solid;
+}
+
+table caption {
+    font-weight: bold;
+    padding: 5px;
 }
 
 thead {
@@ -27,8 +42,12 @@ tbody {
     color:black;
 }
 
-tbody > th {
+tbody th {
     font-weight: bold;
+}
+
+td {
+    padding: 8px;
 }
 
 .AGH {
@@ -50,4 +69,20 @@ tbody > th {
     color: white;
     font-weight: bold;
     text-align: center;
+}
+
+.colizq {
+    font-weight: bold;
+    background-color: red;
+    color: white;
+}
+
+#resultadoc {
+    margin: 20px;
+    width: 50%;
+    font-weight: bold;
+}
+
+#resultadoc label {
+    margin: 10px;
 }
