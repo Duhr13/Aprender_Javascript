@@ -78,8 +78,8 @@ td {
 }
 
 #resultadoc {
+    background-color: rgb(173, 4, 12);
     margin: 20px;
-    width: 50%;
     font-weight: bold;
 }
 
