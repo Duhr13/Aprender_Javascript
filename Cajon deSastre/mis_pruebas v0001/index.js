@@ -2,88 +2,167 @@
 
 // VARIABLES GLOBALES DE RESULTADO
 
-let res1 = document.getElementById("resul1");
-let res2 = document.getElementById("resul2");
-let res3 = document.getElementById("resul3");
-let res4 = document.getElementById("resul4");
-let res5 = document.getElementById("resul5");
-let res6 = document.getElementById("resul6");
-let res7 = document.getElementById("resul7");
-let res8 = document.getElementById("resul8");
-let res9 = document.getElementById("resul9");
-let res10 = document.getElementById("resul10");
-let res11 = document.getElementById("resul11");
+let res1 = document.getElementById("resul1").innerText;
+let res2 = document.getElementById("resul2").value;
+let res3 = document.getElementById("resul3").value;
+let res4 = Number(document.getElementById("resul4").value);
+let res5 = Number(document.getElementById("resul5").value);
+let res6 = Number(document.getElementById("resul6").textContent);
+let res7 = Number(document.getElementById("resul7").textContent);
+let res8 = Number(document.getElementById("resul8").textContent);
+let res9 = Number(document.getElementById("resul9").textContent);
+let res10 = Number(document.getElementById("resul10").textContent);
+let res11 = Number(document.getElementById("resul11").textContent);
+
+let resulpanelC = [res1, res2, res3, res4, res5, res6, res7, res8, res9, res10, res11];
 
 // VARIABLES GLOBALES DEL PANEL
 
-let d1 = document.getElementById("D1"); 
-let d2 = document.getElementById("D2");
-let d3 = document.getElementById("D3");
-let d4 = document.getElementById("D4");
-let d5 = document.getElementById("D5");
-let d6 = document.getElementById("D6");
-let d7 = document.getElementById("D7");
-let d8 = document.getElementById("D8");
-let d9 = document.getElementById("D9");
-let d10 = document.getElementById("D10");
-let d11 = document.getElementById("D11");
+let D = [document.querySelector("#D1").textContent, document.querySelector("#D2").textContent, document.querySelector("#D3").textContent,document.querySelector("#D4").textContent,
+    document.querySelector("#D5").textContent, document.querySelector("#D6").textContent, document.querySelector("#D7").textContent, document.querySelector("#D8").textContent,
+    document.querySelector("#D9").textContent, document.querySelector("#D10").textContent, document.querySelector("#D11").textContent];
 
-let C1 = document.getElementById("C1"); 
-let C2 = document.getElementById("C2");
-let C3 = document.getElementById("C3");
-let C4 = document.getElementById("C4");
-let C5 = document.getElementById("C5");
-let C6 = document.getElementById("C6");
-let C7 = document.getElementById("C7");
-let C8 = document.getElementById("C8");
-let C9 = document.getElementById("C9");
-let C10 = document.getElementById("C10");
-let C11 = document.getElementById("C11");
+let C = [document.querySelector("#C1").textContent, document.querySelector("#C2").textContent, document.querySelector("#C3").textContent,document.querySelector("#C4").textContent,
+    document.querySelector("#C5").textContent, document.querySelector("#C6").textContent, document.querySelector("#C7").textContent, document.querySelector("#C8").textContent,
+    document.querySelector("#C9").textContent, document.querySelector("#C10").textContent, document.querySelector("#C11").textContent];
 
-let cc1 = document.getElementById("cc1"); 
-let cc2 = document.getElementById("cc2");
-let cc3 = document.getElementById("cc3");
-let cc4 = document.getElementById("cc4");
-let cc5 = document.getElementById("cc5");
-let cc6 = document.getElementById("cc6");
-let cc7 = document.getElementById("cc7");
-let cc8 = document.getElementById("cc8");
-let cc9 = document.getElementById("cc9");
-let cc10 = document.getElementById("cc10");
-let cc11 = document.getElementById("cc11");
+let c = [document.querySelector("#cc1").textContent, document.querySelector("#cc2").textContent, document.querySelector("#cc3").textContent,document.querySelector("#cc4").textContent,
+    document.querySelector("#cc5").textContent, document.querySelector("#cc6").textContent, document.querySelector("#cc7").textContent, document.querySelector("#cc8").textContent,
+    document.querySelector("#cc9").textContent, document.querySelector("#cc10").textContent, document.querySelector("#cc11").textContent];
 
-let E1 = document.getElementById("E1"); 
-let E2 = document.getElementById("E2");
-let E3 = document.getElementById("E3");
-let E4 = document.getElementById("E4");
-let E5 = document.getElementById("E5");
-let E6 = document.getElementById("E6");
-let E7 = document.getElementById("E7");
-let E8 = document.getElementById("E8");
-let E9 = document.getElementById("E9");
-let E10 = document.getElementById("E10");
-let E11 = document.getElementById("E11");
+let E = [document.querySelector("#E1").textContent, document.querySelector("#E2").textContent, document.querySelector("#E3").textContent,document.querySelector("#E4").textContent,
+    document.querySelector("#E5").textContent, document.querySelector("#E6").textContent, document.querySelector("#E7").textContent, document.querySelector("#E8").textContent,
+    document.querySelector("#E9").textContent, document.querySelector("#E10").textContent, document.querySelector("#E11").textContent];
 
-let ee1 = document.getElementById("ee1"); 
-let ee2 = document.getElementById("ee2");
-let ee3 = document.getElementById("ee3");
-let ee4 = document.getElementById("ee4");
-let ee5 = document.getElementById("ee5");
-let ee6 = document.getElementById("ee6");
-let ee7 = document.getElementById("ee7");
-let ee8 = document.getElementById("ee8");
-let ee9 = document.getElementById("ee9");
-let ee10 = document.getElementById("ee10");
-let ee11 = document.getElementById("ee11");
+let e = [document.querySelector("#ee1").textContent, document.querySelector("#ee2").textContent, document.querySelector("#ee3").textContent,document.querySelector("#ee4").textContent,
+    document.querySelector("#ee5").textContent, document.querySelector("#ee6").textContent, document.querySelector("#ee7").textContent, document.querySelector("#ee8").textContent,
+    document.querySelector("#ee9").textContent, document.querySelector("#ee10").textContent, document.querySelector("#ee11").textContent];
 
-let f1 = document.getElementById("f1"); 
-let f2 = document.getElementById("ee2");
-let f3 = document.getElementById("ee3");
-let f4 = document.getElementById("ee4");
-let f5 = document.getElementById("ee5");
-let f6 = document.getElementById("ee6");
-let f7 = document.getElementById("ee7");
-let f8 = document.getElementById("ee8");
-let f9 = document.getElementById("ee9");
-let f10 = document.getElementById("ee10");
-let f11 = document.getElementById("ee11");
+let f = [document.querySelector("#f1").textContent, document.querySelector("#f2").textContent, document.querySelector("#f3").textContent,document.querySelector("#f4").textContent,
+    document.querySelector("#f5").textContent, document.querySelector("#f6").textContent, document.querySelector("#f7").textContent, document.querySelector("#f8").textContent,
+    document.querySelector("#f9").textContent, document.querySelector("#f10").textContent, document.querySelector("#f11").textContent];
+
+let Cw = [document.querySelector("#Cw1").textContent, document.querySelector("#Cw2").textContent, document.querySelector("#Cw3").textContent,document.querySelector("#Cw4").textContent,
+    document.querySelector("#Cw5").textContent, document.querySelector("#Cw6").textContent, document.querySelector("#Cw7").textContent, document.querySelector("#Cw8").textContent,
+    document.querySelector("#Cw9").textContent, document.querySelector("#Cw10").textContent, document.querySelector("#Cw11").textContent];
+
+let V = [document.querySelector("#V1").textContent, document.querySelector("#V2").textContent, document.querySelector("#V3").textContent,document.querySelector("#V4").textContent,
+    document.querySelector("#V5").textContent, document.querySelector("#V6").textContent, document.querySelector("#V7").textContent, document.querySelector("#V8").textContent,
+    document.querySelector("#V9").textContent, document.querySelector("#V10").textContent, document.querySelector("#V11").textContent];
+
+let K = [document.querySelector("#K1").textContent, document.querySelector("#K2").textContent, document.querySelector("#K3").textContent,document.querySelector("#K4").textContent,
+    document.querySelector("#K5").textContent, document.querySelector("#K6").textContent, document.querySelector("#K7").textContent, document.querySelector("#K8").textContent,
+    document.querySelector("#K9").textContent, document.querySelector("#K10").textContent, document.querySelector("#K11").textContent];
+
+let k = [document.querySelector("#kk1").textContent, document.querySelector("#kk2").textContent, document.querySelector("#kk3").textContent,document.querySelector("#kk4").textContent,
+    document.querySelector("#kk5").textContent, document.querySelector("#kk6").textContent, document.querySelector("#kk7").textContent, document.querySelector("#kk8").textContent,
+    document.querySelector("#kk9").textContent, document.querySelector("#kk10").textContent, document.querySelector("#kk11").textContent];
+
+let Kpa = [document.querySelector("#Kpa1").textContent, document.querySelector("#Kpa2").textContent, document.querySelector("#Kpa3").textContent,document.querySelector("#Kpa4").textContent,
+    document.querySelector("#Kpa5").textContent, document.querySelector("#Kpa6").textContent, document.querySelector("#Kpa7").textContent, document.querySelector("#Kpa8").textContent,
+    document.querySelector("#Kpa9").textContent, document.querySelector("#Kpa10").textContent, document.querySelector("#Kpa11").textContent];
+
+let Kpb = [document.querySelector("#Kpb1").textContent, document.querySelector("#Kpb2").textContent, document.querySelector("#Kpb3").textContent,document.querySelector("#Kpb4").textContent,
+    document.querySelector("#Kpb5").textContent, document.querySelector("#Kpb6").textContent, document.querySelector("#Kpb7").textContent, document.querySelector("#Kpb8").textContent,
+    document.querySelector("#Kpb9").textContent, document.querySelector("#Kpb10").textContent, document.querySelector("#Kpb11").textContent];
+
+let Jsa = [document.querySelector("#Jsa1").textContent, document.querySelector("#Jsa2").textContent, document.querySelector("#Jsa3").textContent,document.querySelector("#Jsa4").textContent,
+    document.querySelector("#Jsa5").textContent, document.querySelector("#Jsa6").textContent, document.querySelector("#Jsa7").textContent, document.querySelector("#Jsa8").textContent,
+    document.querySelector("#Jsa9").textContent, document.querySelector("#Jsa10").textContent, document.querySelector("#Jsa11").textContent];
+
+let Jsb = [document.querySelector("#Jsb1").textContent, document.querySelector("#Jsb2").textContent, document.querySelector("#Jsb3").textContent,document.querySelector("#Jsb4").textContent,
+    document.querySelector("#Jsb5").textContent, document.querySelector("#Jsb6").textContent, document.querySelector("#Jsb7").textContent, document.querySelector("#Jsb8").textContent,
+    document.querySelector("#Jsb9").textContent, document.querySelector("#Jsb10").textContent, document.querySelector("#Jsb11").textContent];
+
+let Fya = [document.querySelector("#Fya1").textContent, document.querySelector("#Fya2").textContent, document.querySelector("#Fya3").textContent,document.querySelector("#Fya4").textContent,
+    document.querySelector("#Fya5").textContent, document.querySelector("#Fya6").textContent, document.querySelector("#Fya7").textContent, document.querySelector("#Fya8").textContent,
+    document.querySelector("#Fya9").textContent, document.querySelector("#Fya10").textContent, document.querySelector("#Fya11").textContent];
+
+let Fyb = [document.querySelector("#Fyb1").textContent, document.querySelector("#Fyb2").textContent, document.querySelector("#Fyb3").textContent,document.querySelector("#Fyb4").textContent,
+    document.querySelector("#Fyb5").textContent, document.querySelector("#Fyb6").textContent, document.querySelector("#Fyb7").textContent, document.querySelector("#Fyb8").textContent,
+    document.querySelector("#Fyb9").textContent, document.querySelector("#Fyb10").textContent, document.querySelector("#Fyb11").textContent];
+
+let Jka = [document.querySelector("#Jka1").textContent, document.querySelector("#Jka2").textContent, document.querySelector("#Jka3").textContent,document.querySelector("#Jka4").textContent,
+    document.querySelector("#Jka5").textContent, document.querySelector("#Jka6").textContent, document.querySelector("#Jka7").textContent, document.querySelector("#Jka8").textContent,
+    document.querySelector("#Jka9").textContent, document.querySelector("#Jka10").textContent, document.querySelector("#Jka11").textContent];
+
+let Jkb = [document.querySelector("#Jkb1").textContent, document.querySelector("#Jkb2").textContent, document.querySelector("#Jkb3").textContent,document.querySelector("#Jkb4").textContent,
+    document.querySelector("#Jkb5").textContent, document.querySelector("#Jkb6").textContent, document.querySelector("#Jkb7").textContent, document.querySelector("#Jkb8").textContent,
+    document.querySelector("#Jkb9").textContent, document.querySelector("#Jkb10").textContent, document.querySelector("#Jkb11").textContent];
+
+let Xga = [document.querySelector("#Xga1").textContent, document.querySelector("#Xga2").textContent, document.querySelector("#Xga3").textContent,document.querySelector("#Xga4").textContent,
+    document.querySelector("#Xga5").textContent, document.querySelector("#Xga6").textContent, document.querySelector("#Xga7").textContent, document.querySelector("#Xga8").textContent,
+    document.querySelector("#Xga9").textContent, document.querySelector("#Xga10").textContent, document.querySelector("#Xga11").textContent];
+
+let Lea = [document.querySelector("#Lea1").textContent, document.querySelector("#Lea2").textContent, document.querySelector("#Lea3").textContent,document.querySelector("#Lea4").textContent,
+    document.querySelector("#Lea5").textContent, document.querySelector("#Lea6").textContent, document.querySelector("#Lea7").textContent, document.querySelector("#Lea8").textContent,
+    document.querySelector("#Lea9").textContent, document.querySelector("#Lea10").textContent, document.querySelector("#Lea11").textContent];
+
+let Leb = [document.querySelector("#Leb1").textContent, document.querySelector("#Leb2").textContent, document.querySelector("#Leb3").textContent,document.querySelector("#Leb4").textContent,
+    document.querySelector("#Leb5").textContent, document.querySelector("#Leb6").textContent, document.querySelector("#Leb7").textContent, document.querySelector("#Leb8").textContent,
+    document.querySelector("#Leb9").textContent, document.querySelector("#Leb10").textContent, document.querySelector("#Leb11").textContent];
+
+let S = [document.querySelector("#S1").textContent, document.querySelector("#S2").textContent, document.querySelector("#S3").textContent,document.querySelector("#S4").textContent,
+    document.querySelector("#S5").textContent, document.querySelector("#S6").textContent, document.querySelector("#S7").textContent, document.querySelector("#S8").textContent,
+    document.querySelector("#S9").textContent, document.querySelector("#S10").textContent, document.querySelector("#S11").textContent];
+
+let s = [document.querySelector("#ss1").textContent, document.querySelector("#ss2").textContent, document.querySelector("#ss3").textContent,document.querySelector("#ss4").textContent,
+    document.querySelector("#ss5").textContent, document.querySelector("#ss6").textContent, document.querySelector("#ss7").textContent, document.querySelector("#ss8").textContent,
+    document.querySelector("#ss9").textContent, document.querySelector("#ss10").textContent, document.querySelector("#ss11").textContent];
+
+let M = [document.querySelector("#M1").textContent, document.querySelector("#M2").textContent, document.querySelector("#M3").textContent,document.querySelector("#M4").textContent,
+    document.querySelector("#M5").textContent, document.querySelector("#M6").textContent, document.querySelector("#M7").textContent, document.querySelector("#M8").textContent,
+    document.querySelector("#M9").textContent, document.querySelector("#M10").textContent, document.querySelector("#M11").textContent];
+
+let N = [document.querySelector("#N1").textContent, document.querySelector("#N2").textContent, document.querySelector("#N3").textContent,document.querySelector("#N4").textContent,
+    document.querySelector("#N5").textContent, document.querySelector("#N6").textContent, document.querySelector("#N7").textContent, document.querySelector("#N8").textContent,
+    document.querySelector("#N9").textContent, document.querySelector("#N10").textContent, document.querySelector("#N11").textContent];
+
+let P1 = [document.querySelector("#P11").textContent, document.querySelector("#P12").textContent, document.querySelector("#P13").textContent,document.querySelector("#P14").textContent,
+    document.querySelector("#P15").textContent, document.querySelector("#P16").textContent, document.querySelector("#P17").textContent, document.querySelector("#P18").textContent,
+    document.querySelector("#P19").textContent, document.querySelector("#P110").textContent, document.querySelector("#P111").textContent];
+
+let Lua = [document.querySelector("#Lua1").textContent, document.querySelector("#Lua2").textContent, document.querySelector("#Lua3").textContent,document.querySelector("#Lua4").textContent,
+    document.querySelector("#Lua5").textContent, document.querySelector("#Lua6").textContent, document.querySelector("#Lua7").textContent, document.querySelector("#Lua8").textContent,
+    document.querySelector("#Lua9").textContent, document.querySelector("#Lua10").textContent, document.querySelector("#Lua11").textContent];
+
+let Lub = [document.querySelector("#Lub1").textContent, document.querySelector("#Lub2").textContent, document.querySelector("#Lub3").textContent,document.querySelector("#Lub4").textContent,
+    document.querySelector("#Lub5").textContent, document.querySelector("#Lub6").textContent, document.querySelector("#Lub7").textContent, document.querySelector("#Lub8").textContent,
+    document.querySelector("#Lub9").textContent, document.querySelector("#Lub10").textContent, document.querySelector("#Lub11").textContent];
+
+function resolverC(){
+    prueba();
+}
+
+function prueba() {
+    console.log("D: ", D);
+    console.log("C: ", C);
+    console.log("c: ", c);
+    console.log("E: ", E);
+    console.log("e: :", e);
+    console.log("f: :", f);
+    console.log("Cw: ", Cw);
+    console.log("V: ", V);
+    console.log("K: ", K);
+    console.log("k: ", k);
+    console.log("Kpa ", Kpa);
+    console.log("Kpb: ", Kpb);
+    console.log("Jsa: ", Jsa);
+    console.log("Jsb: ", Jsb);
+    console.log("Fya: ", Fya);
+    console.log("Fyb: ", Fyb);
+    console.log("Jka: ", Jka);
+    console.log("Jkb: ", Jkb);
+    console.log("Xga: ", Xga);
+    console.log("Lea: ", Lea);
+    console.log("Leb: ", Leb);
+    console.log("S: ", S);
+    console.log("s: ", s);
+    console.log("M: ", M);
+    console.log("N: ", N);
+    console.log("P1: ", P1);
+    console.log("Lua: ", Lua);
+    console.log("Lub: ", Lub);
+    console.log("Resultado Panel C: ", resulpanelC);
+}
+

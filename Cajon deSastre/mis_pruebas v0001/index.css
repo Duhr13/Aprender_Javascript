@@ -86,3 +86,21 @@ td {
 #resultadoc label {
     margin: 10px;
 }
+
+#botonpanelC {
+    padding: 10px;
+    background-color: aliceblue;
+    color: black;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+#botonpanelC:hover {
+    background-color: red;
+    color: white;
+}
+
+#botonpanelC:active {
+    background-color: chartreuse;
+    color: black;
+}
