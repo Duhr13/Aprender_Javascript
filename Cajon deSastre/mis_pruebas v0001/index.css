@@ -22,7 +22,9 @@ main {
 }
 
 table {
-    border: 2px solid;
+    border-radius: 10px;
+    border: 10px solid rgb(255, 255, 255);
+    margin: 10px;
 }
 
 table caption {
@@ -81,26 +83,54 @@ td {
     background-color: rgb(173, 4, 12);
     margin: 20px;
     font-weight: bold;
+    border-radius: 10px;
+    border: 2px solid rgb(150, 150, 150);
+    padding: 10px;
 }
 
 #resultadoc label {
     margin: 10px;
 }
 
-#botonpanelC {
-    padding: 10px;
-    background-color: aliceblue;
-    color: black;
+#resultadoc input {
     font-weight: bold;
-    font-size: 15px;
+    font-size: 19px;
+    text-align: center;
 }
 
-#botonpanelC:hover {
-    background-color: red;
-    color: white;
+#resultadoc p {
+    text-align: center;
 }
 
-#botonpanelC:active {
-    background-color: chartreuse;
-    color: black;
-}
+/* El botón de Resolver Panel */
+
+    #botonpanelC {
+        padding: 10px;
+        background-color: aliceblue;
+        color: black;
+        font-weight: bold;
+        font-size: 15px;
+        border-radius: 20px;
+    }
+
+    #botonpanelC:hover {
+        background-color: red;
+        color: white;
+    }
+
+    #botonpanelC:active {
+        background-color: chartreuse;
+        color: black;
+    }
+
+/* Antígenos que se desnaturalizan con la ficina */
+
+    #Fya1, #Fya2, #Fya3, #Fya4, #Fya5, #Fya6, #Fya7, #Fya8, #Fya9, #Fya10, #Fya11,
+    #Fyb1, #Fyb2, #Fyb3, #Fyb4, #Fyb5, #Fyb6, #Fyb7, #Fyb8, #Fyb9, #Fyb10, #Fyb11,
+    #Xga1, #Xga2, #Xga3, #Xga4, #Xga5, #Xga6, #Xga7, #Xga8, #Xga9, #Xga10, #Xga11,
+    #S1, #S2, #S3, #S4, #S5, #S6, #S7, #S8, #S9, #S10, #S11,
+    #ss1, #ss2, #ss3, #ss4, #ss5, #ss6, #ss7, #ss8, #ss9, #ss10, #ss11,
+    #M1, #M2, #M3, #M4, #M5, #M6, #M7, #M8, #M9, #M10, #M11,
+    #N1, #N2, #N3, #N4, #N5, #N6, #N7, #N8, #N9, #N10, #N11 {
+        background-color: coral;
+    }

@@ -1,21 +1,5 @@
 'use strict'
 
-// VARIABLES GLOBALES DE RESULTADO
-
-let res1 = document.getElementById("resul1").innerText;
-let res2 = document.getElementById("resul2").value;
-let res3 = document.getElementById("resul3").value;
-let res4 = Number(document.getElementById("resul4").value);
-let res5 = Number(document.getElementById("resul5").value);
-let res6 = Number(document.getElementById("resul6").textContent);
-let res7 = Number(document.getElementById("resul7").textContent);
-let res8 = Number(document.getElementById("resul8").textContent);
-let res9 = Number(document.getElementById("resul9").textContent);
-let res10 = Number(document.getElementById("resul10").textContent);
-let res11 = Number(document.getElementById("resul11").textContent);
-
-let resulpanelC = [res1, res2, res3, res4, res5, res6, res7, res8, res9, res10, res11];
-
 // VARIABLES GLOBALES DEL PANEL
 
 let D = [document.querySelector("#D1").textContent, document.querySelector("#D2").textContent, document.querySelector("#D3").textContent,document.querySelector("#D4").textContent,
@@ -131,10 +115,15 @@ let Lub = [document.querySelector("#Lub1").textContent, document.querySelector("
     document.querySelector("#Lub9").textContent, document.querySelector("#Lub10").textContent, document.querySelector("#Lub11").textContent];
 
 function resolverC(){
+    
+    let resultadoPanelC = capturarResultados();
+    validacionResultadosPanel();
+    console.log(resultadoPanelC);
     prueba();
 }
 
 function prueba() {
+    
     console.log("D: ", D);
     console.log("C: ", C);
     console.log("c: ", c);
@@ -163,6 +152,36 @@ function prueba() {
     console.log("P1: ", P1);
     console.log("Lua: ", Lua);
     console.log("Lub: ", Lub);
-    console.log("Resultado Panel C: ", resulpanelC);
 }
 
+// Función de captura de resultados del Panel C 0.8%
+
+function capturarResultados() {
+
+    let res1 = Number(document.getElementById("resul1").value);
+    let res2 = Number(document.getElementById("resul2").value);
+    let res3 = Number(document.getElementById("resul3").value);
+    let res4 = Number(document.getElementById("resul4").value);
+    let res5 = Number(document.getElementById("resul5").value);
+    let res6 = Number(document.getElementById("resul6").value);
+    let res7 = Number(document.getElementById("resul7").value);
+    let res8 = Number(document.getElementById("resul8").value);
+    let res9 = Number(document.getElementById("resul9").value);
+    let res10 = Number(document.getElementById("resul10").value);
+    let res11 = Number(document.getElementById("resul11").value);
+
+    let resulpanelC = [res1, res2, res3, res4, res5, res6, res7, res8, res9, res10, res11];
+    return resulpanelC;
+}
+
+// Función de validación
+
+function validacionResultadosPanel() {
+    let resultadoPanelC = capturarResultados();
+
+    for (let index of resultadoPanelC) {
+        while ((isNaN(index)) || (index < 0) || (index > 4)) {
+            return alert("Introduce un valor correcto que debe ser 0, 0.5, 1, 2, 3 o 4");
+        }
+    }
+}
