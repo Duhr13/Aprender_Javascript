@@ -1,5 +1,14 @@
 'use strict'
 
+/*
+    Primera versión del programa que constará de un esqueleto básico y que sea capaz de resolver burdamente un Panel C sencillito (Anti-E o Anti-K por ejemplo).
+    No me detendré con florituras y eso lo dejaré para siguientes versiones.
+*/
+
+// OTRAS VARIABLES GLOBALES DISTINTAS DEL PANEL
+
+let informe = document.getElementById("informe");
+
 // VARIABLES GLOBALES DEL PANEL
 
 let D = [document.querySelector("#D1").textContent, document.querySelector("#D2").textContent, document.querySelector("#D3").textContent,document.querySelector("#D4").textContent,
@@ -120,6 +129,7 @@ function resolverC(){
     validacionResultadosPanel();
     console.log(resultadoPanelC);
     prueba();
+    informefinal();
 }
 
 function prueba() {
@@ -174,7 +184,7 @@ function capturarResultados() {
     return resulpanelC;
 }
 
-// Función de validación
+// Función de validación (de momento obsoleta porque lo he resuelto con un Select en HTML)
 
 function validacionResultadosPanel() {
     let resultadoPanelC = capturarResultados();
@@ -185,3 +195,64 @@ function validacionResultadosPanel() {
         }
     }
 }
+
+// Función para resolver el panel C. Voy a intentar usar la sintaxis de EcmaScript 6
+
+let informefinal = () => {
+    antiD();
+};
+
+let antiD = () => {
+    let matrizResultados = capturarResultados();
+    let contadorAntiD = 0;
+    let contadorCoincidencias = 0;
+    let contadorDiscrepancias = 0;
+    let contadorEliminacion = 0;
+    for (let index of matrizResultados) {
+        
+        // Primer bloque de Condicionales
+
+        if (matrizResultados[index] > 0) {
+            toString(matrizResultados[index]) === "+";
+        }
+        else {
+            toString(matrizResultados[index]) == "0";
+        }
+
+        // Segundo bloque de Condicionales
+
+        if (D[index].textContent === "+") {
+            contadorAntiD += 1;
+        }
+
+        // Tercer bloque de Condicionales
+
+        if ((matrizResultados[index] === "+") && (D[index] === "+")) {
+            contadorCoincidencias += 1;
+        }
+        else if ((matrizResultados[index] === "0") && (D[index] === "+")) {
+            contadorDiscrepancias += 1;
+        }
+        else if ((matrizResultados[index] === "+") && (D[index] === "0")) {
+            contadorEliminacion += 1;
+        }
+
+    };
+    
+    console.log(contadorAntiD);
+    console.log(contadorDiscrepancias);
+    console.log(contadorAntiD);
+
+    let parrafo = document.createElement("p");
+    let mensaje;
+
+    if (contadorEliminacion > 0) {
+        mensaje = "Anti-D descartado";
+        parrafo.appendChild(mensaje.textContent);
+        informe.appendChild(parrafo.textContent);
+    }    
+
+    console.log(informe);
+    return informe.textContent;
+
+} 

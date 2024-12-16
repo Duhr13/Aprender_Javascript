@@ -88,14 +88,28 @@ td {
     padding: 10px;
 }
 
+/* Todo lo relacionado con la sección de resultado del Panel C */
+
 #resultadoc label {
     margin: 10px;
 }
 
-#resultadoc input {
+#resultadoc select {
     font-weight: bold;
     font-size: 19px;
     text-align: center;
+    padding: 10px;
+    margin: 2px;
+}
+
+#resultadoc select:hover {
+    background-color: black;
+    color: white;
+}
+
+#resultadoc select:focus {
+    background-color: black;
+    color: white;
 }
 
 #resultadoc p {
