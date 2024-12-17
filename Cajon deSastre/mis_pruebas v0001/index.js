@@ -5,9 +5,6 @@
     No me detendré con florituras y eso lo dejaré para siguientes versiones.
 */
 
-// OTRAS VARIABLES GLOBALES DISTINTAS DEL PANEL
-
-let informe = document.getElementById("informe");
 
 // VARIABLES GLOBALES DEL PANEL
 
@@ -127,7 +124,6 @@ function resolverC(){
     
     let resultadoPanelC = capturarResultados();
     validacionResultadosPanel();
-    console.log(resultadoPanelC);
     prueba();
     informefinal();
 }
@@ -199,60 +195,78 @@ function validacionResultadosPanel() {
 // Función para resolver el panel C. Voy a intentar usar la sintaxis de EcmaScript 6
 
 let informefinal = () => {
+
     antiD();
 };
 
 let antiD = () => {
+
+    let informe = document.getElementById("informe"); // Capturo el contenedor donde volcaré todo el resultado
+
+    // Inicializo variables locales para la función
+
     let matrizResultados = capturarResultados();
+    let nuevaMatrizResultados = new Array;
     let contadorAntiD = 0;
     let contadorCoincidencias = 0;
     let contadorDiscrepancias = 0;
     let contadorEliminacion = 0;
-    for (let index of matrizResultados) {
+
+    let resultadoComparativo = document.createElement("ol");
+
+    for (let index = 0; index <= 10; index++) {
         
-        // Primer bloque de Condicionales
+        // Primer bloque de Condicionales. Convertimos los resultados en + y 0 de tipo String
 
         if (matrizResultados[index] > 0) {
-            toString(matrizResultados[index]) === "+";
+            nuevaMatrizResultados[index] = "+";
         }
         else {
-            toString(matrizResultados[index]) == "0";
+            nuevaMatrizResultados[index] = "0";
         }
 
-        // Segundo bloque de Condicionales
+        // Segundo bloque de Condicionales. Solo hace un conteo de positividades para el Antígeno en el Antigrama
 
-        if (D[index].textContent === "+") {
+        if (D[index] === "+") {
             contadorAntiD += 1;
         }
 
-        // Tercer bloque de Condicionales
+        // Tercer bloque de Condicionales. Los contadores que determinarán los resultados.
 
-        if ((matrizResultados[index] === "+") && (D[index] === "+")) {
+        let lineaMensaje = document.createElement("li");
+
+        if ((nuevaMatrizResultados[index] === "+") && (D[index] === "+")) {
             contadorCoincidencias += 1;
+            lineaMensaje.innerHTML = `La célula ${index + 1} coincide <br>`;
+            //lineaMensaje.style.color = "green";
         }
-        else if ((matrizResultados[index] === "0") && (D[index] === "+")) {
-            contadorDiscrepancias += 1;
-        }
-        else if ((matrizResultados[index] === "+") && (D[index] === "0")) {
+        else if ((nuevaMatrizResultados[index] === "0") && (D[index] === "+")) {
             contadorEliminacion += 1;
+            lineaMensaje.innerHTML = `La célula ${index + 1} no coincide, por lo que Anti-D queda descartado <br>`;
+            //lineaMensaje.style.color = "red";
+        }
+        else if ((nuevaMatrizResultados[index] === "+") && (D[index] === "0")) {
+            contadorDiscrepancias += 1;
+            lineaMensaje.innerHTML = `La célula ${index + 1} no coincide pero no se puede descartar <br>`;
+            //lineaMensaje.style.color = "yellow";
+        }
+        else {
+            lineaMensaje.innerHTML = `La célula ${index + 1} es negativa para ambos <br>`;
         }
 
+        resultadoComparativo.appendChild(lineaMensaje);
     };
-    
-    console.log(contadorAntiD);
-    console.log(contadorDiscrepancias);
-    console.log(contadorAntiD);
 
-    let parrafo = document.createElement("p");
-    let mensaje;
+    console.log("Coincidencias: ", contadorCoincidencias);
+    console.log("Discrepancias: ", contadorDiscrepancias);
+    console.log("Eliminación: ", contadorEliminacion);
+    console.log(nuevaMatrizResultados);
 
-    if (contadorEliminacion > 0) {
-        mensaje = "Anti-D descartado";
-        parrafo.appendChild(mensaje.textContent);
-        informe.appendChild(parrafo.textContent);
-    }    
 
-    console.log(informe);
+    // Construímos el bloque del resultado para esta función. Todo lo que devolverá.
+
+    informe.appendChild(resultadoComparativo);
+
     return informe.textContent;
 
 } 
