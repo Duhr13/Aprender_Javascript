@@ -121,6 +121,10 @@ let Lub = [document.querySelector("#Lub1").textContent, document.querySelector("
     document.querySelector("#Lub9").textContent, document.querySelector("#Lub10").textContent, document.querySelector("#Lub11").textContent];
 
 function resolverC(){
+
+    // Primero limpiamos todo
+
+    document.getElementById("informeD").textContent = '';
     
     let resultadoPanelC = capturarResultados();
     validacionResultadosPanel();
@@ -201,7 +205,7 @@ let informefinal = () => {
 
 let antiD = () => {
 
-    let informe = document.getElementById("informe"); // Capturo el contenedor donde volcaré todo el resultado
+        let informeD = document.getElementById("informeD"); // Capturo el contenedor donde volcaré todo el resultado
 
     // Inicializo variables locales para la función
 
@@ -238,20 +242,21 @@ let antiD = () => {
         if ((nuevaMatrizResultados[index] === "+") && (D[index] === "+")) {
             contadorCoincidencias += 1;
             lineaMensaje.innerHTML = `La célula ${index + 1} coincide <br>`;
-            //lineaMensaje.style.color = "green";
+            lineaMensaje.style.color = "black";
         }
         else if ((nuevaMatrizResultados[index] === "0") && (D[index] === "+")) {
             contadorEliminacion += 1;
             lineaMensaje.innerHTML = `La célula ${index + 1} no coincide, por lo que Anti-D queda descartado <br>`;
-            //lineaMensaje.style.color = "red";
+            lineaMensaje.style.color = "black";
         }
         else if ((nuevaMatrizResultados[index] === "+") && (D[index] === "0")) {
             contadorDiscrepancias += 1;
             lineaMensaje.innerHTML = `La célula ${index + 1} no coincide pero no se puede descartar <br>`;
-            //lineaMensaje.style.color = "yellow";
+            lineaMensaje.style.color = "black";
         }
         else {
             lineaMensaje.innerHTML = `La célula ${index + 1} es negativa para ambos <br>`;
+            lineaMensaje.style.color = "black";
         }
 
         resultadoComparativo.appendChild(lineaMensaje);
@@ -262,11 +267,33 @@ let antiD = () => {
     console.log("Eliminación: ", contadorEliminacion);
     console.log(nuevaMatrizResultados);
 
+    // Aquí voy a preparar el resultado final de esta función
+
+    let mensajeD = document.createElement("p");
+
+    if (contadorEliminacion > 0) {
+        mensajeD.innerHTML = "Anti-D no se encuentra en el plasma del paciente"
+        mensajeD.style.color = 'red';
+        mensajeD.style.fontWeight = 'bold';
+    }
+    else if ((contadorCoincidencias === contadorAntiD) && (contadorDiscrepancias === 0)) {
+        mensajeD.innerHTML = "Anti-D se ha detectado en el plasma del paciente";
+        mensajeD.style.color = 'green';
+        mensajeD.style.fontWeight = 'bold';
+    }
+    else if ((contadorCoincidencias === contadorAntiD) && (contadorDiscrepancias > 0)) {
+        mensajeD.innerHTML = "Anti-D se ha detectado en el plasma del paciente y no se descarta la existencia de más anticuerpos";
+        mensajeD.style.color = 'blue';
+        mensajeD.style.fontWeight = 'bold';
+    }
 
     // Construímos el bloque del resultado para esta función. Todo lo que devolverá.
 
-    informe.appendChild(resultadoComparativo);
+    informeD.appendChild(resultadoComparativo);
+    informeD.appendChild(mensajeD);
+    informeD.style.backgroundColor = 'white';
+    informeD.style.padding = '15px';
 
-    return informe.textContent;
+    return informeD.textContent;
 
 } 
