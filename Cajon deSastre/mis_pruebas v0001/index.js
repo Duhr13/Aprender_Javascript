@@ -294,6 +294,9 @@ let antiD = () => {
     informeD.appendChild(mensajeD);
     informeD.style.backgroundColor = 'white';
     informeD.style.padding = '15px';
+    informeD.style.margin = '5px';
+    informeD.style.borderRadius = '3px'
+    informeD.style.width = '700px'
 
     return informeD.textContent;
 
@@ -311,6 +314,7 @@ let contadorAntiC = 0;
 let contadorCoincidencias = 0;
 let contadorDiscrepancias = 0;
 let contadorEliminacion = 0;
+let contadorHeterocigotas = 0;
 
 let resultadoComparativo = document.createElement("ol");
 
@@ -331,6 +335,18 @@ for (let index = 0; index <= 10; index++) {
         contadorAntiC += 1;
     }
 
+    // Bucle para ayudar a detectar efecto de dosis
+
+    let posibleEfectoDosisC;
+    for (let i = 0; i <= 10; i++) {
+        if ((matrizResultados[i] > 0) && (matrizResultados[i] <= 2)) {
+            posibleEfectoDosisC = true;
+        }
+        else {
+            posibleEfectoDosisC = false;
+        }
+    }
+
     // Tercer bloque de Condicionales. Los contadores que determinarán los resultados.
 
     let lineaMensaje = document.createElement("li");
@@ -341,9 +357,18 @@ for (let index = 0; index <= 10; index++) {
         lineaMensaje.style.color = "black";
     }
     else if ((nuevaMatrizResultados[index] === "0") && (C[index] === "+")) {
-        contadorEliminacion += 1;
-        lineaMensaje.innerHTML = `La célula ${index + 1} no coincide, por lo que Anti-D queda descartado <br>`;
-        lineaMensaje.style.color = "black";
+        if ((c[index] === "+") && (posibleEfectoDosisC === true)) {
+            contadorDiscrepancias += 1;
+            lineaMensaje.innerHTML = `La célula ${index + 1} no coincide pero no se puede descartar porque los antígenos antitéticos son heterocigotos y la positividad
+            del resultado no es lo suficientemente potente como para descartarlo<br>`;
+            lineaMensaje.style.color = "black";
+            contadorHeterocigotas += 1;
+        }
+        else {
+            contadorEliminacion += 1;
+            lineaMensaje.innerHTML = `La célula ${index + 1} no coincide, por lo que Anti-D queda descartado <br>`;
+            lineaMensaje.style.color = "black";
+        }
     }
     else if ((nuevaMatrizResultados[index] === "+") && (C[index] === "0")) {
         contadorDiscrepancias += 1;
@@ -382,6 +407,11 @@ else if ((contadorCoincidencias === contadorAntiC) && (contadorDiscrepancias > 0
     mensajeC.style.color = 'blue';
     mensajeC.style.fontWeight = 'bold';
 }
+else if ((contadorCoincidencias + contadorHeterocigotas) === contadorAntiC) {
+    mensajeC.innerHTML = "El resultado de positividades y resultados negativos en células heterocigotas /Cc/ no descartan la existencia o ausencia de Anti-C";
+    mensajeC.style.color = 'orange';
+    mensajeC.style.fontWeight = 'bold';
+}
 
 // Construímos el bloque del resultado para esta función. Todo lo que devolverá.
 
@@ -389,6 +419,9 @@ informeC.appendChild(resultadoComparativo);
 informeC.appendChild(mensajeC);
 informeC.style.backgroundColor = 'white';
 informeC.style.padding = '15px';
+informeC.style.margin = '5px';
+informeC.style.borderRadius = '3px'
+informeC.style.width = '700px'
 
 return informeC.textContent;
 
