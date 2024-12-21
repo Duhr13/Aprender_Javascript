@@ -202,6 +202,7 @@ let informefinal = () => {
 
     antiD();
     antiC();
+    antic();
 };
 
 let antiD = () => {
@@ -435,7 +436,7 @@ let antic = () => {
 
 let matrizResultados = capturarResultados();
 let nuevaMatrizResultados = new Array;
-let contadorAntiC = 0;
+let contadorAntic = 0;
 let contadorCoincidencias = 0;
 let contadorDiscrepancias = 0;
 let contadorEliminacion = 0;
@@ -456,19 +457,19 @@ for (let index = 0; index <= 10; index++) {
 
     // Segundo bloque de Condicionales. Solo hace un conteo de positividades para el Antígeno en el Antigrama
 
-    if (C[index] === "+") {
-        contadorAntiC += 1;
+    if (c[index] === "+") {
+        contadorAntic += 1;
     }
 
     // Bucle para ayudar a detectar efecto de dosis
 
-    let posibleEfectoDosisC;
+    let posibleEfectoDosisc;
     for (let i = 0; i <= 10; i++) {
         if ((matrizResultados[i] > 0) && (matrizResultados[i] <= 2)) {
-            posibleEfectoDosisC = true;
+            posibleEfectoDosisc = true;
         }
         else {
-            posibleEfectoDosisC = false;
+            posibleEfectoDosisc = false;
         }
     }
 
@@ -476,13 +477,13 @@ for (let index = 0; index <= 10; index++) {
 
     let lineaMensaje = document.createElement("li");
 
-    if ((nuevaMatrizResultados[index] === "+") && (C[index] === "+")) {
+    if ((nuevaMatrizResultados[index] === "+") && (c[index] === "+")) {
         contadorCoincidencias += 1;
         lineaMensaje.innerHTML = `La célula ${index + 1} coincide <br>`;
         lineaMensaje.style.color = "black";
     }
-    else if ((nuevaMatrizResultados[index] === "0") && (C[index] === "+")) {
-        if ((c[index] === "+") && (posibleEfectoDosisC === true)) {
+    else if ((nuevaMatrizResultados[index] === "0") && (c[index] === "+")) {
+        if ((C[index] === "+") && (posibleEfectoDosisC === true)) {
             contadorDiscrepancias += 1;
             lineaMensaje.innerHTML = `La célula ${index + 1} no coincide pero no se puede descartar porque los antígenos antitéticos son heterocigotos y la positividad
             del resultado no es lo suficientemente potente como para descartarlo<br>`;
@@ -495,7 +496,7 @@ for (let index = 0; index <= 10; index++) {
             lineaMensaje.style.color = "black";
         }
     }
-    else if ((nuevaMatrizResultados[index] === "+") && (C[index] === "0")) {
+    else if ((nuevaMatrizResultados[index] === "+") && (c[index] === "0")) {
         contadorDiscrepancias += 1;
         lineaMensaje.innerHTML = `La célula ${index + 1} no coincide pero no se puede descartar <br>`;
         lineaMensaje.style.color = "black";
@@ -515,39 +516,39 @@ console.log(nuevaMatrizResultados);
 
 // Aquí voy a preparar el resultado final de esta función
 
-let mensajeC = document.createElement("p");
+let mensajec = document.createElement("p");
 
 if (contadorEliminacion > 0) {
-    mensajeC.innerHTML = "Anti-C no se encuentra en el plasma del paciente"
-    mensajeC.style.color = 'red';
-    mensajeC.style.fontWeight = 'bold';
+    mensajec.innerHTML = "Anti-C no se encuentra en el plasma del paciente"
+    mensajec.style.color = 'red';
+    mensajec.style.fontWeight = 'bold';
 }
-else if ((contadorCoincidencias === contadorAntiC) && (contadorDiscrepancias === 0)) {
-    mensajeC.innerHTML = "Anti-C se ha detectado en el plasma del paciente";
-    mensajeC.style.color = 'green';
-    mensajeC.style.fontWeight = 'bold';
+else if ((contadorCoincidencias === contadorAntic) && (contadorDiscrepancias === 0)) {
+    mensajec.innerHTML = "Anti-c se ha detectado en el plasma del paciente";
+    mensajec.style.color = 'green';
+    mensajec.style.fontWeight = 'bold';
 }
-else if ((contadorCoincidencias === contadorAntiC) && (contadorDiscrepancias > 0)) {
-    mensajeC.innerHTML = "Anti-C se ha detectado en el plasma del paciente y no se descarta la existencia de más anticuerpos";
-    mensajeC.style.color = 'blue';
-    mensajeC.style.fontWeight = 'bold';
+else if ((contadorCoincidencias === contadorAntic) && (contadorDiscrepancias > 0)) {
+    mensajec.innerHTML = "Anti-c se ha detectado en el plasma del paciente y no se descarta la existencia de más anticuerpos";
+    mensajec.style.color = 'blue';
+    mensajec.style.fontWeight = 'bold';
 }
-else if ((contadorCoincidencias + contadorHeterocigotas) === contadorAntiC) {
-    mensajeC.innerHTML = "El resultado de positividades y resultados negativos en células heterocigotas /Cc/ no descartan la existencia o ausencia de Anti-C";
-    mensajeC.style.color = 'orange';
-    mensajeC.style.fontWeight = 'bold';
+else if ((contadorCoincidencias + contadorHeterocigotas) === contadorAntic) {
+    mensajec.innerHTML = "El resultado de positividades y resultados negativos en células heterocigotas /Cc/ no descartan la existencia o ausencia de Anti-c";
+    mensajec.style.color = 'orange';
+    mensajec.style.fontWeight = 'bold';
 }
 
 // Construímos el bloque del resultado para esta función. Todo lo que devolverá.
 
-informeC.appendChild(resultadoComparativo);
-informeC.appendChild(mensajeC);
-informeC.style.backgroundColor = 'white';
-informeC.style.padding = '15px';
-informeC.style.margin = '5px';
-informeC.style.borderRadius = '3px'
-informeC.style.width = '700px'
+informec.appendChild(resultadoComparativo);
+informec.appendChild(mensajec);
+informec.style.backgroundColor = 'white';
+informec.style.padding = '15px';
+informec.style.margin = '5px';
+informec.style.borderRadius = '3px'
+informec.style.width = '700px'
 
-return informeC.textContent;
+return informec.textContent;
 
 } 
