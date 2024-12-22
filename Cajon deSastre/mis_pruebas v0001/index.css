@@ -88,6 +88,39 @@ td {
     padding: 10px;
 }
 
+/* Todo lo relacionado con el informe completo */
+
+#informeCompleto {
+    display: grid;
+    width: 1050px;
+    grid-template-areas: 
+    "informeRH informeCgrande"
+    "informecPequeña informeEgrande";
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    align-content: center;
+}
+
+#informeCompleto > #informeD {
+    grid-area: informeRH;
+    width: 500px;
+}
+
+#informeCompleto > #informeC {
+    grid-area: informeCgrande;
+    width: 500px;
+}
+
+#informeCompleto > #informec {
+    grid-area: informecPequeña;
+    width: 500px;
+}
+
+#informeCompleto > #informeE {
+    grid-area: informeEgrande;
+    width: 500px;
+}
+
 /* Todo lo relacionado con la sección de resultado del Panel C */
 
 #resultadoc label {
