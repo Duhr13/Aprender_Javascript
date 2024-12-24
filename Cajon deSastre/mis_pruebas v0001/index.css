@@ -95,7 +95,8 @@ td {
     width: 1050px;
     grid-template-areas: 
     "informeRH informeCgrande"
-    "informecPequeña informeEgrande";
+    "informecPequeña informeEgrande"
+    "informeePequeña informef";
     grid-template-rows: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
     align-content: center;
@@ -118,6 +119,16 @@ td {
 
 #informeCompleto > #informeE {
     grid-area: informeEgrande;
+    width: 500px;
+}
+
+#informeCompleto > #informee {
+    grid-area: informeePequeña;
+    width: 500px;
+}
+
+#informeCompleto > #informef {
+    grid-area: informef;
     width: 500px;
 }
 

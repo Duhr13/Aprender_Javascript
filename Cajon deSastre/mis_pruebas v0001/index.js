@@ -207,6 +207,9 @@ let informefinal = () => {
     antiC();
     antic();
     antiE();
+    antie();
+    antif();
+    
 };
 
 let antiD = () => {
@@ -683,5 +686,231 @@ informeE.style.borderRadius = '10px';
 informeE.style.borderColor = "red";
 
 return informeE.textContent;
+
+} 
+
+let antie = () => {
+
+    let informee = document.getElementById("informee"); // Capturo el contenedor donde volcaré todo el resultado
+
+// Inicializo variables locales para la función
+
+let matrizResultados = capturarResultados();
+let nuevaMatrizResultados = new Array;
+let contadorAntie = 0;
+let contadorCoincidencias = 0;
+let contadorDiscrepancias = 0;
+let contadorEliminacion = 0;
+let contadorHeterocigotas = 0;
+
+let resultadoComparativo = document.createElement("ol");
+
+for (let index = 0; index <= 10; index++) {
+    
+    // Primer bloque de Condicionales. Convertimos los resultados en + y 0 de tipo String
+
+    if (matrizResultados[index] > 0) {
+        nuevaMatrizResultados[index] = "+";
+    }
+    else {
+        nuevaMatrizResultados[index] = "0";
+    }
+
+    // Segundo bloque de Condicionales. Solo hace un conteo de positividades para el Antígeno en el Antigrama
+
+    if (e[index] === "+") {
+        contadorAntie += 1;
+    }
+
+    // Bucle para ayudar a detectar efecto de dosis
+
+    let posibleEfectoDosise;
+    for (let i = 0; i <= 10; i++) {
+        if ((matrizResultados[i] >= 0) && (matrizResultados[i] <= 2)) {
+            posibleEfectoDosise = true;
+        }
+        else {
+            posibleEfectoDosise = false;
+        }
+    }
+
+    // Tercer bloque de Condicionales. Los contadores que determinarán los resultados.
+
+    let lineaMensaje = document.createElement("li");
+
+    if ((nuevaMatrizResultados[index] === "+") && (e[index] === "+")) {
+        contadorCoincidencias += 1;
+        lineaMensaje.innerHTML = `La célula ${index + 1} coincide <br>`;
+        lineaMensaje.style.color = "black";
+    }
+    else if ((nuevaMatrizResultados[index] === "0") && (e[index] === "+")) {
+        if ((E[index] === "+") && (posibleEfectoDosise === true)) {
+            contadorDiscrepancias += 1;
+            lineaMensaje.innerHTML = `La célula ${index + 1} no coincide pero no se puede descartar porque los antígenos antitéticos son heterocigotos y la positividad
+            del resultado no es lo suficientemente potente como para descartarlo<br>`;
+            lineaMensaje.style.color = "black";
+            contadorHeterocigotas += 1;
+        }
+        else {
+            contadorEliminacion += 1;
+            lineaMensaje.innerHTML = `La célula ${index + 1} no coincide, por lo que Anti-e queda descartado <br>`;
+            lineaMensaje.style.color = "black";
+        }
+    }
+    else if ((nuevaMatrizResultados[index] === "+") && (e[index] === "0")) {
+        contadorDiscrepancias += 1;
+        lineaMensaje.innerHTML = `La célula ${index + 1} no coincide pero no se puede descartar Anti-e <br>`;
+        lineaMensaje.style.color = "black";
+    }
+    else {
+        lineaMensaje.innerHTML = `La célula ${index + 1} es negativa para ambos <br>`;
+        lineaMensaje.style.color = "black";
+    }
+
+    resultadoComparativo.appendChild(lineaMensaje);
+};
+
+console.log("Coincidencias: ", contadorCoincidencias);
+console.log("Discrepancias: ", contadorDiscrepancias);
+console.log("Eliminación: ", contadorEliminacion);
+console.log(nuevaMatrizResultados);
+
+// Aquí voy a preparar el resultado final de esta función
+
+let mensajee = document.createElement("p");
+
+if (contadorEliminacion > 0) {
+    mensajee.innerHTML = "Anti-e no se encuentra en el plasma del paciente"
+    mensajee.style.color = 'red';
+    mensajee.style.fontWeight = 'bold';
+}
+else if ((contadorCoincidencias === contadorAntie) && (contadorDiscrepancias === 0)) {
+    mensajee.innerHTML = "Anti-e se ha detectado en el plasma del paciente";
+    mensajee.style.color = 'green';
+    mensajee.style.fontWeight = 'bold';
+}
+else if ((contadorCoincidencias === contadorAntie) && (contadorDiscrepancias > 0)) {
+    mensajee.innerHTML = "Anti-e se ha detectado en el plasma del paciente y no se descarta la existencia de más anticuerpos";
+    mensajee.style.color = 'blue';
+    mensajee.style.fontWeight = 'bold';
+}
+else if ((contadorCoincidencias + contadorHeterocigotas) === contadorAntie) {
+    mensajee.innerHTML = "El resultado de positividades y resultados negativos en células heterocigotas /Ee/ no descartan la existencia o ausencia de Anti-e";
+    mensajee.style.color = 'orange';
+    mensajee.style.fontWeight = 'bold';
+}
+
+// Construímos el bloque del resultado para esta función. Todo lo que devolverá.
+
+informee.appendChild(resultadoComparativo);
+informee.appendChild(mensajee);
+informee.style.backgroundColor = 'white';
+informee.style.padding = '15px';
+informee.style.margin = '3px';
+informee.style.border = "solid";
+informee.style.borderRadius = '10px';
+informee.style.borderColor = "red";
+
+return informee.textContent;
+
+} 
+
+let antif = () => {
+
+    let informef = document.getElementById("informef"); // Capturo el contenedor donde volcaré todo el resultado
+
+// Inicializo variables locales para la función
+
+let matrizResultados = capturarResultados();
+let nuevaMatrizResultados = new Array;
+let contadorAntif = 0;
+let contadorCoincidencias = 0;
+let contadorDiscrepancias = 0;
+let contadorEliminacion = 0;
+let contadorHeterocigotas = 0;
+
+let resultadoComparativo = document.createElement("ol");
+
+for (let index = 0; index <= 10; index++) {
+    
+    // Primer bloque de Condicionales. Convertimos los resultados en + y 0 de tipo String
+
+    if (matrizResultados[index] > 0) {
+        nuevaMatrizResultados[index] = "+";
+    }
+    else {
+        nuevaMatrizResultados[index] = "0";
+    }
+
+    // Segundo bloque de Condicionales. Solo hace un conteo de positividades para el Antígeno en el Antigrama
+
+    if (f[index] === "+") {
+        contadorAntif += 1;
+    }
+
+    // Tercer bloque de Condicionales. Los contadores que determinarán los resultados.
+
+    let lineaMensaje = document.createElement("li");
+
+    if ((nuevaMatrizResultados[index] === "+") && (f[index] === "+")) {
+        contadorCoincidencias += 1;
+        lineaMensaje.innerHTML = `La célula ${index + 1} coincide <br>`;
+        lineaMensaje.style.color = "black";
+    }
+    else if ((nuevaMatrizResultados[index] === "0") && (f[index] === "+")) {
+        contadorEliminacion += 1;
+        lineaMensaje.innerHTML = `La célula ${index + 1} no coincide, por lo que Anti-f queda descartado <br>`;
+        lineaMensaje.style.color = "black";
+    }
+    else if ((nuevaMatrizResultados[index] === "+") && (f[index] === "0")) {
+        contadorDiscrepancias += 1;
+        lineaMensaje.innerHTML = `La célula ${index + 1} no coincide pero no se puede descartar Anti-f <br>`;
+        lineaMensaje.style.color = "black";
+    }
+    else {
+        lineaMensaje.innerHTML = `La célula ${index + 1} es negativa para ambos <br>`;
+        lineaMensaje.style.color = "black";
+    }
+
+    resultadoComparativo.appendChild(lineaMensaje);
+};
+
+console.log("Coincidencias: ", contadorCoincidencias);
+console.log("Discrepancias: ", contadorDiscrepancias);
+console.log("Eliminación: ", contadorEliminacion);
+console.log(nuevaMatrizResultados);
+
+// Aquí voy a preparar el resultado final de esta función
+
+let mensajef = document.createElement("p");
+
+if (contadorEliminacion > 0) {
+    mensajef.innerHTML = "Anti-f no se encuentra en el plasma del paciente"
+    mensajef.style.color = 'red';
+    mensajef.style.fontWeight = 'bold';
+}
+else if ((contadorCoincidencias === contadorAntif) && (contadorDiscrepancias === 0)) {
+    mensajef.innerHTML = "Anti-f se ha detectado en el plasma del paciente";
+    mensajef.style.color = 'green';
+    mensajef.style.fontWeight = 'bold';
+}
+else if ((contadorCoincidencias === contadorAntif) && (contadorDiscrepancias > 0)) {
+    mensajef.innerHTML = "Anti-f se ha detectado en el plasma del paciente y no se descarta la existencia de más anticuerpos";
+    mensajef.style.color = 'blue';
+    mensajef.style.fontWeight = 'bold';
+}
+
+// Construímos el bloque del resultado para esta función. Todo lo que devolverá.
+
+informef.appendChild(resultadoComparativo);
+informef.appendChild(mensajef);
+informef.style.backgroundColor = 'white';
+informef.style.padding = '15px';
+informef.style.margin = '3px';
+informef.style.border = "solid";
+informef.style.borderRadius = '10px';
+informef.style.borderColor = "red";
+
+return informef.textContent;
 
 } 
