@@ -132,6 +132,8 @@ function resolverC(){
     document.getElementById("informef").textContent = '';
     document.getElementById("informecw").textContent = '';
     document.getElementById("informev").textContent = '';
+    document.getElementById("informeK").textContent = '';
+    document.getElementById("informek").textContent = '';
     
     let resultadoPanelC = capturarResultados();
     validacionResultadosPanel();
@@ -215,6 +217,8 @@ let informefinal = () => {
     antif();
     antiCw();
     antiV();
+    antiK();
+    antik();
     
 };
 
@@ -1063,7 +1067,7 @@ for (let index = 0; index <= 10; index++) {
     }
     else if ((nuevaMatrizResultados[index] === "0") && (V[index] === "+")) {
         contadorEliminacion += 1;
-        lineaMensaje.innerHTML = `La célula ${index + 1} no coincide, por lo que Anti-f queda descartado <br>`;
+        lineaMensaje.innerHTML = `La célula ${index + 1} no coincide, por lo que Anti-V queda descartado <br>`;
         lineaMensaje.style.color = "black";
     }
     else if ((nuevaMatrizResultados[index] === "+") && (V[index] === "0")) {
@@ -1116,5 +1120,203 @@ informev.style.borderRadius = '10px';
 informev.style.borderColor = "red";
 
 return informev.textContent;
+
+}
+
+let antiK = () => {
+
+    let informeK = document.getElementById("informeK"); // Capturo el contenedor donde volcaré todo el resultado
+
+// Inicializo variables locales para la función
+
+let matrizResultados = capturarResultados();
+let nuevaMatrizResultados = new Array;
+let contadorAntiK = 0;
+let contadorCoincidencias = 0;
+let contadorDiscrepancias = 0;
+let contadorEliminacion = 0;
+
+let resultadoComparativo = document.createElement("ol");
+
+for (let index = 0; index <= 10; index++) {
+    
+    // Primer bloque de Condicionales. Convertimos los resultados en + y 0 de tipo String
+
+    if (matrizResultados[index] > 0) {
+        nuevaMatrizResultados[index] = "+";
+    }
+    else {
+        nuevaMatrizResultados[index] = "0";
+    }
+
+    // Segundo bloque de Condicionales. Solo hace un conteo de positividades para el Antígeno en el Antigrama
+
+    if (K[index] === "+") {
+        contadorAntiK += 1;
+    }
+
+    // Tercer bloque de Condicionales. Los contadores que determinarán los resultados.
+
+    let lineaMensaje = document.createElement("li");
+
+    if ((nuevaMatrizResultados[index] === "+") && (K[index] === "+")) {
+        contadorCoincidencias += 1;
+        lineaMensaje.innerHTML = `La célula ${index + 1} coincide <br>`;
+        lineaMensaje.style.color = "black";
+    }
+    else if ((nuevaMatrizResultados[index] === "0") && (K[index] === "+")) {
+        contadorEliminacion += 1;
+        lineaMensaje.innerHTML = `La célula ${index + 1} no coincide, por lo que Anti-K queda descartado <br>`;
+        lineaMensaje.style.color = "black";
+    }
+    else if ((nuevaMatrizResultados[index] === "+") && (K[index] === "0")) {
+        contadorDiscrepancias += 1;
+        lineaMensaje.innerHTML = `La célula ${index + 1} no coincide pero no se puede descartar Anti-K <br>`;
+        lineaMensaje.style.color = "black";
+    }
+    else {
+        lineaMensaje.innerHTML = `La célula ${index + 1} es negativa para ambos <br>`;
+        lineaMensaje.style.color = "black";
+    }
+
+    resultadoComparativo.appendChild(lineaMensaje);
+};
+
+console.log("Coincidencias: ", contadorCoincidencias);
+console.log("Discrepancias: ", contadorDiscrepancias);
+console.log("Eliminación: ", contadorEliminacion);
+console.log(nuevaMatrizResultados);
+
+// Aquí voy a preparar el resultado final de esta función
+
+let mensajeK = document.createElement("p");
+
+if (contadorEliminacion > 0) {
+    mensajeK.innerHTML = "Anti-K no se encuentra en el plasma del paciente"
+    mensajeK.style.color = 'red';
+    mensajeK.style.fontWeight = 'bold';
+}
+else if ((contadorCoincidencias === contadorAntiK) && (contadorDiscrepancias === 0)) {
+    mensajeK.innerHTML = "Anti-K se ha detectado en el plasma del paciente";
+    mensajeK.style.color = 'green';
+    mensajeK.style.fontWeight = 'bold';
+}
+else if ((contadorCoincidencias === contadorAntiK) && (contadorDiscrepancias > 0)) {
+    mensajeK.innerHTML = "Anti-K se ha detectado en el plasma del paciente y no se descarta la existencia de más anticuerpos";
+    mensajeK.style.color = 'blue';
+    mensajeK.style.fontWeight = 'bold';
+}
+
+// Construímos el bloque del resultado para esta función. Todo lo que devolverá.
+
+informeK.appendChild(resultadoComparativo);
+informeK.appendChild(mensajeK);
+informeK.style.backgroundColor = 'white';
+informeK.style.padding = '15px';
+informeK.style.margin = '3px';
+informeK.style.border = "solid";
+informeK.style.borderRadius = '10px';
+informeK.style.borderColor = "red";
+
+return informeK.textContent;
+
+}
+
+let antik = () => {
+
+    let informek = document.getElementById("informek"); // Capturo el contenedor donde volcaré todo el resultado
+
+// Inicializo variables locales para la función
+
+let matrizResultados = capturarResultados();
+let nuevaMatrizResultados = new Array;
+let contadorAntik = 0;
+let contadorCoincidencias = 0;
+let contadorDiscrepancias = 0;
+let contadorEliminacion = 0;
+
+let resultadoComparativo = document.createElement("ol");
+
+for (let index = 0; index <= 10; index++) {
+    
+    // Primer bloque de Condicionales. Convertimos los resultados en + y 0 de tipo String
+
+    if (matrizResultados[index] > 0) {
+        nuevaMatrizResultados[index] = "+";
+    }
+    else {
+        nuevaMatrizResultados[index] = "0";
+    }
+
+    // Segundo bloque de Condicionales. Solo hace un conteo de positividades para el Antígeno en el Antigrama
+
+    if (k[index] === "+") {
+        contadorAntik += 1;
+    }
+
+    // Tercer bloque de Condicionales. Los contadores que determinarán los resultados.
+
+    let lineaMensaje = document.createElement("li");
+
+    if ((nuevaMatrizResultados[index] === "+") && (k[index] === "+")) {
+        contadorCoincidencias += 1;
+        lineaMensaje.innerHTML = `La célula ${index + 1} coincide <br>`;
+        lineaMensaje.style.color = "black";
+    }
+    else if ((nuevaMatrizResultados[index] === "0") && (k[index] === "+")) {
+        contadorEliminacion += 1;
+        lineaMensaje.innerHTML = `La célula ${index + 1} no coincide, por lo que Anti-k queda descartado <br>`;
+        lineaMensaje.style.color = "black";
+    }
+    else if ((nuevaMatrizResultados[index] === "+") && (k[index] === "0")) {
+        contadorDiscrepancias += 1;
+        lineaMensaje.innerHTML = `La célula ${index + 1} no coincide pero no se puede descartar Anti-k <br>`;
+        lineaMensaje.style.color = "black";
+    }
+    else {
+        lineaMensaje.innerHTML = `La célula ${index + 1} es negativa para ambos <br>`;
+        lineaMensaje.style.color = "black";
+    }
+
+    resultadoComparativo.appendChild(lineaMensaje);
+};
+
+console.log("Coincidencias: ", contadorCoincidencias);
+console.log("Discrepancias: ", contadorDiscrepancias);
+console.log("Eliminación: ", contadorEliminacion);
+console.log(nuevaMatrizResultados);
+
+// Aquí voy a preparar el resultado final de esta función
+
+let mensajek = document.createElement("p");
+
+if (contadorEliminacion > 0) {
+    mensajek.innerHTML = "Anti-k no se encuentra en el plasma del paciente"
+    mensajek.style.color = 'red';
+    mensajek.style.fontWeight = 'bold';
+}
+else if ((contadorCoincidencias === contadorAntik) && (contadorDiscrepancias === 0)) {
+    mensajek.innerHTML = "Anti-k se ha detectado en el plasma del paciente";
+    mensajek.style.color = 'green';
+    mensajek.style.fontWeight = 'bold';
+}
+else if ((contadorCoincidencias === contadorAntik) && (contadorDiscrepancias > 0)) {
+    mensajek.innerHTML = "Anti-k se ha detectado en el plasma del paciente y no se descarta la existencia de más anticuerpos";
+    mensajek.style.color = 'blue';
+    mensajek.style.fontWeight = 'bold';
+}
+
+// Construímos el bloque del resultado para esta función. Todo lo que devolverá.
+
+informek.appendChild(resultadoComparativo);
+informek.appendChild(mensajek);
+informek.style.backgroundColor = 'white';
+informek.style.padding = '15px';
+informek.style.margin = '3px';
+informek.style.border = "solid";
+informek.style.borderRadius = '10px';
+informek.style.borderColor = "red";
+
+return informek.textContent;
 
 }
