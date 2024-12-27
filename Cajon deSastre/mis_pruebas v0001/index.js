@@ -134,9 +134,10 @@ function resolverC(){
     document.getElementById("informev").textContent = '';
     document.getElementById("informeK").textContent = '';
     document.getElementById("informek").textContent = '';
+    document.getElementById("informekpa").textContent = '';
+    document.getElementById("informekpb").textContent = '';
     
     let resultadoPanelC = capturarResultados();
-    validacionResultadosPanel();
     prueba();
     informefinal();
 }
@@ -195,7 +196,7 @@ function capturarResultados() {
 
 // Función de validación (de momento obsoleta porque lo he resuelto con un Select en HTML)
 
-function validacionResultadosPanel() {
+/* function validacionResultadosPanel() {
     let resultadoPanelC = capturarResultados();
 
     for (let index of resultadoPanelC) {
@@ -203,7 +204,7 @@ function validacionResultadosPanel() {
             return alert("Introduce un valor correcto que debe ser 0, 0.5, 1, 2, 3 o 4");
         }
     }
-}
+} */
 
 // Función para resolver el panel C. Voy a intentar usar la sintaxis de EcmaScript 6
 
@@ -219,6 +220,8 @@ let informefinal = () => {
     antiV();
     antiK();
     antik();
+    antiKpa();
+    antiKpb();
     
 };
 
@@ -1318,5 +1321,203 @@ informek.style.borderRadius = '10px';
 informek.style.borderColor = "red";
 
 return informek.textContent;
+
+}
+
+let antiKpa = () => {
+
+    let informeKpa = document.getElementById("informekpa"); // Capturo el contenedor donde volcaré todo el resultado
+
+// Inicializo variables locales para la función
+
+let matrizResultados = capturarResultados();
+let nuevaMatrizResultados = new Array;
+let contadorAntiKpa = 0;
+let contadorCoincidencias = 0;
+let contadorDiscrepancias = 0;
+let contadorEliminacion = 0;
+
+let resultadoComparativo = document.createElement("ol");
+
+for (let index = 0; index <= 10; index++) {
+    
+    // Primer bloque de Condicionales. Convertimos los resultados en + y 0 de tipo String
+
+    if (matrizResultados[index] > 0) {
+        nuevaMatrizResultados[index] = "+";
+    }
+    else {
+        nuevaMatrizResultados[index] = "0";
+    }
+
+    // Segundo bloque de Condicionales. Solo hace un conteo de positividades para el Antígeno en el Antigrama
+
+    if (Kpa[index] === "+") {
+        contadorAntiKpa += 1;
+    }
+
+    // Tercer bloque de Condicionales. Los contadores que determinarán los resultados.
+
+    let lineaMensaje = document.createElement("li");
+
+    if ((nuevaMatrizResultados[index] === "+") && (Kpa[index] === "+")) {
+        contadorCoincidencias += 1;
+        lineaMensaje.innerHTML = `La célula ${index + 1} coincide <br>`;
+        lineaMensaje.style.color = "black";
+    }
+    else if ((nuevaMatrizResultados[index] === "0") && (Kpa[index] === "+")) {
+        contadorEliminacion += 1;
+        lineaMensaje.innerHTML = `La célula ${index + 1} no coincide, por lo que Anti-Kpa queda descartado <br>`;
+        lineaMensaje.style.color = "black";
+    }
+    else if ((nuevaMatrizResultados[index] === "+") && (Kpa[index] === "0")) {
+        contadorDiscrepancias += 1;
+        lineaMensaje.innerHTML = `La célula ${index + 1} no coincide pero no se puede descartar Anti-Kpa <br>`;
+        lineaMensaje.style.color = "black";
+    }
+    else {
+        lineaMensaje.innerHTML = `La célula ${index + 1} es negativa para ambos <br>`;
+        lineaMensaje.style.color = "black";
+    }
+
+    resultadoComparativo.appendChild(lineaMensaje);
+};
+
+console.log("Coincidencias: ", contadorCoincidencias);
+console.log("Discrepancias: ", contadorDiscrepancias);
+console.log("Eliminación: ", contadorEliminacion);
+console.log(nuevaMatrizResultados);
+
+// Aquí voy a preparar el resultado final de esta función
+
+let mensajeKpa = document.createElement("p");
+
+if (contadorEliminacion > 0) {
+    mensajeKpa.innerHTML = "Anti-Kpa no se encuentra en el plasma del paciente"
+    mensajeKpa.style.color = 'red';
+    mensajeKpa.style.fontWeight = 'bold';
+}
+else if ((contadorCoincidencias === contadorAntiKpa) && (contadorDiscrepancias === 0)) {
+    mensajeKpa.innerHTML = "Anti-Kpa se ha detectado en el plasma del paciente";
+    mensajeKpa.style.color = 'green';
+    mensajeKpa.style.fontWeight = 'bold';
+}
+else if ((contadorCoincidencias === contadorAntiKpa) && (contadorDiscrepancias > 0)) {
+    mensajeKpa.innerHTML = "Anti-Kpa se ha detectado en el plasma del paciente y no se descarta la existencia de más anticuerpos";
+    mensajeKpa.style.color = 'blue';
+    mensajeKpa.style.fontWeight = 'bold';
+}
+
+// Construímos el bloque del resultado para esta función. Todo lo que devolverá.
+
+informeKpa.appendChild(resultadoComparativo);
+informeKpa.appendChild(mensajeKpa);
+informeKpa.style.backgroundColor = 'white';
+informeKpa.style.padding = '15px';
+informeKpa.style.margin = '3px';
+informeKpa.style.border = "solid";
+informeKpa.style.borderRadius = '10px';
+informeKpa.style.borderColor = "red";
+
+return informeKpa.textContent;
+
+}
+
+let antiKpb = () => {
+
+    let informeKpb = document.getElementById("informekpb"); // Capturo el contenedor donde volcaré todo el resultado
+
+// Inicializo variables locales para la función
+
+let matrizResultados = capturarResultados();
+let nuevaMatrizResultados = new Array;
+let contadorAntiKpb = 0;
+let contadorCoincidencias = 0;
+let contadorDiscrepancias = 0;
+let contadorEliminacion = 0;
+
+let resultadoComparativo = document.createElement("ol");
+
+for (let index = 0; index <= 10; index++) {
+    
+    // Primer bloque de Condicionales. Convertimos los resultados en + y 0 de tipo String
+
+    if (matrizResultados[index] > 0) {
+        nuevaMatrizResultados[index] = "+";
+    }
+    else {
+        nuevaMatrizResultados[index] = "0";
+    }
+
+    // Segundo bloque de Condicionales. Solo hace un conteo de positividades para el Antígeno en el Antigrama
+
+    if (Kpb[index] === "+") {
+        contadorAntiKpb += 1;
+    }
+
+    // Tercer bloque de Condicionales. Los contadores que determinarán los resultados.
+
+    let lineaMensaje = document.createElement("li");
+
+    if ((nuevaMatrizResultados[index] === "+") && (Kpb[index] === "+")) {
+        contadorCoincidencias += 1;
+        lineaMensaje.innerHTML = `La célula ${index + 1} coincide <br>`;
+        lineaMensaje.style.color = "black";
+    }
+    else if ((nuevaMatrizResultados[index] === "0") && (Kpb[index] === "+")) {
+        contadorEliminacion += 1;
+        lineaMensaje.innerHTML = `La célula ${index + 1} no coincide, por lo que Anti-Kpb queda descartado <br>`;
+        lineaMensaje.style.color = "black";
+    }
+    else if ((nuevaMatrizResultados[index] === "+") && (Kpb[index] === "0")) {
+        contadorDiscrepancias += 1;
+        lineaMensaje.innerHTML = `La célula ${index + 1} no coincide pero no se puede descartar Anti-Kpb <br>`;
+        lineaMensaje.style.color = "black";
+    }
+    else {
+        lineaMensaje.innerHTML = `La célula ${index + 1} es negativa para ambos <br>`;
+        lineaMensaje.style.color = "black";
+    }
+
+    resultadoComparativo.appendChild(lineaMensaje);
+};
+
+console.log("Coincidencias: ", contadorCoincidencias);
+console.log("Discrepancias: ", contadorDiscrepancias);
+console.log("Eliminación: ", contadorEliminacion);
+console.log(nuevaMatrizResultados);
+
+// Aquí voy a preparar el resultado final de esta función
+
+let mensajeKpb = document.createElement("p");
+
+if (contadorEliminacion > 0) {
+    mensajeKpb.innerHTML = "Anti-Kpb no se encuentra en el plasma del paciente"
+    mensajeKpb.style.color = 'red';
+    mensajeKpb.style.fontWeight = 'bold';
+}
+else if ((contadorCoincidencias === contadorAntiKpb) && (contadorDiscrepancias === 0)) {
+    mensajeKpb.innerHTML = "Anti-Kpb se ha detectado en el plasma del paciente";
+    mensajeKpb.style.color = 'green';
+    mensajeKpb.style.fontWeight = 'bold';
+}
+else if ((contadorCoincidencias === contadorAntiKpb) && (contadorDiscrepancias > 0)) {
+    mensajeKpb.innerHTML = "Anti-Kpb se ha detectado en el plasma del paciente y no se descarta la existencia de más anticuerpos";
+    mensajeKpb.style.color = 'blue';
+    mensajeKpb.style.fontWeight = 'bold';
+}
+
+// Construímos el bloque del resultado para esta función. Todo lo que devolverá.
+
+informeKpb.appendChild(resultadoComparativo);
+informeKpb.appendChild(mensajeKpb);
+informeKpb.style.backgroundColor = 'white';
+informeKpb.style.padding = '15px';
+informeKpb.style.margin = '3px';
+informeKpb.style.border = "solid";
+informeKpb.style.borderRadius = '10px';
+informeKpb.style.borderColor = "red";
+
+return informeKpb.textContent;
 
 }
