@@ -136,6 +136,8 @@ function resolverC(){
     document.getElementById("informek").textContent = '';
     document.getElementById("informekpa").textContent = '';
     document.getElementById("informekpb").textContent = '';
+    document.getElementById("informeFya").textContent = '';
+    document.getElementById("informeFyb").textContent = '';
     
     let resultadoPanelC = capturarResultados();
     prueba();
@@ -222,6 +224,8 @@ let informefinal = () => {
     antik();
     antiKpa();
     antiKpb();
+    antiFya();
+    antiFyb();
     
 };
 
@@ -1521,3 +1525,255 @@ informeKpb.style.borderColor = "red";
 return informeKpb.textContent;
 
 }
+
+let antiFya = () => {
+
+    let informeFya = document.getElementById("informeFya"); // Capturo el contenedor donde volcaré todo el resultado
+
+// Inicializo variables locales para la función
+
+let matrizResultados = capturarResultados();
+let nuevaMatrizResultados = new Array;
+let contadorAntiFya = 0;
+let contadorCoincidencias = 0;
+let contadorDiscrepancias = 0;
+let contadorEliminacion = 0;
+let contadorHeterocigotas = 0;
+
+let resultadoComparativo = document.createElement("ol");
+
+for (let index = 0; index <= 10; index++) {
+    
+    // Primer bloque de Condicionales. Convertimos los resultados en + y 0 de tipo String
+
+    if (matrizResultados[index] > 0) {
+        nuevaMatrizResultados[index] = "+";
+    }
+    else {
+        nuevaMatrizResultados[index] = "0";
+    }
+
+    // Segundo bloque de Condicionales. Solo hace un conteo de positividades para el Antígeno en el Antigrama
+
+    if (Fya[index] === "+") {
+        contadorAntiFya += 1;
+    }
+
+    // Bucle para ayudar a detectar efecto de dosis
+
+    let posibleEfectoDosisFya;
+    for (let i = 0; i <= 10; i++) {
+        if ((matrizResultados[i] >= 0) && (matrizResultados[i] <= 2)) {
+            posibleEfectoDosisFya = true;
+        }
+        else {
+            posibleEfectoDosisFya = false;
+        }
+    }
+
+    // Tercer bloque de Condicionales. Los contadores que determinarán los resultados.
+
+    let lineaMensaje = document.createElement("li");
+
+    if ((nuevaMatrizResultados[index] === "+") && (Fya[index] === "+")) {
+        contadorCoincidencias += 1;
+        lineaMensaje.innerHTML = `La célula ${index + 1} coincide <br>`;
+        lineaMensaje.style.color = "black";
+    }
+    else if ((nuevaMatrizResultados[index] === "0") && (Fya[index] === "+")) {
+        if ((Fyb[index] === "+") && (posibleEfectoDosisFya === true)) {
+            contadorDiscrepancias += 1;
+            lineaMensaje.innerHTML = `La célula ${index + 1} no coincide pero no se puede descartar porque los antígenos antitéticos son heterocigotos y la positividad
+            del resultado no es lo suficientemente potente como para descartarlo<br>`;
+            lineaMensaje.style.color = "black";
+            contadorHeterocigotas += 1;
+        }
+        else {
+            contadorEliminacion += 1;
+            lineaMensaje.innerHTML = `La célula ${index + 1} no coincide, por lo que Anti-Fya queda descartado <br>`;
+            lineaMensaje.style.color = "black";
+        }
+    }
+    else if ((nuevaMatrizResultados[index] === "+") && (Fya[index] === "0")) {
+        contadorDiscrepancias += 1;
+        lineaMensaje.innerHTML = `La célula ${index + 1} no coincide pero no se puede descartar <br>`;
+        lineaMensaje.style.color = "black";
+    }
+    else {
+        lineaMensaje.innerHTML = `La célula ${index + 1} es negativa para ambos <br>`;
+        lineaMensaje.style.color = "black";
+    }
+
+    resultadoComparativo.appendChild(lineaMensaje);
+};
+
+console.log("Coincidencias: ", contadorCoincidencias);
+console.log("Discrepancias: ", contadorDiscrepancias);
+console.log("Eliminación: ", contadorEliminacion);
+console.log(nuevaMatrizResultados);
+
+// Aquí voy a preparar el resultado final de esta función
+
+let mensajeFya = document.createElement("p");
+
+if (contadorEliminacion > 0) {
+    mensajeFya.innerHTML = "Anti-Fya no se encuentra en el plasma del paciente"
+    mensajeFya.style.color = 'red';
+    mensajeFya.style.fontWeight = 'bold';
+}
+else if ((contadorCoincidencias === contadorAntiFya) && (contadorDiscrepancias === 0)) {
+    mensajeFya.innerHTML = "Anti-Fya se ha detectado en el plasma del paciente";
+    mensajeFya.style.color = 'green';
+    mensajeFya.style.fontWeight = 'bold';
+}
+else if ((contadorCoincidencias === contadorAntiFya) && (contadorDiscrepancias > 0)) {
+    mensajeFya.innerHTML = "Anti-Fya se ha detectado en el plasma del paciente y no se descarta la existencia de más anticuerpos";
+    mensajeFya.style.color = 'blue';
+    mensajeFya.style.fontWeight = 'bold';
+}
+else if ((contadorCoincidencias + contadorHeterocigotas) === contadorAntiFya) {
+    mensajeFya.innerHTML = "El resultado de positividades y resultados negativos en células heterocigotas /FyaFyb/ no descartan la existencia o ausencia de Anti-Fya";
+    mensajeFya.style.color = 'orange';
+    mensajeFya.style.fontWeight = 'bold';
+}
+
+// Construímos el bloque del resultado para esta función. Todo lo que devolverá.
+
+informeFya.appendChild(resultadoComparativo);
+informeFya.appendChild(mensajeFya);
+informeFya.style.backgroundColor = 'white';
+informeFya.style.padding = '15px';
+informeFya.style.margin = '3px';
+informeFya.style.border = "solid";
+informeFya.style.borderRadius = '10px';
+informeFya.style.borderColor = "red";
+
+return informeFya.textContent;
+
+} 
+
+let antiFyb = () => {
+
+    let informeFyb = document.getElementById("informeFyb"); // Capturo el contenedor donde volcaré todo el resultado
+
+// Inicializo variables locales para la función
+
+let matrizResultados = capturarResultados();
+let nuevaMatrizResultados = new Array;
+let contadorAntiFyb = 0;
+let contadorCoincidencias = 0;
+let contadorDiscrepancias = 0;
+let contadorEliminacion = 0;
+let contadorHeterocigotas = 0;
+
+let resultadoComparativo = document.createElement("ol");
+
+for (let index = 0; index <= 10; index++) {
+    
+    // Primer bloque de Condicionales. Convertimos los resultados en + y 0 de tipo String
+
+    if (matrizResultados[index] > 0) {
+        nuevaMatrizResultados[index] = "+";
+    }
+    else {
+        nuevaMatrizResultados[index] = "0";
+    }
+
+    // Segundo bloque de Condicionales. Solo hace un conteo de positividades para el Antígeno en el Antigrama
+
+    if (Fyb[index] === "+") {
+        contadorAntiFyb += 1;
+    }
+
+    // Bucle para ayudar a detectar efecto de dosis
+
+    let posibleEfectoDosisFyb;
+    for (let i = 0; i <= 10; i++) {
+        if ((matrizResultados[i] >= 0) && (matrizResultados[i] <= 2)) {
+            posibleEfectoDosisFyb = true;
+        }
+        else {
+            posibleEfectoDosisFyb = false;
+        }
+    }
+
+    // Tercer bloque de Condicionales. Los contadores que determinarán los resultados.
+
+    let lineaMensaje = document.createElement("li");
+
+    if ((nuevaMatrizResultados[index] === "+") && (Fyb[index] === "+")) {
+        contadorCoincidencias += 1;
+        lineaMensaje.innerHTML = `La célula ${index + 1} coincide <br>`;
+        lineaMensaje.style.color = "black";
+    }
+    else if ((nuevaMatrizResultados[index] === "0") && (Fyb[index] === "+")) {
+        if ((Fya[index] === "+") && (posibleEfectoDosisFyb === true)) {
+            contadorDiscrepancias += 1;
+            lineaMensaje.innerHTML = `La célula ${index + 1} no coincide pero no se puede descartar porque los antígenos antitéticos son heterocigotos y la positividad
+            del resultado no es lo suficientemente potente como para descartarlo<br>`;
+            lineaMensaje.style.color = "black";
+            contadorHeterocigotas += 1;
+        }
+        else {
+            contadorEliminacion += 1;
+            lineaMensaje.innerHTML = `La célula ${index + 1} no coincide, por lo que Anti-Fyb queda descartado <br>`;
+            lineaMensaje.style.color = "black";
+        }
+    }
+    else if ((nuevaMatrizResultados[index] === "+") && (Fyb[index] === "0")) {
+        contadorDiscrepancias += 1;
+        lineaMensaje.innerHTML = `La célula ${index + 1} no coincide pero no se puede descartar <br>`;
+        lineaMensaje.style.color = "black";
+    }
+    else {
+        lineaMensaje.innerHTML = `La célula ${index + 1} es negativa para ambos <br>`;
+        lineaMensaje.style.color = "black";
+    }
+
+    resultadoComparativo.appendChild(lineaMensaje);
+};
+
+console.log("Coincidencias: ", contadorCoincidencias);
+console.log("Discrepancias: ", contadorDiscrepancias);
+console.log("Eliminación: ", contadorEliminacion);
+console.log(nuevaMatrizResultados);
+
+// Aquí voy a preparar el resultado final de esta función
+
+let mensajeFyb = document.createElement("p");
+
+if (contadorEliminacion > 0) {
+    mensajeFyb.innerHTML = "Anti-Fyb no se encuentra en el plasma del paciente"
+    mensajeFyb.style.color = 'red';
+    mensajeFyb.style.fontWeight = 'bold';
+}
+else if ((contadorCoincidencias === contadorAntiFyb) && (contadorDiscrepancias === 0)) {
+    mensajeFyb.innerHTML = "Anti-Fyb se ha detectado en el plasma del paciente";
+    mensajeFyb.style.color = 'green';
+    mensajeFyb.style.fontWeight = 'bold';
+}
+else if ((contadorCoincidencias === contadorAntiFyb) && (contadorDiscrepancias > 0)) {
+    mensajeFyb.innerHTML = "Anti-Fyb se ha detectado en el plasma del paciente y no se descarta la existencia de más anticuerpos";
+    mensajeFyb.style.color = 'blue';
+    mensajeFyb.style.fontWeight = 'bold';
+}
+else if ((contadorCoincidencias + contadorHeterocigotas) === contadorAntiFyb) {
+    mensajeFyb.innerHTML = "El resultado de positividades y resultados negativos en células heterocigotas /FyaFyb/ no descartan la existencia o ausencia de Anti-Fya";
+    mensajeFyb.style.color = 'orange';
+    mensajeFyb.style.fontWeight = 'bold';
+}
+
+// Construímos el bloque del resultado para esta función. Todo lo que devolverá.
+
+informeFyb.appendChild(resultadoComparativo);
+informeFyb.appendChild(mensajeFyb);
+informeFyb.style.backgroundColor = 'white';
+informeFyb.style.padding = '15px';
+informeFyb.style.margin = '3px';
+informeFyb.style.border = "solid";
+informeFyb.style.borderRadius = '10px';
+informeFyb.style.borderColor = "red";
+
+return informeFyb.textContent;
+
+} 
