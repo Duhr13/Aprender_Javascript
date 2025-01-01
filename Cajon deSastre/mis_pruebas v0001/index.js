@@ -138,6 +138,10 @@ function resolverC(){
     document.getElementById("informekpb").textContent = '';
     document.getElementById("informeFya").textContent = '';
     document.getElementById("informeFyb").textContent = '';
+    document.getElementById("informeJka").textContent = '';
+    document.getElementById("informeJkb").textContent = '';
+    document.getElementById("informeXga").textContent = '';
+    document.getElementById("informeLea").textContent = '';
     
     let resultadoPanelC = capturarResultados();
     prueba();
@@ -227,6 +231,9 @@ let informefinal = () => {
     antiFya();
     antiFyb();
     antiJka();
+    antiJkb();
+    antiXga();
+    antiLea();
     
 };
 
@@ -1759,7 +1766,7 @@ else if ((contadorCoincidencias === contadorAntiFyb) && (contadorDiscrepancias >
     mensajeFyb.style.fontWeight = 'bold';
 }
 else if ((contadorCoincidencias + contadorHeterocigotas) === contadorAntiFyb) {
-    mensajeFyb.innerHTML = "El resultado de positividades y resultados negativos en células heterocigotas /FyaFyb/ no descartan la existencia o ausencia de Anti-Fya";
+    mensajeFyb.innerHTML = "El resultado de positividades y resultados negativos en células heterocigotas /FyaFyb/ no descartan la existencia o ausencia de Anti-Fyb";
     mensajeFyb.style.color = 'orange';
     mensajeFyb.style.fontWeight = 'bold';
 }
@@ -1885,7 +1892,7 @@ else if ((contadorCoincidencias === contadorAntiJka) && (contadorDiscrepancias >
     mensajeJka.style.fontWeight = 'bold';
 }
 else if ((contadorCoincidencias + contadorHeterocigotas) === contadorAntiJka) {
-    mensajeJka.innerHTML = "El resultado de positividades y resultados negativos en células heterocigotas /JkaJkb/ no descartan la existencia o ausencia de Anti-Fya";
+    mensajeJka.innerHTML = "El resultado de positividades y resultados negativos en células heterocigotas /JkaJkb/ no descartan la existencia o ausencia de Anti-Jka";
     mensajeJka.style.color = 'orange';
     mensajeJka.style.fontWeight = 'bold';
 }
@@ -1902,5 +1909,356 @@ informeJka.style.borderRadius = '10px';
 informeJka.style.borderColor = "red";
 
 return informeJka.textContent;
+
+} 
+
+let antiJkb = () => {
+
+    let informeJkb = document.getElementById("informeJkb"); // Capturo el contenedor donde volcaré todo el resultado
+
+// Inicializo variables locales para la función
+
+let matrizResultados = capturarResultados();
+let nuevaMatrizResultados = new Array;
+let contadorAntiJkb = 0;
+let contadorCoincidencias = 0;
+let contadorDiscrepancias = 0;
+let contadorEliminacion = 0;
+let contadorHeterocigotas = 0;
+
+let resultadoComparativo = document.createElement("ol");
+
+for (let index = 0; index <= 10; index++) {
+    
+    // Primer bloque de Condicionales. Convertimos los resultados en + y 0 de tipo String
+
+    if (matrizResultados[index] > 0) {
+        nuevaMatrizResultados[index] = "+";
+    }
+    else {
+        nuevaMatrizResultados[index] = "0";
+    }
+
+    // Segundo bloque de Condicionales. Solo hace un conteo de positividades para el Antígeno en el Antigrama
+
+    if (Jkb[index] === "+") {
+        contadorAntiJkb += 1;
+    }
+
+    // Bucle para ayudar a detectar efecto de dosis
+
+    let posibleEfectoDosisJkb;
+    for (let i = 0; i <= 10; i++) {
+        if ((matrizResultados[i] >= 0) && (matrizResultados[i] <= 2)) {
+            posibleEfectoDosisJkb = true;
+        }
+        else {
+            posibleEfectoDosisJkb = false;
+        }
+    }
+
+    // Tercer bloque de Condicionales. Los contadores que determinarán los resultados.
+
+    let lineaMensaje = document.createElement("li");
+
+    if ((nuevaMatrizResultados[index] === "+") && (Jkb[index] === "+")) {
+        contadorCoincidencias += 1;
+        lineaMensaje.innerHTML = `La célula ${index + 1} coincide <br>`;
+        lineaMensaje.style.color = "black";
+    }
+    else if ((nuevaMatrizResultados[index] === "0") && (Jkb[index] === "+")) {
+        if ((Jka[index] === "+") && (posibleEfectoDosisJkb === true)) {
+            contadorDiscrepancias += 1;
+            lineaMensaje.innerHTML = `La célula ${index + 1} no coincide pero no se puede descartar porque los antígenos antitéticos son heterocigotos y la positividad
+            del resultado no es lo suficientemente potente como para descartarlo<br>`;
+            lineaMensaje.style.color = "black";
+            contadorHeterocigotas += 1;
+        }
+        else {
+            contadorEliminacion += 1;
+            lineaMensaje.innerHTML = `La célula ${index + 1} no coincide, por lo que Anti-Jkb queda descartado <br>`;
+            lineaMensaje.style.color = "black";
+        }
+    }
+    else if ((nuevaMatrizResultados[index] === "+") && (Jkb[index] === "0")) {
+        contadorDiscrepancias += 1;
+        lineaMensaje.innerHTML = `La célula ${index + 1} no coincide pero no se puede descartar <br>`;
+        lineaMensaje.style.color = "black";
+    }
+    else {
+        lineaMensaje.innerHTML = `La célula ${index + 1} es negativa para ambos <br>`;
+        lineaMensaje.style.color = "black";
+    }
+
+    resultadoComparativo.appendChild(lineaMensaje);
+};
+
+console.log("Coincidencias: ", contadorCoincidencias);
+console.log("Discrepancias: ", contadorDiscrepancias);
+console.log("Eliminación: ", contadorEliminacion);
+console.log(nuevaMatrizResultados);
+
+// Aquí voy a preparar el resultado final de esta función
+
+let mensajeJkb = document.createElement("p");
+
+if (contadorEliminacion > 0) {
+    mensajeJkb.innerHTML = "Anti-Jkb no se encuentra en el plasma del paciente"
+    mensajeJkb.style.color = 'red';
+    mensajeJkb.style.fontWeight = 'bold';
+}
+else if ((contadorCoincidencias === contadorAntiJkb) && (contadorDiscrepancias === 0)) {
+    mensajeJkb.innerHTML = "Anti-Jkb se ha detectado en el plasma del paciente";
+    mensajeJkb.style.color = 'green';
+    mensajeJkb.style.fontWeight = 'bold';
+}
+else if ((contadorCoincidencias === contadorAntiJkb) && (contadorDiscrepancias > 0)) {
+    mensajeJkb.innerHTML = "Anti-Jkb se ha detectado en el plasma del paciente y no se descarta la existencia de más anticuerpos";
+    mensajeJkb.style.color = 'blue';
+    mensajeJkb.style.fontWeight = 'bold';
+}
+else if ((contadorCoincidencias + contadorHeterocigotas) === contadorAntiJkb) {
+    mensajeJkb.innerHTML = "El resultado de positividades y resultados negativos en células heterocigotas /JkaJkb/ no descartan la existencia o ausencia de Anti-Jkb";
+    mensajeJkb.style.color = 'orange';
+    mensajeJkb.style.fontWeight = 'bold';
+}
+
+// Construímos el bloque del resultado para esta función. Todo lo que devolverá.
+
+informeJkb.appendChild(resultadoComparativo);
+informeJkb.appendChild(mensajeJkb);
+informeJkb.style.backgroundColor = 'white';
+informeJkb.style.padding = '15px';
+informeJkb.style.margin = '3px';
+informeJkb.style.border = "solid";
+informeJkb.style.borderRadius = '10px';
+informeJkb.style.borderColor = "red";
+
+return informeJkb.textContent;
+
+} 
+
+let antiXga = () => {
+
+    let informeXga = document.getElementById("informeXga"); // Capturo el contenedor donde volcaré todo el resultado
+
+// Inicializo variables locales para la función
+
+let matrizResultados = capturarResultados();
+let nuevaMatrizResultados = new Array;
+let contadorAntiXga = 0;
+let contadorCoincidencias = 0;
+let contadorDiscrepancias = 0;
+let contadorEliminacion = 0;
+
+let resultadoComparativo = document.createElement("ol");
+
+for (let index = 0; index <= 10; index++) {
+    
+    // Primer bloque de Condicionales. Convertimos los resultados en + y 0 de tipo String
+
+    if (matrizResultados[index] > 0) {
+        nuevaMatrizResultados[index] = "+";
+    }
+    else {
+        nuevaMatrizResultados[index] = "0";
+    }
+
+    // Segundo bloque de Condicionales. Solo hace un conteo de positividades para el Antígeno en el Antigrama
+
+    if (Xga[index] === "+") {
+        contadorAntiXga += 1;
+    }
+
+    // Tercer bloque de Condicionales. Los contadores que determinarán los resultados.
+
+    let lineaMensaje = document.createElement("li");
+
+    if ((nuevaMatrizResultados[index] === "+") && (Xga[index] === "+")) {
+        contadorCoincidencias += 1;
+        lineaMensaje.innerHTML = `La célula ${index + 1} coincide <br>`;
+        lineaMensaje.style.color = "black";
+    }
+    else if ((nuevaMatrizResultados[index] === "0") && (Xga[index] === "+")) {
+        contadorEliminacion += 1;
+        lineaMensaje.innerHTML = `La célula ${index + 1} no coincide, por lo que Anti-V queda descartado <br>`;
+        lineaMensaje.style.color = "black";
+    }
+    else if ((nuevaMatrizResultados[index] === "+") && (Xga[index] === "0")) {
+        contadorDiscrepancias += 1;
+        lineaMensaje.innerHTML = `La célula ${index + 1} no coincide pero no se puede descartar Anti-V <br>`;
+        lineaMensaje.style.color = "black";
+    }
+    else {
+        lineaMensaje.innerHTML = `La célula ${index + 1} es negativa para ambos <br>`;
+        lineaMensaje.style.color = "black";
+    }
+
+    resultadoComparativo.appendChild(lineaMensaje);
+};
+
+console.log("Coincidencias: ", contadorCoincidencias);
+console.log("Discrepancias: ", contadorDiscrepancias);
+console.log("Eliminación: ", contadorEliminacion);
+console.log(nuevaMatrizResultados);
+
+// Aquí voy a preparar el resultado final de esta función
+
+let mensajeXga = document.createElement("p");
+
+if (contadorEliminacion > 0) {
+    mensajeXga.innerHTML = "Anti-Xga no se encuentra en el plasma del paciente"
+    mensajeXga.style.color = 'red';
+    mensajeXga.style.fontWeight = 'bold';
+}
+else if ((contadorCoincidencias === contadorAntiXga) && (contadorDiscrepancias === 0)) {
+    mensajeXga.innerHTML = "Anti-Xga se ha detectado en el plasma del paciente";
+    mensajeXga.style.color = 'green';
+    mensajeXga.style.fontWeight = 'bold';
+}
+else if ((contadorCoincidencias === contadorAntiXga) && (contadorDiscrepancias > 0)) {
+    mensajeXga.innerHTML = "Anti-Xga se ha detectado en el plasma del paciente y no se descarta la existencia de más anticuerpos";
+    mensajeXga.style.color = 'blue';
+    mensajeXga.style.fontWeight = 'bold';
+}
+
+// Construímos el bloque del resultado para esta función. Todo lo que devolverá.
+
+informeXga.appendChild(resultadoComparativo);
+informeXga.appendChild(mensajeXga);
+informeXga.style.backgroundColor = 'white';
+informeXga.style.padding = '15px';
+informeXga.style.margin = '3px';
+informeXga.style.border = "solid";
+informeXga.style.borderRadius = '10px';
+informeXga.style.borderColor = "red";
+
+return informeXga.textContent;
+
+}
+
+let antiLea = () => {
+
+    let informeLea = document.getElementById("informeLea"); // Capturo el contenedor donde volcaré todo el resultado
+
+// Inicializo variables locales para la función
+
+let matrizResultados = capturarResultados();
+let nuevaMatrizResultados = new Array;
+let contadorAntiLea = 0;
+let contadorCoincidencias = 0;
+let contadorDiscrepancias = 0;
+let contadorEliminacion = 0;
+let contadorHeterocigotas = 0;
+
+let resultadoComparativo = document.createElement("ol");
+
+for (let index = 0; index <= 10; index++) {
+    
+    // Primer bloque de Condicionales. Convertimos los resultados en + y 0 de tipo String
+
+    if (matrizResultados[index] > 0) {
+        nuevaMatrizResultados[index] = "+";
+    }
+    else {
+        nuevaMatrizResultados[index] = "0";
+    }
+
+    // Segundo bloque de Condicionales. Solo hace un conteo de positividades para el Antígeno en el Antigrama
+
+    if (Lea[index] === "+") {
+        contadorAntiLea += 1;
+    }
+
+    // Bucle para ayudar a detectar efecto de dosis
+
+    let posibleEfectoDosisLea;
+    for (let i = 0; i <= 10; i++) {
+        if ((matrizResultados[i] >= 0) && (matrizResultados[i] <= 2)) {
+            posibleEfectoDosisLea = true;
+        }
+        else {
+            posibleEfectoDosisLea = false;
+        }
+    }
+
+    // Tercer bloque de Condicionales. Los contadores que determinarán los resultados.
+
+    let lineaMensaje = document.createElement("li");
+
+    if ((nuevaMatrizResultados[index] === "+") && (Lea[index] === "+")) {
+        contadorCoincidencias += 1;
+        lineaMensaje.innerHTML = `La célula ${index + 1} coincide <br>`;
+        lineaMensaje.style.color = "black";
+    }
+    else if ((nuevaMatrizResultados[index] === "0") && (Lea[index] === "+")) {
+        if ((Leb[index] === "+") && (posibleEfectoDosisLea === true)) {
+            contadorDiscrepancias += 1;
+            lineaMensaje.innerHTML = `La célula ${index + 1} no coincide pero no se puede descartar porque los antígenos antitéticos son heterocigotos y la positividad
+            del resultado no es lo suficientemente potente como para descartarlo<br>`;
+            lineaMensaje.style.color = "black";
+            contadorHeterocigotas += 1;
+        }
+        else {
+            contadorEliminacion += 1;
+            lineaMensaje.innerHTML = `La célula ${index + 1} no coincide, por lo que Anti-Lea queda descartado <br>`;
+            lineaMensaje.style.color = "black";
+        }
+    }
+    else if ((nuevaMatrizResultados[index] === "+") && (Lea[index] === "0")) {
+        contadorDiscrepancias += 1;
+        lineaMensaje.innerHTML = `La célula ${index + 1} no coincide pero no se puede descartar <br>`;
+        lineaMensaje.style.color = "black";
+    }
+    else {
+        lineaMensaje.innerHTML = `La célula ${index + 1} es negativa para ambos <br>`;
+        lineaMensaje.style.color = "black";
+    }
+
+    resultadoComparativo.appendChild(lineaMensaje);
+};
+
+console.log("Coincidencias: ", contadorCoincidencias);
+console.log("Discrepancias: ", contadorDiscrepancias);
+console.log("Eliminación: ", contadorEliminacion);
+console.log(nuevaMatrizResultados);
+
+// Aquí voy a preparar el resultado final de esta función
+
+let mensajeLea = document.createElement("p");
+
+if (contadorEliminacion > 0) {
+    mensajeLea.innerHTML = "Anti-Lea no se encuentra en el plasma del paciente"
+    mensajeLea.style.color = 'red';
+    mensajeLea.style.fontWeight = 'bold';
+}
+else if ((contadorCoincidencias === contadorAntiLea) && (contadorDiscrepancias === 0)) {
+    mensajeLea.innerHTML = "Anti-Lea se ha detectado en el plasma del paciente";
+    mensajeLea.style.color = 'green';
+    mensajeLea.style.fontWeight = 'bold';
+}
+else if ((contadorCoincidencias === contadorAntiLea) && (contadorDiscrepancias > 0)) {
+    mensajeLea.innerHTML = "Anti-Lea se ha detectado en el plasma del paciente y no se descarta la existencia de más anticuerpos";
+    mensajeLea.style.color = 'blue';
+    mensajeLea.style.fontWeight = 'bold';
+}
+else if ((contadorCoincidencias + contadorHeterocigotas) === contadorAntiLea) {
+    mensajeLea.innerHTML = "El resultado de positividades y resultados negativos en células heterocigotas /LeaLeb/ no descartan la existencia o ausencia de Anti-Lea";
+    mensajeLea.style.color = 'orange';
+    mensajeLea.style.fontWeight = 'bold';
+}
+
+// Construímos el bloque del resultado para esta función. Todo lo que devolverá.
+
+informeLea.appendChild(resultadoComparativo);
+informeLea.appendChild(mensajeLea);
+informeLea.style.backgroundColor = 'white';
+informeLea.style.padding = '15px';
+informeLea.style.margin = '3px';
+informeLea.style.border = "solid";
+informeLea.style.borderRadius = '10px';
+informeLea.style.borderColor = "red";
+
+return informeLea.textContent;
 
 } 
