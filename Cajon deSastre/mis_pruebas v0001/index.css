@@ -102,7 +102,8 @@ td {
     "informekpa informekpb"
     "informeFya informeFyb"
     "informeJka informeJkb"
-    "informeXga informeLea";
+    "informeXga informeLea"
+    "informeLeb informeS";
     grid-template-rows: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
     align-content: center;
@@ -195,6 +196,16 @@ td {
 
 #informeCompleto > #informeLea {
     grid-area: informeLea;
+    width: 500px;
+}
+
+#informeCompleto > #informeLeb {
+    grid-area: informeLeb;
+    width: 500px;
+}
+
+#informeCompleto > #informeS {
+    grid-area: informeS;
     width: 500px;
 }
 
