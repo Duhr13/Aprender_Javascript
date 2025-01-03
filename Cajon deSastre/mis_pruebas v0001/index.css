@@ -103,7 +103,8 @@ td {
     "informeFya informeFyb"
     "informeJka informeJkb"
     "informeXga informeLea"
-    "informeLeb informeS";
+    "informeLeb informeS"
+    "informes informeM";
     grid-template-rows: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
     align-content: center;
@@ -206,6 +207,16 @@ td {
 
 #informeCompleto > #informeS {
     grid-area: informeS;
+    width: 500px;
+}
+
+#informeCompleto > #informes {
+    grid-area: informes;
+    width: 500px;
+}
+
+#informeCompleto > #informeM {
+    grid-area: informeM;
     width: 500px;
 }
 
