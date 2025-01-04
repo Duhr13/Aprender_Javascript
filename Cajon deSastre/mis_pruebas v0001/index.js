@@ -146,6 +146,8 @@ function resolverC(){
     document.getElementById("informeS").textContent = '';
     document.getElementById("informes").textContent = '';
     document.getElementById("informeM").textContent = '';
+    document.getElementById("informeN").textContent = '';
+    document.getElementById("informeP1").textContent = '';
     
     let resultadoPanelC = capturarResultados();
     prueba();
@@ -242,6 +244,8 @@ let informefinal = () => {
     antiS();
     antis();
     antiM();
+    antiN();
+    antiP1();
     
 };
 
@@ -2774,3 +2778,228 @@ informeM.style.borderColor = "red";
 return informeM.textContent;
 
 } 
+
+let antiN = () => {
+
+    let informeN = document.getElementById("informeN"); // Capturo el contenedor donde volcaré todo el resultado
+
+// Inicializo variables locales para la función
+
+let matrizResultados = capturarResultados();
+let nuevaMatrizResultados = new Array;
+let contadorAntiN = 0;
+let contadorCoincidencias = 0;
+let contadorDiscrepancias = 0;
+let contadorEliminacion = 0;
+let contadorHeterocigotas = 0;
+
+let resultadoComparativo = document.createElement("ol");
+
+for (let index = 0; index <= 10; index++) {
+    
+    // Primer bloque de Condicionales. Convertimos los resultados en + y 0 de tipo String
+
+    if (matrizResultados[index] > 0) {
+        nuevaMatrizResultados[index] = "+";
+    }
+    else {
+        nuevaMatrizResultados[index] = "0";
+    }
+
+    // Segundo bloque de Condicionales. Solo hace un conteo de positividades para el Antígeno en el Antigrama
+
+    if (N[index] === "+") {
+        contadorAntiN += 1;
+    }
+
+    // Bucle para ayudar a detectar efecto de dosis
+
+    let posibleEfectoDosisN;
+    for (let i = 0; i <= 10; i++) {
+        if ((matrizResultados[i] >= 0) && (matrizResultados[i] <= 2)) {
+            posibleEfectoDosisN = true;
+        }
+        else {
+            posibleEfectoDosisN = false;
+        }
+    }
+
+    // Tercer bloque de Condicionales. Los contadores que determinarán los resultados.
+
+    let lineaMensaje = document.createElement("li");
+
+    if ((nuevaMatrizResultados[index] === "+") && (N[index] === "+")) {
+        contadorCoincidencias += 1;
+        lineaMensaje.innerHTML = `La célula ${index + 1} coincide <br>`;
+        lineaMensaje.style.color = "black";
+    }
+    else if ((nuevaMatrizResultados[index] === "0") && (N[index] === "+")) {
+        if ((M[index] === "+") && (posibleEfectoDosisN === true)) {
+            contadorDiscrepancias += 1;
+            lineaMensaje.innerHTML = `La célula ${index + 1} no coincide pero no se puede descartar porque los antígenos antitéticos son heterocigotos y la positividad
+            del resultado no es lo suficientemente potente como para descartarlo<br>`;
+            lineaMensaje.style.color = "black";
+            contadorHeterocigotas += 1;
+        }
+        else {
+            contadorEliminacion += 1;
+            lineaMensaje.innerHTML = `La célula ${index + 1} no coincide, por lo que Anti-M queda descartado <br>`;
+            lineaMensaje.style.color = "black";
+        }
+    }
+    else if ((nuevaMatrizResultados[index] === "+") && (N[index] === "0")) {
+        contadorDiscrepancias += 1;
+        lineaMensaje.innerHTML = `La célula ${index + 1} no coincide pero no se puede descartar <br>`;
+        lineaMensaje.style.color = "black";
+    }
+    else {
+        lineaMensaje.innerHTML = `La célula ${index + 1} es negativa para ambos <br>`;
+        lineaMensaje.style.color = "black";
+    }
+
+    resultadoComparativo.appendChild(lineaMensaje);
+};
+
+console.log("Coincidencias: ", contadorCoincidencias);
+console.log("Discrepancias: ", contadorDiscrepancias);
+console.log("Eliminación: ", contadorEliminacion);
+console.log(nuevaMatrizResultados);
+
+// Aquí voy a preparar el resultado final de esta función
+
+let mensajeN = document.createElement("p");
+
+if (contadorEliminacion > 0) {
+    mensajeN.innerHTML = "Anti-N no se encuentra en el plasma del paciente"
+    mensajeN.style.color = 'red';
+    mensajeN.style.fontWeight = 'bold';
+}
+else if ((contadorCoincidencias === contadorAntiN) && (contadorDiscrepancias === 0)) {
+    mensajeN.innerHTML = "Anti-N se ha detectado en el plasma del paciente";
+    mensajeN.style.color = 'green';
+    mensajeN.style.fontWeight = 'bold';
+}
+else if ((contadorCoincidencias === contadorAntiN) && (contadorDiscrepancias > 0)) {
+    mensajeN.innerHTML = "Anti-N se ha detectado en el plasma del paciente y no se descarta la existencia de más anticuerpos";
+    mensajeN.style.color = 'blue';
+    mensajeN.style.fontWeight = 'bold';
+}
+else if ((contadorCoincidencias + contadorHeterocigotas) === contadorAntiN) {
+    mensajeN.innerHTML = "El resultado de positividades y resultados negativos en células heterocigotas /MN/ no descartan la existencia o ausencia de Anti-N";
+    mensajeN.style.color = 'orange';
+    mensajeN.style.fontWeight = 'bold';
+}
+
+// Construímos el bloque del resultado para esta función. Todo lo que devolverá.
+
+informeN.appendChild(resultadoComparativo);
+informeN.appendChild(mensajeN);
+informeN.style.backgroundColor = 'white';
+informeN.style.padding = '15px';
+informeN.style.margin = '3px';
+informeN.style.border = "solid";
+informeN.style.borderRadius = '10px';
+informeN.style.borderColor = "red";
+
+return informeN.textContent;
+
+} 
+
+let antiP1 = () => {
+
+    let informeP1 = document.getElementById("informeP1"); // Capturo el contenedor donde volcaré todo el resultado
+
+// Inicializo variables locales para la función
+
+let matrizResultados = capturarResultados();
+let nuevaMatrizResultados = new Array;
+let contadorAntiP1 = 0;
+let contadorCoincidencias = 0;
+let contadorDiscrepancias = 0;
+let contadorEliminacion = 0;
+
+let resultadoComparativo = document.createElement("ol");
+
+for (let index = 0; index <= 10; index++) {
+    
+    // Primer bloque de Condicionales. Convertimos los resultados en + y 0 de tipo String
+
+    if (matrizResultados[index] > 0) {
+        nuevaMatrizResultados[index] = "+";
+    }
+    else {
+        nuevaMatrizResultados[index] = "0";
+    }
+
+    // Segundo bloque de Condicionales. Solo hace un conteo de positividades para el Antígeno en el Antigrama
+
+    if (P1[index] === "+") {
+        contadorAntiP1 += 1;
+    }
+
+    // Tercer bloque de Condicionales. Los contadores que determinarán los resultados.
+
+    let lineaMensaje = document.createElement("li");
+
+    if ((nuevaMatrizResultados[index] === "+") && (P1[index] === "+")) {
+        contadorCoincidencias += 1;
+        lineaMensaje.innerHTML = `La célula ${index + 1} coincide <br>`;
+        lineaMensaje.style.color = "black";
+    }
+    else if ((nuevaMatrizResultados[index] === "0") && (P1[index] === "+")) {
+        contadorEliminacion += 1;
+        lineaMensaje.innerHTML = `La célula ${index + 1} no coincide, por lo que Anti-Xga queda descartado <br>`;
+        lineaMensaje.style.color = "black";
+    }
+    else if ((nuevaMatrizResultados[index] === "+") && (P1[index] === "0")) {
+        contadorDiscrepancias += 1;
+        lineaMensaje.innerHTML = `La célula ${index + 1} no coincide pero no se puede descartar Anti-P1 <br>`;
+        lineaMensaje.style.color = "black";
+    }
+    else {
+        lineaMensaje.innerHTML = `La célula ${index + 1} es negativa para ambos <br>`;
+        lineaMensaje.style.color = "black";
+    }
+
+    resultadoComparativo.appendChild(lineaMensaje);
+};
+
+console.log("Coincidencias: ", contadorCoincidencias);
+console.log("Discrepancias: ", contadorDiscrepancias);
+console.log("Eliminación: ", contadorEliminacion);
+console.log(nuevaMatrizResultados);
+
+// Aquí voy a preparar el resultado final de esta función
+
+let mensajeP1 = document.createElement("p");
+
+if (contadorEliminacion > 0) {
+    mensajeP1.innerHTML = "Anti-P1 no se encuentra en el plasma del paciente"
+    mensajeP1.style.color = 'red';
+    mensajeP1.style.fontWeight = 'bold';
+}
+else if ((contadorCoincidencias === contadorAntiP1) && (contadorDiscrepancias === 0)) {
+    mensajeP1.innerHTML = "Anti-P1 se ha detectado en el plasma del paciente";
+    mensajeP1.style.color = 'green';
+    mensajeP1.style.fontWeight = 'bold';
+}
+else if ((contadorCoincidencias === contadorAntiP1) && (contadorDiscrepancias > 0)) {
+    mensajeP1.innerHTML = "Anti-P1 se ha detectado en el plasma del paciente y no se descarta la existencia de más anticuerpos";
+    mensajeP1.style.color = 'blue';
+    mensajeP1.style.fontWeight = 'bold';
+}
+
+// Construímos el bloque del resultado para esta función. Todo lo que devolverá.
+
+informeP1.appendChild(resultadoComparativo);
+informeP1.appendChild(mensajeP1);
+informeP1.style.backgroundColor = 'white';
+informeP1.style.padding = '15px';
+informeP1.style.margin = '3px';
+informeP1.style.border = "solid";
+informeP1.style.borderRadius = '10px';
+informeP1.style.borderColor = "red";
+
+return informeP1.textContent;
+
+}

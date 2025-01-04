@@ -104,7 +104,9 @@ td {
     "informeJka informeJkb"
     "informeXga informeLea"
     "informeLeb informeS"
-    "informes informeM";
+    "informes informeM"
+    "informeN informeP1"
+    "informeLua informeLub";
     grid-template-rows: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
     align-content: center;
@@ -219,6 +221,26 @@ td {
     grid-area: informeM;
     width: 500px;
 }
+
+#informeCompleto > #informeN {
+    grid-area: informeN;
+    width: 500px;
+}
+
+#informeCompleto > #informeP1 {
+    grid-area: informeP1;
+    width: 500px;
+}
+
+#informeCompleto > #informeLua {
+    grid-area: informeLua;
+    width: 500px;
+}   
+
+#informeCompleto > #informeLub {
+    grid-area: informeLub;
+    width: 500px;
+}   
 
 /* Todo lo relacionado con la sección de resultado del Panel C */
 
