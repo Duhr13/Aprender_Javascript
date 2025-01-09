@@ -246,6 +246,8 @@ let informefinal = () => {
     antiM();
     antiN();
     antiP1();
+    antiLua();
+    antiLub();
     
 };
 
@@ -3003,3 +3005,203 @@ informeP1.style.borderColor = "red";
 return informeP1.textContent;
 
 }
+
+let antiLua = () => {
+
+    let informeLua = document.getElementById("informeLua"); // Capturo el contenedor donde volcaré todo el resultado
+
+// Inicializo variables locales para la función
+
+let matrizResultados = capturarResultados();
+let nuevaMatrizResultados = new Array;
+let contadorAntiLua = 0;
+let contadorCoincidencias = 0;
+let contadorDiscrepancias = 0;
+let contadorEliminacion = 0;
+let contadorHeterocigotas = 0;
+
+let resultadoComparativo = document.createElement("ol");
+
+for (let index = 0; index <= 10; index++) {
+    
+    // Primer bloque de Condicionales. Convertimos los resultados en + y 0 de tipo String
+
+    if (matrizResultados[index] > 0) {
+        nuevaMatrizResultados[index] = "+";
+    }
+    else {
+        nuevaMatrizResultados[index] = "0";
+    }
+
+    // Segundo bloque de Condicionales. Solo hace un conteo de positividades para el Antígeno en el Antigrama
+
+    if (Lua[index] === "+") {
+        contadorAntiLua += 1;
+    }
+
+    // Tercer bloque de Condicionales. Los contadores que determinarán los resultados.
+
+    let lineaMensaje = document.createElement("li");
+
+    if ((nuevaMatrizResultados[index] === "+") && (Lua[index] === "+")) {
+        contadorCoincidencias += 1;
+        lineaMensaje.innerHTML = `La célula ${index + 1} coincide <br>`;
+        lineaMensaje.style.color = "black";
+    }
+    else if ((nuevaMatrizResultados[index] === "0") && (Lua[index] === "+")) {
+        contadorEliminacion += 1;
+        lineaMensaje.innerHTML = `La célula ${index + 1} no coincide, por lo que Anti-Lua queda descartado <br>`;
+        lineaMensaje.style.color = "black";
+    }
+    else if ((nuevaMatrizResultados[index] === "+") && (Lua[index] === "0")) {
+        contadorDiscrepancias += 1;
+        lineaMensaje.innerHTML = `La célula ${index + 1} no coincide pero no se puede descartar <br>`;
+        lineaMensaje.style.color = "black";
+    }
+    else {
+        lineaMensaje.innerHTML = `La célula ${index + 1} es negativa para ambos <br>`;
+        lineaMensaje.style.color = "black";
+    }
+
+    resultadoComparativo.appendChild(lineaMensaje);
+};
+
+console.log("Coincidencias: ", contadorCoincidencias);
+console.log("Discrepancias: ", contadorDiscrepancias);
+console.log("Eliminación: ", contadorEliminacion);
+console.log(nuevaMatrizResultados);
+
+// Aquí voy a preparar el resultado final de esta función
+
+let mensajeLua = document.createElement("p");
+
+if (contadorEliminacion > 0) {
+    mensajeLua.innerHTML = "Anti-Lua no se encuentra en el plasma del paciente"
+    mensajeLua.style.color = 'red';
+    mensajeLua.style.fontWeight = 'bold';
+}
+else if ((contadorCoincidencias === contadorAntiLua) && (contadorDiscrepancias === 0)) {
+    mensajeLua.innerHTML = "Anti-Lua se ha detectado en el plasma del paciente";
+    mensajeLua.style.color = 'green';
+    mensajeLua.style.fontWeight = 'bold';
+}
+else if ((contadorCoincidencias === contadorAntiLua) && (contadorDiscrepancias > 0)) {
+    mensajeLua.innerHTML = "Anti-Lua se ha detectado en el plasma del paciente y no se descarta la existencia de más anticuerpos";
+    mensajeLua.style.color = 'blue';
+    mensajeLua.style.fontWeight = 'bold';
+}
+
+// Construímos el bloque del resultado para esta función. Todo lo que devolverá.
+
+informeLua.appendChild(resultadoComparativo);
+informeLua.appendChild(mensajeLua);
+informeLua.style.backgroundColor = 'white';
+informeLua.style.padding = '15px';
+informeLua.style.margin = '3px';
+informeLua.style.border = "solid";
+informeLua.style.borderRadius = '10px';
+informeLua.style.borderColor = "red";
+
+return informeLua.textContent;
+
+} 
+
+let antiLub = () => {
+
+    let informeLub = document.getElementById("informeLub"); // Capturo el contenedor donde volcaré todo el resultado
+
+// Inicializo variables locales para la función
+
+let matrizResultados = capturarResultados();
+let nuevaMatrizResultados = new Array;
+let contadorAntiLub = 0;
+let contadorCoincidencias = 0;
+let contadorDiscrepancias = 0;
+let contadorEliminacion = 0;
+let contadorHeterocigotas = 0;
+
+let resultadoComparativo = document.createElement("ol");
+
+for (let index = 0; index <= 10; index++) {
+    
+    // Primer bloque de Condicionales. Convertimos los resultados en + y 0 de tipo String
+
+    if (matrizResultados[index] > 0) {
+        nuevaMatrizResultados[index] = "+";
+    }
+    else {
+        nuevaMatrizResultados[index] = "0";
+    }
+
+    // Segundo bloque de Condicionales. Solo hace un conteo de positividades para el Antígeno en el Antigrama
+
+    if (Lub[index] === "+") {
+        contadorAntiLub += 1;
+    }
+
+    // Tercer bloque de Condicionales. Los contadores que determinarán los resultados.
+
+    let lineaMensaje = document.createElement("li");
+
+    if ((nuevaMatrizResultados[index] === "+") && (Lub[index] === "+")) {
+        contadorCoincidencias += 1;
+        lineaMensaje.innerHTML = `La célula ${index + 1} coincide <br>`;
+        lineaMensaje.style.color = "black";
+    }
+    else if ((nuevaMatrizResultados[index] === "0") && (Lub[index] === "+")) {
+        contadorEliminacion += 1;
+        lineaMensaje.innerHTML = `La célula ${index + 1} no coincide, por lo que Anti-Lub queda descartado <br>`;
+        lineaMensaje.style.color = "black";
+    }
+    else if ((nuevaMatrizResultados[index] === "+") && (Lub[index] === "0")) {
+        contadorDiscrepancias += 1;
+        lineaMensaje.innerHTML = `La célula ${index + 1} no coincide pero no se puede descartar <br>`;
+        lineaMensaje.style.color = "black";
+    }
+    else {
+        lineaMensaje.innerHTML = `La célula ${index + 1} es negativa para ambos <br>`;
+        lineaMensaje.style.color = "black";
+    }
+
+    resultadoComparativo.appendChild(lineaMensaje);
+};
+
+console.log("Coincidencias: ", contadorCoincidencias);
+console.log("Discrepancias: ", contadorDiscrepancias);
+console.log("Eliminación: ", contadorEliminacion);
+console.log(nuevaMatrizResultados);
+
+// Aquí voy a preparar el resultado final de esta función
+
+let mensajeLub = document.createElement("p");
+
+if (contadorEliminacion > 0) {
+    mensajeLub.innerHTML = "Anti-Lub no se encuentra en el plasma del paciente"
+    mensajeLub.style.color = 'red';
+    mensajeLub.style.fontWeight = 'bold';
+}
+else if ((contadorCoincidencias === contadorAntiLub) && (contadorDiscrepancias === 0)) {
+    mensajeLub.innerHTML = "Anti-Lub se ha detectado en el plasma del paciente";
+    mensajeLub.style.color = 'green';
+    mensajeLub.style.fontWeight = 'bold';
+}
+else if ((contadorCoincidencias === contadorAntiLub) && (contadorDiscrepancias > 0)) {
+    mensajeLub.innerHTML = "Anti-Lub se ha detectado en el plasma del paciente y no se descarta la existencia de más anticuerpos";
+    mensajeLub.style.color = 'blue';
+    mensajeLub.style.fontWeight = 'bold';
+}
+
+// Construímos el bloque del resultado para esta función. Todo lo que devolverá.
+
+informeLub.appendChild(resultadoComparativo);
+informeLub.appendChild(mensajeLub);
+informeLub.style.backgroundColor = 'white';
+informeLub.style.padding = '15px';
+informeLub.style.margin = '3px';
+informeLub.style.border = "solid";
+informeLub.style.borderRadius = '10px';
+informeLub.style.borderColor = "red";
+
+return informeLub.textContent;
+
+} 
