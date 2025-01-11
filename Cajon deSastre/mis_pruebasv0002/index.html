@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+    <head>
+        <title>Versión 0.002</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="index.css">
+    </head>
+
+    <body>
+
+        <header>
+            <h1>Versión 0.001</h1>
+        </header>
+
+        <main>
+            <table>
+                <caption>Ortho Clinical Diagnostics.<br>
+                        Número de Lote: 8RC415.<br>
+                        Fecha de Caducidad: 14/01/2025.
+                </caption>
+
+                <thead>
+                    <tr>
+                        <td id>Cell</td>
+                        <td colspan="8">Sistema RH</td>
+                        <td colspan="6">Sistema Kell</td>
+                        <td colspan="2">Sistema Duffy</td>
+                        <td colspan="2">Sistema Kidd</td>
+                        <td colspan="1">Sex Linked</td>
+                        <td colspan="2">Sistema Lewis</td>
+                        <td colspan="4">Sistema MNSs</td>
+                        <td colspan="1">Sistema P</td>
+                        <td colspan="2">Sistema Lutheran</td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr id="antigenos">
+                        <th></th>
+                        <th id="agd">D</th>
+                        <th id="agC">C</th>
+                        <th id="agE">E</th>
+                        <th id="agcc">c</th>
+                        <th id="agee">e</th>
+                        <th id="f">f</th>
+                        <th id="Cw">Cw</th>
+                        <th id="V">V</th>
+
+                        <th id="agK">K</th>
+                        <th id="agkk">k</th>
+                        <th id="agKpa">Kpa</th>
+                        <th id="agKpb">Kpb</th>
+                        <th id="agJsa">Jsa</th>
+                        <th id="agJsb">Jsb</th>
+
+                        <th id="agFya">Fya</th>
+                        <th id="agFyb">Fyb</th>
+
+                        <th id="agJka">Jka</th>
+                        <th id="agJkb">Jkb</th>
+
+                        <th id="agXga">Xga</th>
+
+                        <th id="agLea">Lea</th>
+                        <th id="agLeb">Leb</th>
+
+                        <th id="agS">S</th>
+                        <th id="agss">s</th>
+                        <th id="agM">M</th>
+                        <th id="agN">N</th>
+
+                        <th id="agP">P1</th>
+
+                        <th id="agLua">Lua</th>
+                        <th id="agLub">Lub</th>
+                    </tr>
+                    <tr id="fila1">
+                        <th class="colizq">1</th>
+                        <td id="D1">+</td>
+                        <td id="C1">+</td>
+                        <td id="E1">0</td>
+                        <td id="cc1">0</td>
+                        <td id="ee1">+</td>
+                        <td id="f1">0</td>
+                        <td id="Cw1">+</td>
+                        <td id="V1">0</td>
+
+                        <td id="K1">0</td>
+                        <td id="kk1">+</td>
+                        <td id="Kpa1">+</td>
+                        <td id="Kpb1">+</td>
+                        <td id="Jsa1">/</td>
+                        <td id="Jsb1">+</td>
+
+                        <td id="Fya1">0</td>
+                        <td id="Fyb1">+</td>
+
+                        <td id="Jka1">0</td>
+                        <td id="Jkb1">+</td>
+
+                        <td id="Xga1">0</td>
+
+                        <td id="Lea1">0</td>
+                        <td id="Leb1">+</td>
+
+                        <td id="S1">0</td>
+                        <td id="ss1">+</td>
+                        <td id="M1">+</td>
+                        <td id="N1">+</td>
+
+                        <td id="P11">+</td>
+                        
+                        <td id="Lua1">0</td>
+                        <td id="Lub1">+</td>
+                    </tr>
+                    <tr id="fila2">
+                        <th class="colizq">2</th>
+                        <td id="D2">+</td>
+                        <td id="C2">+</td>
+                        <td id="E2">0</td>
+                        <td id="cc2">0</td>
+                        <td id="ee2">+</td>
+                        <td id="f2">0</td>
+                        <td id="Cw2">0</td>
+                        <td id="V2">0</td>
+
+                        <td id="K2">+</td>
+                        <td id="kk2">+</td>
+                        <td id="Kpa2">0</td>
+                        <td id="Kpb2">+</td>
+                        <td id="Jsa2">/</td>
+                        <td id="Jsb2">+</td>
+
+                        <td id="Fya2">+</td>
+                        <td id="Fyb2">+</td>
+
+                        <td id="Jka2">+</td>
+                        <td id="Jkb2">+</td>
+
+                        <td id="Xga2">+</td>
+
+                        <td id="Lea2">0</td>
+                        <td id="Leb2">0</td>
+
+                        <td id="S2">0</td>
+                        <td id="ss2">+</td>
+                        <td id="M2">+</td>
+                        <td id="N2">+</td>
+
+                        <td id="P12">+</td>
+                        
+                        <td id="Lua2">0</td>
+                        <td id="Lub2">+</td>
+                    </tr>
+                    <tr id="fila3">
+                        <th class="colizq">3</th>
+                        <td id="D3">+</td>
+                        <td id="C3">0</td>
+                        <td id="E3">+</td>
+                        <td id="cc3">+</td>
+                        <td id="ee3">0</td>
+                        <td id="f3">0</td>
+                        <td id="Cw3">0</td>
+                        <td id="V3">0</td>
+
+                        <td id="K3">0</td>
+                        <td id="kk3">+</td>
+                        <td id="Kpa3">0</td>
+                        <td id="Kpb3">+</td>
+                        <td id="Jsa3">/</td>
+                        <td id="Jsb3">+</td>
+
+                        <td id="Fya3">+</td>
+                        <td id="Fyb3">0</td>
+
+                        <td id="Jka3">+</td>
+                        <td id="Jkb3">+</td>
+
+                        <td id="Xga3">+</td>
+
+                        <td id="Lea3">+</td>
+                        <td id="Leb3">0</td>
+
+                        <td id="S3">0</td>
+                        <td id="ss3">+</td>
+                        <td id="M3">+</td>
+                        <td id="N3">0</td>
+
+                        <td id="P13">+</td>
+                        
+                        <td id="Lua3">+</td>
+                        <td id="Lub3">+</td>
+                    </tr>
+                    <tr id="fila4">
+                        <th class="colizq">4</th>
+                        <td id="D4">+</td>
+                        <td id="C4">0</td>
+                        <td id="E4">0</td>
+                        <td id="cc4">+</td>
+                        <td id="ee4">+</td>
+                        <td id="f4">+</td>
+                        <td id="Cw4">0</td>
+                        <td id="V4">+</td>
+
+                        <td id="K4">0</td>
+                        <td id="kk4">+</td>
+                        <td id="Kpa4">0</td>
+                        <td id="Kpb4">+</td>
+                        <td id="Jsa4">/</td>
+                        <td id="Jsb4">+</td>
+
+                        <td id="Fya4">0</td>
+                        <td id="Fyb4">0</td>
+
+                        <td id="Jka4">+</td>
+                        <td id="Jkb4">+</td>
+
+                        <td id="Xga4">0</td>
+
+                        <td id="Lea4">0</td>
+                        <td id="Leb4">0</td>
+
+                        <td id="S4">0</td>
+                        <td id="ss4">+</td>
+                        <td id="M4">0</td>
+                        <td id="N4">+</td>
+
+                        <td id="P14">+</td>
+                        
+                        <td id="Lua4">0</td>
+                        <td id="Lub4">+</td>
+                    </tr>
+                    <tr id="fila5">
+                        <th class="colizq">5</th>
+                        <td id="D5">0</td>
+                        <td id="C5">+</td>
+                        <td id="E5">0</td>
+                        <td id="cc5">+</td>
+                        <td id="ee5">+</td>
+                        <td id="f5">+</td>
+                        <td id="Cw5">0</td>
+                        <td id="V5">0</td>
+
+                        <td id="K5">0</td>
+                        <td id="kk5">+</td>
+                        <td id="Kpa5">0</td>
+                        <td id="Kpb5">+</td>
+                        <td id="Jsa5">/</td>
+                        <td id="Jsb5">+</td>
+
+                        <td id="Fya5">+</td>
+                        <td id="Fyb5">+</td>
+
+                        <td id="Jka5">+</td>
+                        <td id="Jkb5">0</td>
+
+                        <td id="Xga5">+</td>
+
+                        <td id="Lea5">0</td>
+                        <td id="Leb5">+</td>
+
+                        <td id="S5">+</td>
+                        <td id="ss5">+</td>
+                        <td id="M5">+</td>
+                        <td id="N5">0</td>
+
+                        <td id="P15">+</td>
+                        
+                        <td id="Lua5">0</td>
+                        <td id="Lub5">+</td>
+                    </tr>
+                    <tr id="fila6">
+                        <th class="colizq">6</th>
+                        <td id="D6">0</td>
+                        <td id="C6">0</td>
+                        <td id="E6">+</td>
+                        <td id="cc6">+</td>
+                        <td id="ee6">+</td>
+                        <td id="f6">+</td>
+                        <td id="Cw6">0</td>
+                        <td id="V6">0</td>
+
+                        <td id="K6">0</td>
+                        <td id="kk6">+</td>
+                        <td id="Kpa6">0</td>
+                        <td id="Kpb6">+</td>
+                        <td id="Jsa6">/</td>
+                        <td id="Jsb6">+</td>
+
+                        <td id="Fya6">0</td>
+                        <td id="Fyb6">+</td>
+
+                        <td id="Jka6">+</td>
+                        <td id="Jkb6">+</td>
+
+                        <td id="Xga6">0</td>
+
+                        <td id="Lea6">0</td>
+                        <td id="Leb6">+</td>
+
+                        <td id="S6">+</td>
+                        <td id="ss6">+</td>
+                        <td id="M6">+</td>
+                        <td id="N6">+</td>
+
+                        <td id="P16">+</td>
+                        
+                        <td id="Lua6">0</td>
+                        <td id="Lub6">+</td>
+                    </tr>
+                    <tr id="fila7">
+                        <th class="colizq">7</th>
+                        <td id="D7">0</td>
+                        <td id="C7">0</td>
+                        <td id="E7">0</td>
+                        <td id="cc7">+</td>
+                        <td id="ee7">+</td>
+                        <td id="f7">+</td>
+                        <td id="Cw7">0</td>
+                        <td id="V7">0</td>
+
+                        <td id="K7">+</td>
+                        <td id="kk7">+</td>
+                        <td id="Kpa7">0</td>
+                        <td id="Kpb7">+</td>
+                        <td id="Jsa7">/</td>
+                        <td id="Jsb7">+</td>
+
+                        <td id="Fya7">0</td>
+                        <td id="Fyb7">+</td>
+
+                        <td id="Jka7">+</td>
+                        <td id="Jkb7">+</td>
+
+                        <td id="Xga7">0</td>
+
+                        <td id="Lea7">0</td>
+                        <td id="Leb7">+</td>
+
+                        <td id="S7">0</td>
+                        <td id="ss7">+</td>
+                        <td id="M7">+</td>
+                        <td id="N7">0</td>
+
+                        <td id="P17">+</td>
+                        
+                        <td id="Lua7">0</td>
+                        <td id="Lub7">+</td>
+                    </tr>
+                    <tr id="fila8">
+                        <th class="colizq">8</th>
+                        <td id="D8">0</td>
+                        <td id="C8">0</td>
+                        <td id="E8">0</td>
+                        <td id="cc8">+</td>
+                        <td id="ee8">+</td>
+                        <td id="f8">+</td>
+                        <td id="Cw8">0</td>
+                        <td id="V8">0</td>
+
+                        <td id="K8">0</td>
+                        <td id="kk8">+</td>
+                        <td id="Kpa8">0</td>
+                        <td id="Kpb8">+</td>
+                        <td id="Jsa8">0</td>
+                        <td id="Jsb8">+</td>
+
+                        <td id="Fya8">+</td>
+                        <td id="Fyb8">0</td>
+
+                        <td id="Jka8">+</td>
+                        <td id="Jkb8">+</td>
+
+                        <td id="Xga8">+</td>
+
+                        <td id="Lea8">+</td>
+                        <td id="Leb8">0</td>
+
+                        <td id="S8">+</td>
+                        <td id="ss8">+</td>
+                        <td id="M8">+</td>
+                        <td id="N8">+</td>
+
+                        <td id="P18">0</td>
+                        
+                        <td id="Lua8">0</td>
+                        <td id="Lub8">+</td>
+                    </tr>
+                    <tr id="fila9">
+                        <th class="colizq">9</th>
+                        <td id="D9">0</td>
+                        <td id="C9">0</td>
+                        <td id="E9">0</td>
+                        <td id="cc9">+</td>
+                        <td id="ee9">+</td>
+                        <td id="f9">+</td>
+                        <td id="Cw9">0</td>
+                        <td id="V9">0</td>
+
+                        <td id="K9">0</td>
+                        <td id="kk9">+</td>
+                        <td id="Kpa9">0</td>
+                        <td id="Kpb9">+</td>
+                        <td id="Jsa9">/</td>
+                        <td id="Jsb9">+</td>
+
+                        <td id="Fya9">+</td>
+                        <td id="Fyb9">0</td>
+
+                        <td id="Jka9">+</td>
+                        <td id="Jkb9">0</td>
+
+                        <td id="Xga9">0</td>
+
+                        <td id="Lea9">0</td>
+                        <td id="Leb9">+</td>
+
+                        <td id="S9">+</td>
+                        <td id="ss9">0</td>
+                        <td id="M9">0</td>
+                        <td id="N9">+</td>
+
+                        <td id="P19">+</td>
+                        
+                        <td id="Lua9">0</td>
+                        <td id="Lub9">+</td>
+                    </tr>
+                    <tr id="fila10">
+                        <th class="colizq">10</th>
+                        <td id="D10">0</td>
+                        <td id="C10">0</td>
+                        <td id="E10">0</td>
+                        <td id="cc10">+</td>
+                        <td id="ee10">+</td>
+                        <td id="f10">+</td>
+                        <td id="Cw10">0</td>
+                        <td id="V10">0</td>
+
+                        <td id="K10">0</td>
+                        <td id="kk10">+</td>
+                        <td id="Kpa10">0</td>
+                        <td id="Kpb10">+</td>
+                        <td id="Jsa10">/</td>
+                        <td id="Jsb10">+</td>
+
+                        <td id="Fya10">0</td>
+                        <td id="Fyb10">+</td>
+
+                        <td id="Jka10">0</td>
+                        <td id="Jkb10">+</td>
+
+                        <td id="Xga10">0</td>
+
+                        <td id="Lea10">0</td>
+                        <td id="Leb10">+</td>
+
+                        <td id="S10">+</td>
+                        <td id="ss10">0</td>
+                        <td id="M10">+</td>
+                        <td id="N10">0</td>
+
+                        <td id="P110">0</td>
+                        
+                        <td id="Lua10">0</td>
+                        <td id="Lub10">+</td>
+                    </tr>
+                    <tr id="fila11">
+                        <th class="colizq">11</th>
+                        <td id="D11">+</td>
+                        <td id="C11">+</td>
+                        <td id="E11">0</td>
+                        <td id="cc11">0</td>
+                        <td id="ee11">+</td>
+                        <td id="f11">0</td>
+                        <td id="Cw11">0</td>
+                        <td id="V11">0</td>
+
+                        <td id="K11">0</td>
+                        <td id="kk11">+</td>
+                        <td id="Kpa11">0</td>
+                        <td id="Kpb11">+</td>
+                        <td id="Jsa11">/</td>
+                        <td id="Jsb11">+</td>
+
+                        <td id="Fya11">0</td>
+                        <td id="Fyb11">+</td>
+
+                        <td id="Jka11">0</td>
+                        <td id="Jkb11">+</td>
+
+                        <td id="Xga11">+</td>
+
+                        <td id="Lea11">0</td>
+                        <td id="Leb11">+</td>
+
+                        <td id="S11">+</td>
+                        <td id="ss11">+</td>
+                        <td id="M11">+</td>
+                        <td id="N11">0</td>
+
+                        <td id="P111">0</td>
+                        
+                        <td id="Lua11">0</td>
+                        <td id="Lub11">+</td>
+                    </tr>
+                </tbody>
+                
+                <tfoot>
+                    <tr>
+                        <th id="nulo"></th>
+                        <td colspan="8" class="AGH">37ºC / AGH</td>
+                        <td colspan="11" class="AGH">Antiglobulina Humana (AGH)</td>
+                        <td colspan="4" class="Variable">Variable</td>
+                        <td colspan="3" class="Crioaglutinina">Crioaglutinina</td>
+                        <td colspan="2" class="Variable">Variable</td>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <section id="resultadoc">
+                <p>Resultado del Panel C 0.8%</p>
+
+                <label for="resul1">Hemantígeno 01</label>
+                <select id="resul1">
+                    <option selected>0</option>
+                    <option>0.5</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                </select><br>    
+                <label for="resul2">Hemantígeno 02</label>
+                <select id="resul2">
+                    <option selected>0</option>
+                    <option>0.5</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                </select><br>  
+                <label for="resul3">Hemantígeno 03</label>
+                <select id="resul3">
+                    <option selected>0</option>
+                    <option>0.5</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                </select><br>  
+                <label for="resul4">Hemantígeno 04</label>
+                <select id="resul4">
+                    <option selected>0</option>
+                    <option>0.5</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                </select><br>  
+                <label for="resul5">Hemantígeno 05</label>
+                <select id="resul5">
+                    <option selected>0</option>
+                    <option>0.5</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                </select><br>  
+                <label for="resul6">Hemantígeno 06</label>
+                <select id="resul6">
+                    <option selected>0</option>
+                    <option>0.5</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                </select><br>  
+                <label for="resul7">Hemantígeno 07</label>
+                <select id="resul7">
+                    <option selected>0</option>
+                    <option>0.5</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                </select><br>  
+                <label for="resul8">Hemantígeno 08</label>
+                <select id="resul8">
+                    <option selected>0</option>
+                    <option>0.5</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                </select><br>  
+                <label for="resul9">Hemantígeno 09</label>
+                <select id="resul9">
+                    <option selected>0</option>
+                    <option>0.5</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                </select><br>  
+                <label for="resul10">Hemantígeno 10</label>
+                <select id="resul10">
+                    <option selected>0</option>
+                    <option>0.5</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                </select><br>  
+                <label for="resul11">Hemantígeno 11</label>
+                <select id="resul11">
+                    <option selected>0</option>
+                    <option>0.5</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                </select><br>  
+
+                <p></p>
+            </section>
+
+            <section>
+                <input type="button" id="botonpanelC" onclick="resolverC()" value="Resolver Panel">
+            </section>
+
+            <section id="informeCompleto">
+                <div id="informeD">
+
+                </div>
+                    <br>
+                    <br>
+                <div id="informeC">
+                    
+                </div>
+                    <br>
+                    <br>
+                <div id="informec">
+
+                </div>    
+                    <br>
+                    <br>
+                <div id="informeE">
+
+                </div>
+                    <br>
+                    <br> 
+                <div id="informee">
+
+                </div>
+                    <br>
+                    <br>
+                <div id="informef">
+
+                </div>
+                    <br>
+                    <br>
+                <div id="informecw">
+
+                </div>
+                    <br>
+                    <br>
+                <div id="informev">
+
+                </div>
+                    <br>
+                    <br>
+                <div id="informeK">
+
+                </div>
+                    <br>
+                    <br>
+                <div id="informek">
+
+                </div>
+                    <br>
+                    <br>
+                <div id="informekpa">
+
+                </div>
+                    <br>
+                    <br>
+                <div id="informekpb">
+
+                </div>
+                    <br>
+                    <br>
+                <div id="informeFya">
+
+                </div>
+                    <br>
+                    <br>
+                <div id="informeFyb">
+
+                </div>
+                    <br>
+                    <br>
+                <div id="informeJka">
+
+                </div>
+                    <br>
+                    <br>
+                <div id="informeJkb">
+
+                </div>
+                    <br>
+                    <br>
+                <div id="informeXga">
+                    
+                </div>
+                    <br>
+                    <br>
+                <div id="informeLea">
+
+                </div>
+                    <br>
+                    <br>  
+                <div id="informeLeb">
+                    
+                </div>
+                    <br>
+                    <br>
+                <div id="informeS">
+
+                </div>
+                    <br>
+                    <br>
+
+                <div id="informes">
+                    
+                </div>
+                    <br>
+                    <br>
+                <div id="informeM">
+
+                </div>
+                    <br>
+                    <br>
+                <div id="informeN">
+
+                </div>
+                    <br>
+                    <br>
+                <div id="informeP1">
+
+                </div>
+                    <br>
+                    <br>
+                <div id="informeLua">
+
+                </div>
+                    <br>
+                    <br>
+                <div id="informeLub">
+
+                </div>
+                    <br>
+                    <br>
+                <div id="resultadoD">
+
+                </div>
+                
+            </section>
+        </main>
+
+        <footer>
+            <p>Técnico Especialista de Laboratorio</p>
+            <p>Laboratorio de Inmunohematología</p>
+            <p>Hospital Universitario Fundación Jiménez Díaz</p>
+        </footer>
+
+        <script src="index.js"></script>
+
+    </body>
+
+</html>

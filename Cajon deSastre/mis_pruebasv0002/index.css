@@ -1,0 +1,305 @@
+body {
+    background-color: rgb(0, 0, 0);
+    color: white;
+    font-family: verdana;
+}
+
+h1 {
+    font-weight: bold;
+    text-decoration: underline;
+    text-align: center;
+}
+
+footer {
+    font-size: 10px;
+    color:cyan;
+}
+
+main {
+    display: grid;
+    place-items: center;
+    width: 100%;
+}
+
+table {
+    border-radius: 10px;
+    border: 10px solid rgb(255, 255, 255);
+    margin: 10px;
+}
+
+table caption {
+    font-weight: bold;
+    padding: 5px;
+}
+
+thead {
+    background-color: red;
+    font-weight: bold;
+    text-align: center;
+}
+
+tbody {
+    text-align: center;
+    background-color: white;
+    color:black;
+}
+
+tbody th {
+    font-weight: bold;
+}
+
+td {
+    padding: 8px;
+}
+
+.AGH {
+    background-color: rgb(2, 124, 8);
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+.Variable {
+    background-color: rgb(180, 71, 28);
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+.Crioaglutinina {
+    background-color: rgb(4, 81, 170);
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+.colizq {
+    font-weight: bold;
+    background-color: red;
+    color: white;
+}
+
+#resultadoc {
+    background-color: rgb(173, 4, 12);
+    margin: 20px;
+    font-weight: bold;
+    border-radius: 10px;
+    border: 2px solid rgb(150, 150, 150);
+    padding: 10px;
+}
+
+/* Todo lo relacionado con el informe completo */
+
+#informeCompleto {
+    display: grid;
+    width: 1050px;
+    grid-template-areas: 
+    "informeRH informeCgrande"
+    "informecPequeña informeEgrande"
+    "informeePequeña informef"
+    "informeCw informev"
+    "informeK informek"
+    "informekpa informekpb"
+    "informeFya informeFyb"
+    "informeJka informeJkb"
+    "informeXga informeLea"
+    "informeLeb informeS"
+    "informes informeM"
+    "informeN informeP1"
+    "informeLua informeLub";
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    align-content: center;
+}
+
+#informeCompleto > #informeD {
+    grid-area: informeRH;
+    width: 500px;
+}
+
+#informeCompleto > #informeC {
+    grid-area: informeCgrande;
+    width: 500px;
+}
+
+#informeCompleto > #informec {
+    grid-area: informecPequeña;
+    width: 500px;
+}
+
+#informeCompleto > #informeE {
+    grid-area: informeEgrande;
+    width: 500px;
+}
+
+#informeCompleto > #informee {
+    grid-area: informeePequeña;
+    width: 500px;
+}
+
+#informeCompleto > #informef {
+    grid-area: informef;
+    width: 500px;
+}
+
+#informeCompleto > #informecw {
+    grid-area: informeCw;
+    width: 500px;
+}
+
+#informeCompleto > #informev {
+    grid-area: informev;
+    width: 500px;
+}
+
+#informeCompleto > #informeK {
+    grid-area: informeK;
+    width: 500px;
+}
+
+#informeCompleto > #informek {
+    grid-area: informek;
+    width: 500px;
+}
+
+#informeCompleto > #informekpa {
+    grid-area: informekpa;
+    width: 500px;
+}
+
+#informeCompleto > #informekpb {
+    grid-area: informekpb;
+    width: 500px;
+}
+
+#informeCompleto > #informeFya {
+    grid-area: informeFya;
+    width: 500px;
+}
+
+#informeCompleto > #informeFyb {
+    grid-area: informeFyb;
+    width: 500px;
+}
+
+#informeCompleto > #informeJka {
+    grid-area: informeJka;
+    width: 500px;
+}
+
+#informeCompleto > #informeJkb {
+    grid-area: informeJkb;
+    width: 500px;
+}
+
+#informeCompleto > #informeXga {
+    grid-area: informeXga;
+    width: 500px;
+}
+
+#informeCompleto > #informeLea {
+    grid-area: informeLea;
+    width: 500px;
+}
+
+#informeCompleto > #informeLeb {
+    grid-area: informeLeb;
+    width: 500px;
+}
+
+#informeCompleto > #informeS {
+    grid-area: informeS;
+    width: 500px;
+}
+
+#informeCompleto > #informes {
+    grid-area: informes;
+    width: 500px;
+}
+
+#informeCompleto > #informeM {
+    grid-area: informeM;
+    width: 500px;
+}
+
+#informeCompleto > #informeN {
+    grid-area: informeN;
+    width: 500px;
+}
+
+#informeCompleto > #informeP1 {
+    grid-area: informeP1;
+    width: 500px;
+}
+
+#informeCompleto > #informeLua {
+    grid-area: informeLua;
+    width: 500px;
+}   
+
+#informeCompleto > #informeLub {
+    grid-area: informeLub;
+    width: 500px;
+}   
+
+/* Todo lo relacionado con la sección de resultado del Panel C */
+
+#resultadoc label {
+    margin: 10px;
+}
+
+#resultadoc select {
+    font-weight: bold;
+    font-size: 19px;
+    text-align: center;
+    padding: 10px;
+    margin: 2px;
+}
+
+#resultadoc select:hover {
+    background-color: black;
+    color: white;
+}
+
+#resultadoc select:focus {
+    background-color: black;
+    color: white;
+}
+
+#resultadoc p {
+    text-align: center;
+}
+
+/* El botón de Resolver Panel */
+
+    #botonpanelC {
+        padding: 10px;
+        background-color: aliceblue;
+        color: black;
+        font-weight: bold;
+        font-size: 15px;
+        border-radius: 20px;
+        margin: 10px;
+    }
+
+    #botonpanelC:hover {
+        background-color: red;
+        color: white;
+    }
+
+    #botonpanelC:active {
+        background-color: chartreuse;
+        color: black;
+    }
+
+/* Antígenos que se desnaturalizan con la ficina */
+
+    #agFya, #agFyb, #agXga, #agM, #agN, #agS, #agss, #Fya1, #Fya2, #Fya3, #Fya4, #Fya5, #Fya6, #Fya7, #Fya8, #Fya9, #Fya10, #Fya11,
+    #Fyb1, #Fyb2, #Fyb3, #Fyb4, #Fyb5, #Fyb6, #Fyb7, #Fyb8, #Fyb9, #Fyb10, #Fyb11,
+    #Xga1, #Xga2, #Xga3, #Xga4, #Xga5, #Xga6, #Xga7, #Xga8, #Xga9, #Xga10, #Xga11,
+    #S1, #S2, #S3, #S4, #S5, #S6, #S7, #S8, #S9, #S10, #S11,
+    #ss1, #ss2, #ss3, #ss4, #ss5, #ss6, #ss7, #ss8, #ss9, #ss10, #ss11,
+    #M1, #M2, #M3, #M4, #M5, #M6, #M7, #M8, #M9, #M10, #M11,
+    #N1, #N2, #N3, #N4, #N5, #N6, #N7, #N8, #N9, #N10, #N11 {
+        background-color: coral;
+    }
