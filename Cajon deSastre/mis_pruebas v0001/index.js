@@ -148,6 +148,8 @@ function resolverC(){
     document.getElementById("informeM").textContent = '';
     document.getElementById("informeN").textContent = '';
     document.getElementById("informeP1").textContent = '';
+    document.getElementById("informeLua"). textContent = '';
+    document.getElementById("informeLub").textContent = '';
     
     let resultadoPanelC = capturarResultados();
     prueba();
