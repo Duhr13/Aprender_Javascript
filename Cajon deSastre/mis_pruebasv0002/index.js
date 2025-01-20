@@ -114,15 +114,18 @@ let resolverC = () => {
     
     let resultadoPanelC = capturarResultados();
     antiD();
+    antiC();
+    antic();
     
 }
 
 // Función genérica para búsqueda de anticuerpos simples sin antígenos antitéticos correspondientes u homocigotos.
 // Del estilo de Anti-D o Anti-f.
 
-let AntigenoHomocigoto = (antigeno, informeId, nombreAntigeno) => {
+let antigenoHomocigoto = (antigeno, informeId, nombreAntigeno) => {
 
     let anticuerpo = nombreAntigeno;
+    let estadoAnticuerpo = '';
 
     let informe = document.getElementById(informeId); // Capturo el contenedor donde volcaré todo el resultado
 
@@ -172,12 +175,15 @@ let AntigenoHomocigoto = (antigeno, informeId, nombreAntigeno) => {
     if (contadorEliminacion > 0) {
         mensaje.innerHTML = `El anticuerpo anti-${anticuerpo} no se encuentra en el plasma del paciente`;
         mensaje.style.color = 'red';
+        estadoAnticuerpo = 'red';
     } else if (contadorCoincidencias === contadorAntigeno && contadorDiscrepancias === 0) {
         mensaje.innerHTML = `El anticuerpo anti-${anticuerpo} se ha detectado en el plasma del paciente`;
         mensaje.style.color = 'green';
+        estadoAnticuerpo = 'green';
     } else if (contadorCoincidencias === contadorAntigeno && contadorDiscrepancias > 0) {
         mensaje.innerHTML = `El anticuerpo anti-${anticuerpo} se ha detectado en el plasma del paciente y no se descarta la existencia de más anticuerpos`;
         mensaje.style.color = 'blue';
+        estadoAnticuerpo = 'blue';
     }
 
     mensaje.style.fontWeight = 'bold';
@@ -190,13 +196,135 @@ let AntigenoHomocigoto = (antigeno, informeId, nombreAntigeno) => {
     informe.style.margin = '3px';
     informe.style.border = "solid";
     informe.style.borderRadius = '10px';
-    informe.style.borderColor = "red";
+    switch (estadoAnticuerpo) {
+        case 'green':
+            informe.style.borderColor = 'green';
+            break;
+        case 'red':
+            informe.style.borderColor = 'red';
+            break;
+        case 'blue':
+            informe.style.borderColor = 'blue';
+            break;
+    }
+
+    return informe.textContent;
+}
+
+/* Función para determinar los resultados de anticuerpos cuyos antígenos pueden verse afectados por el llamado Efecto Dosis
+Esto ocurre por una disminución de la cantidad del antígeno debido a la existencia, y presencia, de su antígeno antitético
+en la superficie del hematíe */
+
+let antigenoHeterocigoto = (antigeno, agAntitetico, informeId, nombreAntigeno) => {
+
+    let anticuerpo = nombreAntigeno;
+    let estadoAnticuerpo = '';
+
+    let informe = document.getElementById(informeId); // Capturo el contenedor donde volcaré todo el resultado
+
+    // Inicializo variables locales para la función
+     
+    let matrizResultados = capturarResultados();
+    let nuevaMatrizResultados = new Array;
+    let contadorAntigeno = 0;
+    let contadorCoincidencias = 0;
+    let contadorDiscrepancias = 0;
+    let contadorEliminacion = 0;
+    let contadorHeterocigotas = 0;
+
+    let listadoInforme = document.createElement("ol");
+
+    for (let index = 0; index <= 10; index++) {
+        // Primer bloque de Condicionales. Convertimos los resultados en + y 0 de tipo String
+        nuevaMatrizResultados[index] = matrizResultados[index] > 0 ? "+" : "0";
+
+        // Segundo bloque de Condicionales. Solo hace un conteo de positividades para el Antígeno en el Antigrama
+        if (antigeno[index] === "+") {
+            contadorAntigeno += 1;
+        }
+        
+        // Tercer bloque de Condicionales. Para ayudar a detectar el efecto dosis. Devuelve un valor booleano.
+        let posibleEfectoDosis = (matrizResultados[index] >= 0) && (matrizResultados[index] <= 2);
+
+        // Cuarto bloque de Condicionales. Los contadores que determinarán los resultados.
+        let lineaMensaje = document.createElement("li");
+
+        if (nuevaMatrizResultados[index] === "+" && antigeno[index] === "+") {
+            contadorCoincidencias += 1;
+            lineaMensaje.innerHTML = `La célula ${index + 1} coincide <br>`;
+        } else if (nuevaMatrizResultados[index] === "0" && antigeno[index] === "+") {
+            if (agAntitetico[index] === '+' && posibleEfectoDosis) {
+                contadorDiscrepancias += 1;
+                lineaMensaje.innerHTML = `La célula ${index + 1} no coincide pero no se puede descartar por Efecto Dosis`;
+                contadorHeterocigotas += 1;
+            }
+            else {
+                contadorEliminacion += 1;
+                lineaMensaje.innerHTML = `La célula ${index + 1} no coincide, por lo que el anticuerpo anti-${anticuerpo} queda descartado <br>`;
+            }
+        } else if (nuevaMatrizResultados[index] === "+" && antigeno[index] === "0") {
+            contadorDiscrepancias += 1;
+            lineaMensaje.innerHTML = `La célula ${index + 1} no coincide pero no se puede descartar <br>`;
+        } else {
+            lineaMensaje.innerHTML = `La célula ${index + 1} es negativa para ambos <br>`;
+        }
+
+        lineaMensaje.style.color = "black";
+        listadoInforme.appendChild(lineaMensaje);
+
+    }
+
+    // Aquí voy a preparar el resultado final de esta función
+    let mensaje = document.createElement("p");
+
+    if (contadorEliminacion > 0) {
+        mensaje.innerHTML = `El anticuerpo anti-${anticuerpo} no se encuentra en el plasma del paciente`;
+        mensaje.style.color = 'red';
+        estadoAnticuerpo = 'red';
+    } else if (contadorCoincidencias === contadorAntigeno && contadorDiscrepancias === 0) {
+        mensaje.innerHTML = `El anticuerpo anti-${anticuerpo} se ha detectado en el plasma del paciente`;
+        mensaje.style.color = 'green';
+        estadoAnticuerpo = 'green';
+    } else if (contadorCoincidencias === contadorAntigeno && contadorDiscrepancias > 0) {
+        mensaje.innerHTML = `El anticuerpo anti-${anticuerpo} se ha detectado en el plasma del paciente y no se descarta la existencia de más anticuerpos`;
+        mensaje.style.color = 'blue';
+        estadoAnticuerpo = 'blue';
+    } else if ((contadorCoincidencias + contadorHeterocigotas) === contadorAntigeno) {
+        mensaje.innerHTML = `El resultado de positividades y resultados negativos en células heterocigotas no descartan la existencia o ausencia de ${anticuerpo}`;
+        mensaje.style.color = 'orange';
+        estadoAnticuerpo = 'orange';
+    }
+
+    mensaje.style.fontWeight = 'bold';
+
+    // Construímos el bloque del resultado para esta función. Todo lo que devolverá.
+    informe.appendChild(listadoInforme);
+    informe.appendChild(mensaje);
+    informe.style.backgroundColor = 'white';
+    informe.style.padding = '15px';
+    informe.style.margin = '3px';
+    informe.style.border = "solid";
+    informe.style.borderRadius = '10px';
+    switch (estadoAnticuerpo) {
+        case 'green':
+            informe.style.borderColor = 'green';
+            break;
+        case 'red':
+            informe.style.borderColor = 'red';
+            break;
+        case 'blue':
+            informe.style.borderColor = 'blue';
+            break;
+        case 'orange':
+            informe.style.borderColor = 'orange';
+            break;
+    }
 
     return informe.textContent;
 }
 
 
 
-
-
-let antiD = () => AntigenoHomocigoto(D, "informeD", "D");
+let antiD = () => antigenoHomocigoto(D, "informeD", "D");
+let antiC = () => antigenoHeterocigoto(C, c, "informeC", "C");
+let antic = () => antigenoHeterocigoto(c, C, "informec", "c");
