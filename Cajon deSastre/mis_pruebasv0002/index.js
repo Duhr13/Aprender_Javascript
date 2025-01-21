@@ -116,6 +116,29 @@ let resolverC = () => {
     antiD();
     antiC();
     antic();
+    antiE();
+    antie();
+    antif();
+    antiCw();
+    antiV();
+    antiK();
+    antik();
+    antiKpa();
+    antiKpb();
+    antiFya();
+    antiFyb();
+    antiJka();
+    antiJkb();
+    antiXga();
+    antiLea();
+    antiLeb();
+    antiS();
+    antis();
+    antiM();
+    antiN();
+    antiP1();
+    antiLua();
+    antiLub();
     
 }
 
@@ -199,12 +222,19 @@ let antigenoHomocigoto = (antigeno, informeId, nombreAntigeno) => {
     switch (estadoAnticuerpo) {
         case 'green':
             informe.style.borderColor = 'green';
+            informe.style.backgroundColor = '#CCFFCC';
             break;
         case 'red':
             informe.style.borderColor = 'red';
+            informe.style.backgroundColor = '#FFCCCC';
             break;
         case 'blue':
             informe.style.borderColor = 'blue';
+            informe.style.backgroundColor = '#99CCFF';
+            break;
+        case 'orange':
+            informe.style.borderColor = 'orange';
+            informe.style.backgroundColor = '#FFCC99';
             break;
     }
 
@@ -276,6 +306,7 @@ let antigenoHeterocigoto = (antigeno, agAntitetico, informeId, nombreAntigeno) =
 
     // Aquí voy a preparar el resultado final de esta función
     let mensaje = document.createElement("p");
+    mensaje.style.fontWeight = 'bold';
 
     if (contadorEliminacion > 0) {
         mensaje.innerHTML = `El anticuerpo anti-${anticuerpo} no se encuentra en el plasma del paciente`;
@@ -295,7 +326,7 @@ let antigenoHeterocigoto = (antigeno, agAntitetico, informeId, nombreAntigeno) =
         estadoAnticuerpo = 'orange';
     }
 
-    mensaje.style.fontWeight = 'bold';
+    
 
     // Construímos el bloque del resultado para esta función. Todo lo que devolverá.
     informe.appendChild(listadoInforme);
@@ -308,15 +339,19 @@ let antigenoHeterocigoto = (antigeno, agAntitetico, informeId, nombreAntigeno) =
     switch (estadoAnticuerpo) {
         case 'green':
             informe.style.borderColor = 'green';
+            informe.style.backgroundColor = '#CCFFCC';
             break;
         case 'red':
             informe.style.borderColor = 'red';
+            informe.style.backgroundColor = '#FFCCCC';
             break;
         case 'blue':
             informe.style.borderColor = 'blue';
+            informe.style.backgroundColor = '#99CCFF';
             break;
         case 'orange':
             informe.style.borderColor = 'orange';
+            informe.style.backgroundColor = '#FFCC99';
             break;
     }
 
@@ -325,6 +360,29 @@ let antigenoHeterocigoto = (antigeno, agAntitetico, informeId, nombreAntigeno) =
 
 
 
-let antiD = () => antigenoHomocigoto(D, "informeD", "D");
-let antiC = () => antigenoHeterocigoto(C, c, "informeC", "C");
-let antic = () => antigenoHeterocigoto(c, C, "informec", "c");
+let antiD = () => antigenoHomocigoto(D, 'informeD', 'D');
+let antiC = () => antigenoHeterocigoto(C, c, 'informeC', 'C');
+let antic = () => antigenoHeterocigoto(c, C, 'informec', 'c');
+let antiE = () => antigenoHeterocigoto(E, e, 'informeE', 'E');
+let antie = () => antigenoHeterocigoto(e, E, 'informee', 'e');
+let antif = () => antigenoHomocigoto(f, 'informef', 'f');
+let antiCw = () => antigenoHomocigoto(Cw, 'informecw', 'Cw');
+let antiV = () => antigenoHomocigoto(V, 'informev', 'V');
+let antiK = () => antigenoHomocigoto(K, 'informeK', 'K');
+let antik = () => antigenoHomocigoto(k, 'informek', 'k');
+let antiKpa = () => antigenoHomocigoto(Kpa, 'informekpa', 'Kpa');
+let antiKpb = () => antigenoHomocigoto(Kpb, 'informekpb', 'Kpb');
+let antiFya = () => antigenoHeterocigoto(Fya, Fyb, 'informeFya', 'Fya');
+let antiFyb = () => antigenoHeterocigoto(Fyb, Fya, 'informeFyb', 'Fyb');
+let antiJka = () => antigenoHeterocigoto(Jka, Jkb, 'informeJka', 'Jka');
+let antiJkb = () => antigenoHeterocigoto(Jkb, Jka, 'informeJkb', 'Jkb');
+let antiXga = () => antigenoHomocigoto(Xga, 'informeXga', 'Xga');
+let antiLea = () => antigenoHeterocigoto(Lea, Leb, 'informeLea', 'Lea');
+let antiLeb = () => antigenoHeterocigoto(Leb, Lea, 'informeLeb', 'Leb');
+let antiS = () => antigenoHeterocigoto (S, s, 'informeS', 'S');
+let antis = () => antigenoHeterocigoto (s, S, 'informes', 's');
+let antiM = () => antigenoHeterocigoto (M, N, 'informeM', 'M');
+let antiN = () => antigenoHeterocigoto (N, M, 'informeN', 'N');
+let antiP1 = () => antigenoHomocigoto(P1, 'informeP1', 'P1');
+let antiLua = () => antigenoHomocigoto(Lua, 'informeLua', 'Lua');
+let antiLub = () => antigenoHomocigoto(Lub, 'informeLub', 'Lub');
