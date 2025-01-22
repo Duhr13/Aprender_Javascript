@@ -247,15 +247,15 @@ en la superficie del hematíe */
 
 let antigenoHeterocigoto = (antigeno, agAntitetico, informeId, nombreAntigeno) => {
 
-    let anticuerpo = nombreAntigeno;
-    let estadoAnticuerpo = '';
-
     let informe = document.getElementById(informeId); // Capturo el contenedor donde volcaré todo el resultado
 
     // Inicializo variables locales para la función
      
     let matrizResultados = capturarResultados();
     let nuevaMatrizResultados = new Array;
+    let anticuerpo = nombreAntigeno;
+    let estadoAnticuerpo = '';
+    let permisoHeterocigoto = true;    // Con esta variable voy a controlar el efecto dosis con positividades de hasta 2+
     let contadorAntigeno = 0;
     let contadorCoincidencias = 0;
     let contadorDiscrepancias = 0;
@@ -263,6 +263,16 @@ let antigenoHeterocigoto = (antigeno, agAntitetico, informeId, nombreAntigeno) =
     let contadorHeterocigotas = 0;
 
     let listadoInforme = document.createElement("ol");
+
+    // En este bucle voy a descartar o confirmar la heterocigosis en base a los resultados. Positivos de 3+ o 4+ con negativos descarta el efecto dosis.
+
+    for (let i = 0; i <= 10; i++) {
+        if (matrizResultados[i] > 2) {
+            permisoHeterocigoto = false;
+        }
+    }
+
+    //Bucle principal donde sedeterminarán los contadores para luego clasificar los resultados
 
     for (let index = 0; index <= 10; index++) {
         // Primer bloque de Condicionales. Convertimos los resultados en + y 0 de tipo String
@@ -282,8 +292,8 @@ let antigenoHeterocigoto = (antigeno, agAntitetico, informeId, nombreAntigeno) =
         if (nuevaMatrizResultados[index] === "+" && antigeno[index] === "+") {
             contadorCoincidencias += 1;
             lineaMensaje.innerHTML = `La célula ${index + 1} coincide <br>`;
-        } else if (nuevaMatrizResultados[index] === "0" && antigeno[index] === "+") {
-            if (agAntitetico[index] === '+' && posibleEfectoDosis) {
+        } else if (nuevaMatrizResultados[index] === "0" && antigeno[index] === "+") {;
+            if ((agAntitetico[index] === '+' && posibleEfectoDosis) && permisoHeterocigoto) {  // Si permisoHeterocigoto es false, todo es false y se ejecuta el "else".
                 contadorDiscrepancias += 1;
                 lineaMensaje.innerHTML = `La célula ${index + 1} no coincide pero no se puede descartar por Efecto Dosis`;
                 contadorHeterocigotas += 1;
