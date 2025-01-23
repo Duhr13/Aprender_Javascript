@@ -1,0 +1,434 @@
+body {
+    background-color: rgb(96, 133, 139);
+    color: white;
+    font-family: verdana;
+}
+
+/* HEADER DEL BODY */
+
+h1 {
+    font-weight: bold;
+    text-decoration: underline;
+    text-align: center;
+}
+
+#fechaHora {
+    background-color: rgb(0, 0, 0);
+    color:rgb(255, 255, 255);
+    border: 4px solid rgb(250, 250, 250);
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 5px;
+    margin: 2px;
+    box-shadow: 0px 0px 20px black;
+}
+
+
+/* Footer del body */    
+
+footer {
+    font-size: 10px;
+    color:cyan;
+}
+
+
+/* Main del body */    
+
+main {
+    display: grid;
+    place-items: center;
+    width: 100%;
+}
+
+table {
+    border-radius: 10px;
+    border: 10px solid rgb(255, 255, 255);
+    margin: 10px;
+    box-shadow: 0px 0px 20px black;
+}
+
+table caption {
+    font-weight: bold;
+    padding: 5px;
+}
+
+thead {
+    background-color: red;
+    font-weight: bold;
+    text-align: center;
+}
+
+tbody {
+    text-align: center;
+    background-color: white;
+    color:black;
+}
+
+tbody th {
+    font-weight: bold;
+}
+
+td {
+    padding: 8px;
+}
+
+.AGH {
+    background-color: rgb(2, 124, 8);
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+.Variable {
+    background-color: rgb(180, 71, 28);
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+.Crioaglutinina {
+    background-color: rgb(4, 81, 170);
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+.colizq {
+    font-weight: bold;
+    background-color: red;
+    color: white;
+}
+
+/* Aquí lo relacionado con la entrada de resultados */
+
+#areaResultado {
+    display: grid;
+    grid-template-areas: 'resultadoc resultadocFic';
+    align-content: center;
+}
+
+#resultadoc {
+    background-color: rgb(173, 4, 12);
+    margin: 20px;
+    font-weight: bold;
+    border-radius: 10px;
+    border: 2px solid rgb(150, 150, 150);
+    padding: 10px;
+    box-shadow: 0px 0px 20px black;
+    grid-area: 'resultadoc';
+}
+
+#resultadocFic {
+    background-color: rgb(123, 59, 133);
+    margin: 20px;
+    font-weight: bold;
+    border-radius: 10px;
+    border: 2px solid rgb(150, 150, 150);
+    padding: 10px;
+    box-shadow: 0px 0px 20px black;
+    grid-area: 'resultadocFic';
+}
+
+/* Todo lo relacionado con el informe completo */
+
+#informeCompleto {
+    display: grid;
+    width: 1050px;
+    grid-template-areas: 
+    "informeRH informeRHFic"
+    "informeCgrande informeCgrandeFic"
+    "informecPequeña informecPequeñaFic"
+    "informeEgrande informeEgrandeFic"
+    "informeePequeña informeePequeñaFic"
+    "informef informefFic"
+    "informeCw informeCwFic"
+    "informev informevFic"
+    "informeK informeKFic"
+    "informek informekFic"
+    "informekpa informekpaFic"
+    "informekpb informekpbFic"
+    "informeFya informeFyaFic"
+    "informeFyb informeFybFic"
+    "informeJka informeJkaFic"
+    "informeJkb informeJkbFic"
+    "informeXga informeXgaFic"
+    "informeLea informeLeaFic"
+    "informeLeb informeLebFic"
+    "informeS informeSFic"
+    "informes informesFic"
+    "informeM informeMFic"
+    "informeN informeNFic"
+    "informeP1 informeP1Fic"
+    "informeLua informeLuaFic"
+    "informeLub informeLubFic";
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    align-content: center;
+}
+
+#informeCompleto #informeD {
+    grid-area: informeRH;
+    width: 500px;
+}
+
+#informeCompleto #informeDFic {
+    grid-area: informeRHFic;
+    width: 500px;
+}
+
+#informeCompleto #informeC {
+    grid-area: informeCgrande;
+    width: 500px;
+}
+
+#informeCompleto #informeCFic {
+    grid-area: informeCgrandeFic;
+    width: 500px;
+}
+
+#informeCompleto #informec {
+    grid-area: informecPequeña;
+    width: 500px;
+}
+
+#informeCompleto #informecFic {
+    grid-area: informecPequeñaFic;
+    width: 500px;
+}
+
+#informeCompleto #informeE {
+    grid-area: informeEgrande;
+    width: 500px;
+}
+
+#informeCompleto #informeEFic {
+    grid-area: informeEgrandeFic;
+    width: 500px;
+}
+
+#informeCompleto #informee {
+    grid-area: informeePequeña;
+    width: 500px;
+}
+
+#informeCompleto #informeeFic {
+    grid-area: informeePequeñaFic;
+    width: 500px;
+}
+
+#informeCompleto #informef {
+    grid-area: informef;
+    width: 500px;
+}
+
+#informeCompleto #informefFic {
+    grid-area: informefFic;
+    width: 500px;
+}
+
+#informeCompleto #informecw {
+    grid-area: informeCw;
+    width: 500px;
+}
+
+#informeCompleto #informecwFic {
+    grid-area: informeCwFic;
+    width: 500px;
+}
+
+#informeCompleto #informev {
+    grid-area: informev;
+    width: 500px;
+}
+
+#informeCompleto #informevFic {
+    grid-area: informevFic;
+    width: 500px;
+}
+
+#informeCompleto #informeK {
+    grid-area: informeK;
+    width: 500px;
+}
+
+#informeCompleto #informeKFic {
+    grid-area: informeKFic;
+    width: 500px;
+}
+
+#informeCompleto #informek {
+    grid-area: informek;
+    width: 500px;
+}
+
+#informeCompleto #informekFic {
+    grid-area: informekFic;
+    width: 500px;
+}
+
+#informeCompleto #informekpa {
+    grid-area: informekpa;
+    width: 500px;
+}
+
+#informeCompleto #informekpb {
+    grid-area: informekpb;
+    width: 500px;
+}
+
+#informeCompleto #informeFya {
+    grid-area: informeFya;
+    width: 500px;
+}
+
+#informeCompleto #informeFyb {
+    grid-area: informeFyb;
+    width: 500px;
+}
+
+#informeCompleto #informeJka {
+    grid-area: informeJka;
+    width: 500px;
+}
+
+#informeCompleto #informeJkb {
+    grid-area: informeJkb;
+    width: 500px;
+}
+
+#informeCompleto #informeXga {
+    grid-area: informeXga;
+    width: 500px;
+}
+
+#informeCompleto #informeLea {
+    grid-area: informeLea;
+    width: 500px;
+}
+
+#informeCompleto #informeLeb {
+    grid-area: informeLeb;
+    width: 500px;
+}
+
+#informeCompleto #informeS {
+    grid-area: informeS;
+    width: 500px;
+}
+
+#informeCompleto #informes {
+    grid-area: informes;
+    width: 500px;
+}
+
+#informeCompleto #informeM {
+    grid-area: informeM;
+    width: 500px;
+}
+
+#informeCompleto #informeN {
+    grid-area: informeN;
+    width: 500px;
+}
+
+#informeCompleto #informeP1 {
+    grid-area: informeP1;
+    width: 500px;
+}
+
+#informeCompleto #informeLua {
+    grid-area: informeLua;
+    width: 500px;
+}   
+
+#informeCompleto #informeLub {
+    grid-area: informeLub;
+    width: 500px;
+}   
+
+/* Todo lo relacionado con la sección de resultado del Panel C */
+
+#resultadoc label {
+    margin: 10px;
+}
+
+#resultadoc select {
+    font-weight: bold;
+    font-size: 19px;
+    text-align: center;
+    padding: 10px;
+    margin: 2px;
+    cursor: pointer;
+}
+
+#resultadoc select:hover {
+    background-color: black;
+    color: white;
+}
+
+#resultadoc select:focus {
+    background-color: black;
+    color: white;
+}
+
+#resultadoc p {
+    text-align: center;
+}
+
+#resultadocFic label {
+    margin: 10px;
+}
+
+#resultadocFic select {
+    font-weight: bold;
+    font-size: 19px;
+    text-align: center;
+    padding: 10px;
+    margin: 2px;
+    cursor: pointer;
+}
+
+#resultadocFic select:hover {
+    background-color: black;
+    color: white;
+}
+
+#resultadocFic select:focus {
+    background-color: black;
+    color: white;
+}
+
+#resultadocFic p {
+    text-align: center;
+}
+
+/* El botón de Resolver Panel */
+
+    #botonpanelC {
+        padding: 20px;
+        background-color: aliceblue;
+        color: black;
+        font-weight: bold;
+        font-size: 20px;
+        border-radius: 20px;
+        margin: 20px;
+        cursor: pointer;
+        box-shadow: 0px 0px 20px black;
+    }
+
+    #botonpanelC:hover {
+        background-color: red;
+        color: white;
+    }
+
+    #botonpanelC:active {
+        background-color: chartreuse;
+        color: black;
+    }
+
+/* Antígenos que se desnaturalizan con la ficina */
+
+    .ficina {
+        background-color: coral;
+    }
