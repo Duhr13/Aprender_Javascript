@@ -272,8 +272,18 @@ td {
     width: 500px;
 }
 
+#informeCompleto #informekpaFic {
+    grid-area: informekpaFic;
+    width: 500px;
+}
+
 #informeCompleto #informekpb {
     grid-area: informekpb;
+    width: 500px;
+}
+
+#informeCompleto #informekpbFic {
+    grid-area: informekpbFic;
     width: 500px;
 }
 
@@ -282,8 +292,18 @@ td {
     width: 500px;
 }
 
+#informeCompleto #informeFyaFic {
+    grid-area: informeFyaFic;
+    width: 500px;
+}
+
 #informeCompleto #informeFyb {
     grid-area: informeFyb;
+    width: 500px;
+}
+
+#informeCompleto #informeFybFic {
+    grid-area: informeFybFic;
     width: 500px;
 }
 
@@ -292,8 +312,18 @@ td {
     width: 500px;
 }
 
+#informeCompleto #informeJkaFic {
+    grid-area: informeJkaFic;
+    width: 500px;
+}
+
 #informeCompleto #informeJkb {
     grid-area: informeJkb;
+    width: 500px;
+}
+
+#informeCompleto #informeJkbFic {
+    grid-area: informeJkbFic;
     width: 500px;
 }
 
@@ -302,8 +332,18 @@ td {
     width: 500px;
 }
 
+#informeCompleto #informeXgaFic {
+    grid-area: informeXgaFic;
+    width: 500px;
+}
+
 #informeCompleto #informeLea {
     grid-area: informeLea;
+    width: 500px;
+}
+
+#informeCompleto #informeLeaFic {
+    grid-area: informeLeaFic;
     width: 500px;
 }
 
@@ -312,12 +352,27 @@ td {
     width: 500px;
 }
 
+#informeCompleto #informeLebFic {
+    grid-area: informeLebFic;
+    width: 500px;
+}
+
 #informeCompleto #informeS {
     grid-area: informeS;
     width: 500px;
 }
 
+#informeCompleto #informeSFic {
+    grid-area: informeSFic;
+    width: 500px;
+}
+
 #informeCompleto #informes {
+    grid-area: informes;
+    width: 500px;
+}
+
+#informeCompleto #informesFic {
     grid-area: informes;
     width: 500px;
 }
@@ -327,8 +382,18 @@ td {
     width: 500px;
 }
 
+#informeCompleto #informeMFic {
+    grid-area: informeM;
+    width: 500px;
+}
+
 #informeCompleto #informeN {
     grid-area: informeN;
+    width: 500px;
+}
+
+#informeCompleto #informeNFic {
+    grid-area: informeNFic;
     width: 500px;
 }
 
@@ -337,15 +402,30 @@ td {
     width: 500px;
 }
 
+#informeCompleto #informeP1Fic {
+    grid-area: informeP1Fic;
+    width: 500px;
+}
+
 #informeCompleto #informeLua {
     grid-area: informeLua;
+    width: 500px;
+}
+
+#informeCompleto #informeLuaFic {
+    grid-area: informeLuaFic;
     width: 500px;
 }   
 
 #informeCompleto #informeLub {
     grid-area: informeLub;
     width: 500px;
-}   
+}
+
+#informeCompleto #informeLubFic {
+    grid-area: informeLubFic;
+    width: 500px;
+}  
 
 /* Todo lo relacionado con la sección de resultado del Panel C */
 

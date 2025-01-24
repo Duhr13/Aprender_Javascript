@@ -75,21 +75,27 @@ let capturarResultados = () => {
     let res10 = Number(document.getElementById("resul10").value);
     let res11 = Number(document.getElementById("resul11").value);
 
-    let res1Fic = Number(document.getElementById("resul1").value);
-    let res2Fic = Number(document.getElementById("resul2").value);
-    let res3Fic = Number(document.getElementById("resul3").value);
-    let res4Fic = Number(document.getElementById("resul4").value);
-    let res5Fic = Number(document.getElementById("resul5").value);
-    let res6Fic = Number(document.getElementById("resul6").value);
-    let res7Fic = Number(document.getElementById("resul7").value);
-    let res8Fic = Number(document.getElementById("resul8").value);
-    let res9Fic = Number(document.getElementById("resul9").value);
-    let res10Fic = Number(document.getElementById("resul10").value);
-    let res11Fic = Number(document.getElementById("resul11").value);
-
     let resulpanelC = [res1, res2, res3, res4, res5, res6, res7, res8, res9, res10, res11];
+    return resulpanelC;
+}
+
+let capturarResultadosFic = () => {
+
+    let res1Fic = Number(document.getElementById("resul1Fic").value);
+    let res2Fic = Number(document.getElementById("resul2Fic").value);
+    let res3Fic = Number(document.getElementById("resul3Fic").value);
+    let res4Fic = Number(document.getElementById("resul4Fic").value);
+    let res5Fic = Number(document.getElementById("resul5Fic").value);
+    let res6Fic = Number(document.getElementById("resul6Fic").value);
+    let res7Fic = Number(document.getElementById("resul7Fic").value);
+    let res8Fic = Number(document.getElementById("resul8Fic").value);
+    let res9Fic = Number(document.getElementById("resul9Fic").value);
+    let res10Fic = Number(document.getElementById("resul10Fic").value);
+    let res11Fic = Number(document.getElementById("resul11Fic").value);
+
     let resulpanelCFic = [res1Fic, res2Fic, res3Fic, res4Fic, res5Fic, res6Fic, res7Fic, res8Fic, res9Fic, res10Fic, res11Fic];
-    return resulpanelC, resulpanelCFic;
+    return resulpanelCFic;
+
 }
 
 /* Función resolver. Detrás de ella generaré todas las funciones necesarias para resolver el panel. */
@@ -152,31 +158,50 @@ let resolverC = () => {
     document.getElementById("informeLubFic").textContent = '';
     
     antiD();
+    antiDFic();
     antiC();
+    antiCFic();
     antic();
+    anticFic();
     antiE();
+    antiEFic();
     antie();
+    antieFic();
     antif();
+    antifFic();
     antiCw();
+    antiCwFic();
     antiV();
+    antiVFic();
     antiK();
+    antiKFic();
     antik();
+    antikFic();
     antiKpa();
+    antiKpaFic();
     antiKpb();
+    antiKpbFic();
     antiFya();
     antiFyb();
     antiJka();
+    antiJkaFic();
     antiJkb();
+    antiJkbFic();
     antiXga();
     antiLea();
+    antiLeaFic();
     antiLeb();
+    antiLebFic();
     antiS();
     antis();
     antiM();
     antiN();
     antiP1();
+    antiP1Fic();
     antiLua();
+    antiLuaFic();
     antiLub();
+    antiLubFic();
     
 }
 
@@ -257,21 +282,116 @@ let antigenoHomocigoto = (antigeno, informeId, nombreAntigeno) => {
     informe.style.margin = '3px';
     informe.style.border = "solid";
     informe.style.borderRadius = '10px';
+    informe.style.borderColor = 'red';
+    informe.style.boxShadow = '0px 0px 10px black';
     switch (estadoAnticuerpo) {
         case 'green':
-            informe.style.borderColor = 'green';
             informe.style.backgroundColor = '#CCFFCC';
             break;
         case 'red':
-            informe.style.borderColor = 'red';
             informe.style.backgroundColor = '#FFCCCC';
             break;
         case 'blue':
-            informe.style.borderColor = 'blue';
             informe.style.backgroundColor = '#99CCFF';
             break;
         case 'orange':
-            informe.style.borderColor = 'orange';
+            informe.style.backgroundColor = '#FFCC99';
+            break;
+    }
+
+    return informe.textContent;
+}
+
+// Función para búsqueda de anticuerpos simples sin antígenos antitéticos correspondientes u homocigotos
+// Haciendo uso de hemantígenos tratados con la enzima proteolítica Ficina
+
+let antigenoHomocigotoFicina = (antigeno, informeId, nombreAntigeno) => {
+
+    let anticuerpo = nombreAntigeno;
+    let estadoAnticuerpo = '';
+
+    let informe = document.getElementById(informeId); // Capturo el contenedor donde volcaré todo el resultado
+
+    // Inicializo variables locales para la función
+     
+    let matrizResultados = capturarResultadosFic();
+    let nuevaMatrizResultados = new Array;
+    let contadorAntigeno = 0;
+    let contadorCoincidencias = 0;
+    let contadorDiscrepancias = 0;
+    let contadorEliminacion = 0;
+
+    let listadoInforme = document.createElement("ol");
+
+    for (let index = 0; index <= 10; index++) {
+        // Primer bloque de Condicionales. Convertimos los resultados en + y 0 de tipo String
+        nuevaMatrizResultados[index] = matrizResultados[index] > 0 ? "+" : "0";
+
+        // Segundo bloque de Condicionales. Solo hace un conteo de positividades para el Antígeno en el Antigrama
+        if (antigeno[index] === "+") {
+            contadorAntigeno += 1;
+        }
+
+        // Tercer bloque de Condicionales. Los contadores que determinarán los resultados.
+        let lineaMensaje = document.createElement("li");
+
+        if (nuevaMatrizResultados[index] === "+" && antigeno[index] === "+") {
+            contadorCoincidencias += 1;
+            lineaMensaje.innerHTML = `La célula ${index + 1} coincide <br>`;
+        } else if (nuevaMatrizResultados[index] === "0" && antigeno[index] === "+") {
+            contadorEliminacion += 1;
+            lineaMensaje.innerHTML = `La célula ${index + 1} no coincide, por lo que el anticuerpo anti-${anticuerpo} queda descartado <br>`;
+        } else if (nuevaMatrizResultados[index] === "+" && antigeno[index] === "0") {
+            contadorDiscrepancias += 1;
+            lineaMensaje.innerHTML = `La célula ${index + 1} no coincide pero no se puede descartar <br>`;
+        } else {
+            lineaMensaje.innerHTML = `La célula ${index + 1} es negativa para ambos <br>`;
+        }
+
+        lineaMensaje.style.color = "black";
+        listadoInforme.appendChild(lineaMensaje);
+    }
+
+    // Aquí voy a preparar el resultado final de esta función
+    let mensaje = document.createElement("p");
+
+    if (contadorEliminacion > 0) {
+        mensaje.innerHTML = `El anticuerpo anti-${anticuerpo} no se encuentra en el plasma del paciente`;
+        mensaje.style.color = 'red';
+        estadoAnticuerpo = 'red';
+    } else if (contadorCoincidencias === contadorAntigeno && contadorDiscrepancias === 0) {
+        mensaje.innerHTML = `El anticuerpo anti-${anticuerpo} se ha detectado en el plasma del paciente`;
+        mensaje.style.color = 'green';
+        estadoAnticuerpo = 'green';
+    } else if (contadorCoincidencias === contadorAntigeno && contadorDiscrepancias > 0) {
+        mensaje.innerHTML = `El anticuerpo anti-${anticuerpo} se ha detectado en el plasma del paciente y no se descarta la existencia de más anticuerpos`;
+        mensaje.style.color = 'blue';
+        estadoAnticuerpo = 'blue';
+    }
+
+    mensaje.style.fontWeight = 'bold';
+
+    // Construímos el bloque del resultado para esta función. Todo lo que devolverá.
+    informe.appendChild(listadoInforme);
+    informe.appendChild(mensaje);
+    informe.style.backgroundColor = 'white';
+    informe.style.padding = '15px';
+    informe.style.margin = '3px';
+    informe.style.border = "solid";
+    informe.style.borderRadius = '10px';
+    informe.style.borderColor = 'purple';
+    informe.style.boxShadow = '0px 0px 10px black';
+    switch (estadoAnticuerpo) {
+        case 'green':
+            informe.style.backgroundColor = '#CCFFCC';
+            break;
+        case 'red':
+            informe.style.backgroundColor = '#FFCCCC';
+            break;
+        case 'blue':
+            informe.style.backgroundColor = '#99CCFF';
+            break;
+        case 'orange':
             informe.style.backgroundColor = '#FFCC99';
             break;
     }
@@ -386,21 +506,146 @@ let antigenoHeterocigoto = (antigeno, agAntitetico, informeId, nombreAntigeno) =
     informe.style.margin = '3px';
     informe.style.border = "solid";
     informe.style.borderRadius = '10px';
+    informe.style.borderColor = 'red';
+    informe.style.boxShadow = '0px 0px 10px black';
     switch (estadoAnticuerpo) {
         case 'green':
-            informe.style.borderColor = 'green';
             informe.style.backgroundColor = '#CCFFCC';
             break;
         case 'red':
-            informe.style.borderColor = 'red';
             informe.style.backgroundColor = '#FFCCCC';
             break;
         case 'blue':
-            informe.style.borderColor = 'blue';
             informe.style.backgroundColor = '#99CCFF';
             break;
         case 'orange':
-            informe.style.borderColor = 'orange';
+            informe.style.backgroundColor = '#FFCC99';
+            break;
+    }
+
+    return informe.textContent;
+}
+
+/* Función para determinar los resultados de anticuerpos cuyos antígenos pueden verse afectados por el llamado Efecto Dosis
+Esto ocurre por una disminución de la cantidad del antígeno debido a la existencia, y presencia, de su antígeno antitético
+en la superficie del hematíe. Esta función trata los resultados obtenidos con paneles con hemantígenos tratados con Ficina */
+
+let antigenoHeterocigotoFicina = (antigeno, agAntitetico, informeId, nombreAntigeno) => {
+
+    let informe = document.getElementById(informeId); // Capturo el contenedor donde volcaré todo el resultado
+
+    // Inicializo variables locales para la función
+     
+    let matrizResultados = capturarResultadosFic();
+    let nuevaMatrizResultados = new Array;
+    let anticuerpo = nombreAntigeno;
+    let estadoAnticuerpo = '';
+    let permisoHeterocigoto = true;    // Con esta variable voy a controlar el efecto dosis con positividades de hasta 2+
+    let contadorAntigeno = 0;
+    let contadorCoincidencias = 0;
+    let contadorDiscrepancias = 0;
+    let contadorEliminacion = 0;
+    let contadorHeterocigotas = 0;
+
+    let listadoInforme = document.createElement("ol");
+
+    // En este bucle voy a descartar o confirmar la heterocigosis en base a los resultados. Positivos de 3+ o 4+ con negativos descarta el efecto dosis.
+
+    for (let i = 0; i <= 10; i++) {
+        if (matrizResultados[i] > 2) {
+            permisoHeterocigoto = false;
+        }
+    }
+
+    //Bucle principal donde sedeterminarán los contadores para luego clasificar los resultados
+
+    for (let index = 0; index <= 10; index++) {
+        // Primer bloque de Condicionales. Convertimos los resultados en + y 0 de tipo String
+        nuevaMatrizResultados[index] = matrizResultados[index] > 0 ? "+" : "0";
+
+        // Segundo bloque de Condicionales. Solo hace un conteo de positividades para el Antígeno en el Antigrama
+        if (antigeno[index] === "+") {
+            contadorAntigeno += 1;
+        }
+        
+        // Tercer bloque de Condicionales. Para ayudar a detectar el efecto dosis. Devuelve un valor booleano.
+        let posibleEfectoDosis = (matrizResultados[index] >= 0) && (matrizResultados[index] <= 2);
+
+        // Cuarto bloque de Condicionales. Los contadores que determinarán los resultados.
+        let lineaMensaje = document.createElement("li");
+
+        if (nuevaMatrizResultados[index] === "+" && antigeno[index] === "+") {
+            contadorCoincidencias += 1;
+            lineaMensaje.innerHTML = `La célula ${index + 1} coincide <br>`;
+        } else if (nuevaMatrizResultados[index] === "0" && antigeno[index] === "+") {;
+            if ((agAntitetico[index] === '+' && posibleEfectoDosis) && permisoHeterocigoto) {  // Si permisoHeterocigoto es false, todo es false y se ejecuta el "else".
+                contadorDiscrepancias += 1;
+                lineaMensaje.innerHTML = `La célula ${index + 1} no coincide pero no se puede descartar por Efecto Dosis`;
+                contadorHeterocigotas += 1;
+            }
+            else {
+                contadorEliminacion += 1;
+                lineaMensaje.innerHTML = `La célula ${index + 1} no coincide, por lo que el anticuerpo anti-${anticuerpo} queda descartado <br>`;
+            }
+        } else if (nuevaMatrizResultados[index] === "+" && antigeno[index] === "0") {
+            contadorDiscrepancias += 1;
+            lineaMensaje.innerHTML = `La célula ${index + 1} no coincide pero no se puede descartar <br>`;
+        } else {
+            lineaMensaje.innerHTML = `La célula ${index + 1} es negativa para ambos <br>`;
+        }
+
+        lineaMensaje.style.color = "black";
+        listadoInforme.appendChild(lineaMensaje);
+
+    }
+
+    // Aquí voy a preparar el resultado final de esta función
+    let mensaje = document.createElement("p");
+    mensaje.style.fontWeight = 'bold';
+
+    if (contadorEliminacion > 0) {
+        mensaje.innerHTML = `El anticuerpo anti-${anticuerpo} no se encuentra en el plasma del paciente`;
+        mensaje.style.color = 'red';
+        estadoAnticuerpo = 'red';
+    } else if (contadorCoincidencias === contadorAntigeno && contadorDiscrepancias === 0) {
+        mensaje.innerHTML = `El anticuerpo anti-${anticuerpo} se ha detectado en el plasma del paciente`;
+        mensaje.style.color = 'green';
+        estadoAnticuerpo = 'green';
+    } else if (contadorCoincidencias === contadorAntigeno && contadorDiscrepancias > 0) {
+        mensaje.innerHTML = `El anticuerpo anti-${anticuerpo} se ha detectado en el plasma del paciente y no se descarta la existencia de más anticuerpos`;
+        mensaje.style.color = 'blue';
+        estadoAnticuerpo = 'blue';
+    } else if ((contadorCoincidencias + contadorHeterocigotas) === contadorAntigeno) {
+        mensaje.innerHTML = `El resultado de positividades y resultados negativos en células heterocigotas no descartan la existencia o ausencia de an${anticuerpo}`;
+        mensaje.style.color = 'orange';
+        estadoAnticuerpo = 'orange';
+    }
+
+    let encabezado =  document.createElement("p");
+    encabezado.innerHTML = `Panel C Normal`
+
+    // Construímos el bloque del resultado para esta función. Todo lo que devolverá.
+    informe.appendChild(encabezado);
+    informe.appendChild(listadoInforme);
+    informe.appendChild(mensaje);
+    informe.style.backgroundColor = 'white';
+    informe.style.padding = '15px';
+    informe.style.margin = '3px';
+    informe.style.border = "solid";
+    informe.style.borderRadius = '10px';
+    informe.style.borderColor = 'purple';
+    informe.style.boxShadow = '0px 0px 10px black';
+    switch (estadoAnticuerpo) {
+        case 'green':
+            informe.style.backgroundColor = '#CCFFCC';
+            break;
+        case 'red':
+            informe.style.backgroundColor = '#FFCCCC';
+            break;
+        case 'blue':
+            informe.style.backgroundColor = '#99CCFF';
+            break;
+        case 'orange':
             informe.style.backgroundColor = '#FFCC99';
             break;
     }
@@ -411,30 +656,49 @@ let antigenoHeterocigoto = (antigeno, agAntitetico, informeId, nombreAntigeno) =
 /* Estas funciones son las responsables de resolver el Panel C Normal (Fase Liss/Coombs) */
 
 let antiD = () => antigenoHomocigoto(D, 'informeD', 'D');
+let antiDFic = () => antigenoHomocigotoFicina(D, 'informeDFic', 'D');
 let antiC = () => antigenoHeterocigoto(C, c, 'informeC', 'C');
+let antiCFic = () => antigenoHeterocigotoFicina(C, c, 'informeCFic', 'C');
 let antic = () => antigenoHeterocigoto(c, C, 'informec', 'c');
+let anticFic = () => antigenoHeterocigotoFicina(c, C, 'informecFic', 'c');
 let antiE = () => antigenoHeterocigoto(E, e, 'informeE', 'E');
+let antiEFic = () => antigenoHeterocigotoFicina(E, e, 'informeEFic', 'E');
 let antie = () => antigenoHeterocigoto(e, E, 'informee', 'e');
+let antieFic = () => antigenoHeterocigotoFicina(e, E, 'informeeFic', 'e');
 let antif = () => antigenoHomocigoto(f, 'informef', 'f');
+let antifFic = () => antigenoHomocigotoFicina(f, 'informefFic', 'f');
 let antiCw = () => antigenoHomocigoto(Cw, 'informecw', 'Cw');
+let antiCwFic = () => antigenoHomocigotoFicina(Cw, 'informecwFic', 'Cw');
 let antiV = () => antigenoHomocigoto(V, 'informev', 'V');
+let antiVFic = () => antigenoHomocigotoFicina(V, 'informevFic', 'V');
 let antiK = () => antigenoHomocigoto(K, 'informeK', 'K');
+let antiKFic = () => antigenoHomocigotoFicina(K, 'informeKFic', 'K');
 let antik = () => antigenoHomocigoto(k, 'informek', 'k');
+let antikFic = () => antigenoHomocigotoFicina(k, 'informekFic', 'k');
 let antiKpa = () => antigenoHomocigoto(Kpa, 'informekpa', 'Kpa');
+let antiKpaFic = () => antigenoHomocigotoFicina(Kpa, 'informekpaFic', 'Kpa');
 let antiKpb = () => antigenoHomocigoto(Kpb, 'informekpb', 'Kpb');
+let antiKpbFic = () => antigenoHomocigotoFicina(Kpb, 'informekpbFic', 'Kpb');
 let antiFya = () => antigenoHeterocigoto(Fya, Fyb, 'informeFya', 'Fya');
 let antiFyb = () => antigenoHeterocigoto(Fyb, Fya, 'informeFyb', 'Fyb');
 let antiJka = () => antigenoHeterocigoto(Jka, Jkb, 'informeJka', 'Jka');
+let antiJkaFic = () => antigenoHeterocigotoFicina(Jka, Jkb, 'informeJkaFic', 'Jka');
 let antiJkb = () => antigenoHeterocigoto(Jkb, Jka, 'informeJkb', 'Jkb');
+let antiJkbFic = () => antigenoHeterocigotoFicina(Jkb, Jka, 'informeJkbFic', 'Jkb');
 let antiXga = () => antigenoHomocigoto(Xga, 'informeXga', 'Xga');
 let antiLea = () => antigenoHeterocigoto(Lea, Leb, 'informeLea', 'Lea');
+let antiLeaFic = () => antigenoHeterocigotoFicina(Lea, Leb, 'informeLeaFic', 'Lea');
 let antiLeb = () => antigenoHeterocigoto(Leb, Lea, 'informeLeb', 'Leb');
+let antiLebFic = () => antigenoHeterocigotoFicina(Leb, Lea, 'informeLebFic', 'Leb');
 let antiS = () => antigenoHeterocigoto (S, s, 'informeS', 'S');
 let antis = () => antigenoHeterocigoto (s, S, 'informes', 's');
 let antiM = () => antigenoHeterocigoto (M, N, 'informeM', 'M');
 let antiN = () => antigenoHeterocigoto (N, M, 'informeN', 'N');
 let antiP1 = () => antigenoHomocigoto(P1, 'informeP1', 'P1');
+let antiP1Fic = () => antigenoHomocigotoFicina(P1, 'informeP1Fic', 'P1');
 let antiLua = () => antigenoHomocigoto(Lua, 'informeLua', 'Lua');
+let antiLuaFic = () => antigenoHomocigotoFicina(Lua, 'informeLuaFic', 'Lua');
 let antiLub = () => antigenoHomocigoto(Lub, 'informeLub', 'Lub');
+let antiLubFic = () => antigenoHomocigotoFicina(Lub, 'informeLubFic', 'Lub');
 
 /* Estas funciones son las responsables de resolver el Panel C Ficina (Enzima proteolítica) */
