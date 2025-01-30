@@ -182,6 +182,7 @@ let resolverC = () => {
     antiKpb();
     antiKpbFic();
     antiFya();
+    antiFyaFic();
     antiFyb();
     antiJka();
     antiJkaFic();
@@ -653,6 +654,61 @@ let antigenoHeterocigotoFicina = (antigeno, agAntitetico, informeId, nombreAntig
     return informe.textContent;
 }
 
+let ficina = (antigeno, informeId, nombreAntigeno) => {
+
+    let anticuerpo = nombreAntigeno;
+    let informe = document.getElementById(informeId); // Capturo el contenedor donde volcaré todo el resultado
+
+    // Inicializo variables locales para la función
+     
+    let matrizResultados = capturarResultados();
+    let matrizResultadosFic = capturarResultadosFic();
+    let nuevaMatrizResultados = new Array;
+    let nuevaMatrizResultadosFic = new Array;
+    let contadorNegativos = 0;
+    let contadorCoincidencias = 0;
+    let contadorAntigeno = 0;
+
+    let listadoInforme = document.createElement("ol");
+
+
+    for (let index = 0; index <= 10; index++) {
+
+        let lineaMensaje = document.createElement("li");
+
+        // Primer bloque de Condicionales. Convertimos los resultados en + y 0 de tipo String
+        nuevaMatrizResultados[index] = matrizResultados[index] > 0 ? '+' : '0';
+        nuevaMatrizResultadosFic[index] = matrizResultadosFic[index] > 0 ? '+' : '0';
+
+        // Contabilizo los negativos que hay
+        if (nuevaMatrizResultados[index] === "0") {
+            contadorNegativos += 1;
+        }
+
+        // Contabilizo positividades del antígeno
+        if (antigeno[index] === '+') {
+            contadorAntigeno += 1;
+        }
+
+        // Contabilizo las coincidencias que hay entre antígeno positivo y resultado negativo
+        if ((antigeno[index] === '+') && (nuevaMatrizResultados[index] === "+") && (matrizResultadosFic === '0')) {
+            contadorCoincidencias += 1;
+            lineaMensaje.innerHTML = `Esta célula se negativiza, siendo compatible con acción de la enzima proteolítica <br>`;
+        }
+        else {
+            lineaMensaje.innerHTML = `No es compatible con existencia de anti-${anticuerpo} <br>`;
+        }
+
+        listadoInforme.appendChild(lineaMensaje);
+
+    }
+
+    informe.appendChild(listadoInforme);
+
+
+
+}
+
 /* Estas funciones son las responsables de resolver el Panel C Normal (Fase Liss/Coombs) */
 
 let antiD = () => antigenoHomocigoto(D, 'informeD', 'D');
@@ -680,6 +736,7 @@ let antiKpaFic = () => antigenoHomocigotoFicina(Kpa, 'informekpaFic', 'Kpa');
 let antiKpb = () => antigenoHomocigoto(Kpb, 'informekpb', 'Kpb');
 let antiKpbFic = () => antigenoHomocigotoFicina(Kpb, 'informekpbFic', 'Kpb');
 let antiFya = () => antigenoHeterocigoto(Fya, Fyb, 'informeFya', 'Fya');
+let antiFyaFic = () => ficina(Fya, 'informeFyaFic', 'Fya');
 let antiFyb = () => antigenoHeterocigoto(Fyb, Fya, 'informeFyb', 'Fyb');
 let antiJka = () => antigenoHeterocigoto(Jka, Jkb, 'informeJka', 'Jka');
 let antiJkaFic = () => antigenoHeterocigotoFicina(Jka, Jkb, 'informeJkaFic', 'Jka');
