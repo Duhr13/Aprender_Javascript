@@ -184,19 +184,25 @@ let resolverC = () => {
     antiFya();
     antiFyaFic();
     antiFyb();
+    antiFybFic();
     antiJka();
     antiJkaFic();
     antiJkb();
     antiJkbFic();
     antiXga();
+    antiXgaFic();
     antiLea();
     antiLeaFic();
     antiLeb();
     antiLebFic();
     antiS();
+    antiSFic();
     antis();
+    antisFic();
     antiM();
+    antiMFic();
     antiN();
+    antiNFic();
     antiP1();
     antiP1Fic();
     antiLua();
@@ -699,13 +705,20 @@ let ficina = (antigeno, informeId, nombreAntigeno) => {
             lineaMensaje.innerHTML = `No es compatible con existencia de anti-${anticuerpo} <br>`;
         }
 
+        //lineaMensaje.style.fontWeight = 'bold';
+        lineaMensaje.style.color = 'black';
         listadoInforme.appendChild(lineaMensaje);
 
     }
 
     informe.appendChild(listadoInforme);
-
-
+    informe.style.backgroundColor = '#cd92d1';
+    informe.style.padding = '15px';
+    informe.style.margin = '3px';
+    informe.style.border = "solid";
+    informe.style.borderRadius = '10px';
+    informe.style.borderColor = 'purple';
+    informe.style.boxShadow = '0px 0px 10px black';
 
 }
 
@@ -738,19 +751,25 @@ let antiKpbFic = () => antigenoHomocigotoFicina(Kpb, 'informekpbFic', 'Kpb');
 let antiFya = () => antigenoHeterocigoto(Fya, Fyb, 'informeFya', 'Fya');
 let antiFyaFic = () => ficina(Fya, 'informeFyaFic', 'Fya');
 let antiFyb = () => antigenoHeterocigoto(Fyb, Fya, 'informeFyb', 'Fyb');
+let antiFybFic = () => ficina(Fyb, 'informeFybFic', 'Fyb');
 let antiJka = () => antigenoHeterocigoto(Jka, Jkb, 'informeJka', 'Jka');
 let antiJkaFic = () => antigenoHeterocigotoFicina(Jka, Jkb, 'informeJkaFic', 'Jka');
 let antiJkb = () => antigenoHeterocigoto(Jkb, Jka, 'informeJkb', 'Jkb');
 let antiJkbFic = () => antigenoHeterocigotoFicina(Jkb, Jka, 'informeJkbFic', 'Jkb');
 let antiXga = () => antigenoHomocigoto(Xga, 'informeXga', 'Xga');
+let antiXgaFic = () => ficina(Xga, 'informeXgaFic', 'Xga');
 let antiLea = () => antigenoHeterocigoto(Lea, Leb, 'informeLea', 'Lea');
 let antiLeaFic = () => antigenoHeterocigotoFicina(Lea, Leb, 'informeLeaFic', 'Lea');
 let antiLeb = () => antigenoHeterocigoto(Leb, Lea, 'informeLeb', 'Leb');
 let antiLebFic = () => antigenoHeterocigotoFicina(Leb, Lea, 'informeLebFic', 'Leb');
 let antiS = () => antigenoHeterocigoto (S, s, 'informeS', 'S');
+let antiSFic = () => ficina(S, 'informeSFic', 'S');
 let antis = () => antigenoHeterocigoto (s, S, 'informes', 's');
+let antisFic = () => ficina(s, 'informesFic', 's');
 let antiM = () => antigenoHeterocigoto (M, N, 'informeM', 'M');
+let antiMFic = () => ficina(M, 'informeMFic', 'M');
 let antiN = () => antigenoHeterocigoto (N, M, 'informeN', 'N');
+let antiNFic = () => ficina(N, 'informeNFic', 'N');
 let antiP1 = () => antigenoHomocigoto(P1, 'informeP1', 'P1');
 let antiP1Fic = () => antigenoHomocigotoFicina(P1, 'informeP1Fic', 'P1');
 let antiLua = () => antigenoHomocigoto(Lua, 'informeLua', 'Lua');

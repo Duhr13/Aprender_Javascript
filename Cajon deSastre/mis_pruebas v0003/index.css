@@ -373,7 +373,7 @@ td {
 }
 
 #informeCompleto #informesFic {
-    grid-area: informes;
+    grid-area: informesFic;
     width: 500px;
 }
 
@@ -383,7 +383,7 @@ td {
 }
 
 #informeCompleto #informeMFic {
-    grid-area: informeM;
+    grid-area: informeMFic;
     width: 500px;
 }
 
