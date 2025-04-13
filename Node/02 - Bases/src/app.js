@@ -1,5 +1,6 @@
+const {emailTemplate} = require('./js-foundation/01-template.js');
+require('./js-foundation/02-destructuring.js');
 
 
 
-
-console.log('Hola mundo desde app.js');
+// console.log(emailTemplate);
