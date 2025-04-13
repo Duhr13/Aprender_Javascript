@@ -1,8 +1,8 @@
 
 
 
-console.log(process.env);
+// console.log(process.env);
 
 const {SHELL, LANG} = process.env;
 
-console.table({SHELL, LANG});
+// console.table({SHELL, LANG});
