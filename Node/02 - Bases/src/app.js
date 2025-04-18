@@ -10,7 +10,7 @@ const [ , , , batman] = characters;
 
 console.log(batman); */
 
-const id = 3;
+const id = 2;
 
 getUserById(id, function (error, user){
     if(error) {
